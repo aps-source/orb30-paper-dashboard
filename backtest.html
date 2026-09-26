@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ORB30 — Backtest</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root { color-scheme: light;
+    --page:#eceff8; --surface-1:#ffffff; --surface-2:#f3f5fb; --text-primary:#0e1320; --text-secondary:#4f5a74; --text-muted:#76829c;
+    --gridline:#e2e7f1; --border:rgba(14,19,32,0.10); --shadow:0 1px 2px rgba(14,19,32,0.06), 0 8px 24px rgba(40,50,110,0.08);
+    --brand-a:#4338ca; --brand-b:#7c3aed; --brand-c:#0d9488; --accent:#4f46e5; --good:#12a150; --critical:#dc3545; --warning:#c77d00; --long:#12a150; --short:#d6336c;
+    --s1:#6d4bd8; --s2:#d6336c; --s3:#0b8f83; --s4:#c77d00; }
+  @media (prefers-color-scheme: dark) { :root { color-scheme: dark;
+    --page:#090c14; --surface-1:#131a29; --surface-2:#1a2336; --text-primary:#eef1f9; --text-secondary:#a0abc4; --text-muted:#7f8aa3;
+    --gridline:#253048; --border:rgba(238,241,249,0.11); --shadow:0 1px 2px rgba(0,0,0,0.4), 0 10px 28px rgba(0,0,0,0.35);
+    --brand-a:#4f46e5; --brand-b:#8b5cf6; --brand-c:#14b8a6; --accent:#9b8cf3; --good:#2bc85a; --critical:#f0645f; --warning:#f2b636; --long:#2bc85a; --short:#e0578a;
+    --s1:#8a75ec; --s2:#e0578a; --s3:#17a390; --s4:#f2b636; } }
+  * { box-sizing:border-box; }
+  html { font-size:clamp(15px,0.55vw + 9px,19px); }
+  body { margin:0; color:var(--text-primary); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.4;
+    background:radial-gradient(1100px 480px at 8% -8%, color-mix(in srgb,var(--brand-b) 16%,transparent), transparent 70%),
+               radial-gradient(900px 480px at 100% 0%, color-mix(in srgb,var(--brand-c) 14%,transparent), transparent 70%), var(--page); background-attachment:fixed; }
+  .good { color:var(--good); } .bad { color:var(--critical); } .muted { color:var(--text-muted); }
+  .hero { background:linear-gradient(115deg,var(--brand-a) 0%,var(--brand-b) 52%,var(--brand-c) 100%); color:#fff; padding:1.05rem clamp(14px,2vw,32px); box-shadow:0 6px 26px rgba(67,56,202,0.28); }
+  .hero-inner { max-width:1600px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  h1 { font-size:1.45rem; margin:0; font-weight:800; } .tag { font-size:0.86rem; opacity:0.88; max-width:90ch; }
+  .nav { display:flex; gap:8px; flex-wrap:wrap; }
+  a.btn { background:#fff; color:var(--brand-a); text-decoration:none; font-weight:700; font-size:0.88rem; padding:0.45rem 0.95rem; border-radius:999px; }
+  a.btn.ghost { background:rgba(255,255,255,0.16); color:#fff; border:1px solid rgba(255,255,255,0.3); }
+  .page { max-width:1600px; margin:0 auto; padding:1.1rem clamp(14px,2vw,32px) 2rem; }
+  .card { background:var(--surface-1); border:1px solid var(--border); border-radius:1.1rem; box-shadow:var(--shadow); margin-bottom:1rem; overflow:hidden; }
+  .card h2 { font-size:0.8rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); margin:0; padding:0.85rem 1.1rem; border-bottom:1px solid var(--gridline); }
+  .verdict { border-left:6px solid var(--warning); }
+  .verdict .body { padding:0.9rem 1.1rem; font-size:0.92rem; color:var(--text-secondary); }
+  .verdict .body b { color:var(--text-primary); } .verdict ul { margin:0.4rem 0 0; padding-left:1.2rem; }
+  .scroll { overflow-x:auto; } .scroll.tall { max-height:520px; overflow-y:auto; }
+  table { width:100%; border-collapse:collapse; font-size:0.86rem; font-variant-numeric:tabular-nums; }
+  th { text-align:left; padding:0.55rem 0.8rem; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); border-bottom:1px solid var(--gridline); white-space:nowrap; position:sticky; top:0; background:var(--surface-1); }
+  td { padding:0.5rem 0.8rem; border-bottom:1px solid var(--gridline); white-space:nowrap; }
+  td.r, th.r { text-align:right; } .tagd { font-weight:700; } .LONG { color:var(--long); font-weight:700; } .SHORT { color:var(--short); font-weight:700; }
+  .chart { padding:0.6rem 1rem 0.8rem; } .chart svg { width:100%; height:auto; display:block; }
+  .legend { display:flex; gap:1.1rem; flex-wrap:wrap; padding:0.2rem 1.1rem 0.9rem; font-size:0.82rem; }
+  .sw { display:inline-block; width:0.9rem; height:0.24rem; border-radius:2px; margin-right:0.4rem; vertical-align:middle; }
+  .filters { display:flex; gap:0.5rem; flex-wrap:wrap; padding:0.8rem 1.1rem; }
+  .filters button { border:1px solid var(--border); background:var(--surface-2); color:var(--text-primary); border-radius:999px; padding:0.3rem 0.85rem; font-size:0.82rem; font-weight:600; cursor:pointer; }
+  .filters button.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .foot { font-size:0.8rem; color:var(--text-muted); line-height:1.6; }
+  .heat { text-align:right; }
+  .rsn { font-size:0.74rem; font-weight:700; padding:0.1rem 0.5rem; border-radius:999px; background:var(--surface-2); border:1px solid var(--gridline); }
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-inner">
+  <div><h1>ORB30 — Backtest</h1><div class="tag" id="params">…</div></div>
+  <div class="nav"><a class="btn ghost" href="index.html">Live dashboard</a><a class="btn ghost" href="trades.html">Paper trades</a></div></div></header>
+<main class="page">
+  <div class="card verdict"><h2>How to read this</h2><div class="body">
+    <b>Treat every number on this page as in-sample and optimistic.</b>
+    <ul>
+      <li>The two range caps (NIFTY 100 pts, SENSEX 300 pts) were chosen <b>after</b> looking at this same data, so they flatter the result. Without a cap the strategy is close to break-even (profit factor about 1.05).</li>
+      <li>Plain capped ORB: profit factor about 1.14 (NIFTY, t-stat 1.6) and 1.22 (SENSEX, t-stat 2.1). The edge is small, and all of it sits in normal-sized opening ranges.</li>
+      <li>The <b>9:50 filter</b> variant trades only about one day in five. Its per-trade quality looks better, but the result disappeared when the confirmation time was moved by five minutes, so it is an unconfirmed lead, and each index has fewer than 180 trades.</li>
+      <li>The backtest assumes a fill exactly at the range edge (or the 9:50 close) with only a fixed cost. Live slippage will be worse. 2026 has been roughly flat for the plain version.</li>
+      <li>That is why the live paper trading exists: to test the rules on data the backtest never saw.</li>
+    </ul></div></div>
+  <div class="card"><h2>Full backtest summary</h2><div class="scroll" id="summary"></div></div>
+  <div class="card"><h2>Cumulative net P&amp;L (₹, 1 lot)</h2><div class="chart" id="equity"></div><div class="legend" id="legend"></div></div>
+  <div class="card"><h2>By year (net points, profit factor)</h2><div class="scroll" id="years"></div></div>
+  <div class="card"><h2>Robustness: first half vs second half vs without 2024</h2><div class="scroll" id="halves"></div></div>
+  <div class="card"><h2>Monthly net P&amp;L, last 18 months (points)</h2><div class="scroll" id="monthly"></div></div>
+  <div class="card"><h2>All backtest trades</h2><div class="filters" id="filters"></div><div class="scroll tall" id="log"></div></div>
+  <div class="foot" id="foot"></div>
+</main>
+<script>
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (v, d=1) => v == null ? "—" : (v > 0 ? "+" : "") + Number(v).toFixed(d);
+const rs = v => v == null ? "—" : (v < 0 ? "−₹" : "₹") + Math.abs(Math.round(v)).toLocaleString("en-IN");
+const cls = v => v > 0 ? "good" : v < 0 ? "bad" : "";
+const COL = ["var(--s1)","var(--s2)","var(--s3)","var(--s4)"];
+const RSN = {stop:"stop", target:"target", time:"14:30", both:"both edges"};
+let D, FILTER = "ALL";
+const nm = n => { const s = D.strategies[n]; return `${s.symbol} · ${s.variant === "ORB" ? "range cap" : "cap + 9:50 filter"}`; };
+function summary() {
+  const rows = Object.entries(D.strategies).map(([n, s]) => `<tr><td class="tagd">${esc(nm(n))}</td>
+    <td class="r">${s.trades}</td><td class="r">${s.win_pct}%</td><td class="r ${cls(s.net_pts)}">${fmt(s.net_pts,0)}</td><td class="r ${cls(s.net_rs)}">${rs(s.net_rs)}</td><td class="r ${cls(s.net_pct)}">${fmt(s.net_pct)}%</td>
+    <td class="r">${s.pf}</td><td class="r">${fmt(s.max_dd_pts,0)}</td><td class="r">${fmt(s.max_dd_pct)}%</td><td class="r">${s.t_stat}</td><td class="r">${s.max_consec_loss}</td>
+    <td class="r ${cls(s.long_net)}">${fmt(s.long_net,0)}</td><td class="r ${cls(s.short_net)}">${fmt(s.short_net,0)}</td><td class="r ${cls(s.net_ex_top5)}">${fmt(s.net_ex_top5,0)}</td>
+    <td class="r">${s.targets}/${s.stops}/${s.time_exits}</td></tr>`).join("");
+  document.getElementById("summary").innerHTML = `<table><thead><tr><th>Strategy</th><th class="r">Trades</th><th class="r">Win %</th><th class="r">Net pts</th><th class="r">Net ₹</th><th class="r">Net % of index</th><th class="r">PF</th><th class="r">Max DD pts</th><th class="r">Max DD %</th><th class="r">t-stat</th><th class="r">Max losses in a row</th><th class="r">Long pts</th><th class="r">Short pts</th><th class="r">Net w/o top 5</th><th class="r">Target / stop / 14:30 exits</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function equity() {
+  const W=900, H=230, P=10, names = Object.keys(D.strategies);
+  const series = names.map(n => { let c = 0; return D.strategies[n].trades_list.map(t => [new Date(t.exit_time.replace(" ","T")).getTime(), c += t.net_pts * D.strategies[n].lot]); });
+  const xs = series.flat().map(p => p[0]), ys = series.flat().map(p => p[1]).concat(0);
+  const x0 = Math.min(...xs), x1 = Math.max(...xs), lo = Math.min(...ys), hi = Math.max(...ys);
+  const X = v => P + (v-x0)*(W-2*P)/((x1-x0)||1), Y = v => H-P - (v-lo)*(H-2*P)/((hi-lo)||1);
+  const lines = series.map((s,i) => `<polyline fill="none" stroke="${COL[i]}" stroke-width="2" stroke-linejoin="round" points="${s.map(p => X(p[0]).toFixed(1)+","+Y(p[1]).toFixed(1)).join(" ")}"/>`).join("");
+  document.getElementById("equity").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative net P&L per strategy"><line x1="${P}" x2="${W-P}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--gridline)" stroke-width="1.5"/>${lines}</svg>`;
+  document.getElementById("legend").innerHTML = names.map((n,i) => `<span><span class="sw" style="background:${COL[i]}"></span>${esc(nm(n))} <b class="${cls(D.strategies[n].net_rs)}">${rs(D.strategies[n].net_rs)}</b></span>`).join("");
+}
+function years() {
+  const names = Object.keys(D.strategies), ys = [...new Set(names.flatMap(n => D.strategies[n].years.map(y => y.year)))].sort();
+  document.getElementById("years").innerHTML = `<table><thead><tr><th>Strategy</th>${ys.map(y => `<th class="r">${y}</th>`).join("")}</tr></thead><tbody>${
+    names.map(n => { const s = D.strategies[n];
+      return `<tr><td class="tagd">${esc(nm(n))}</td>${ys.map(y => { const r = s.years.find(v => v.year === y); return r ? `<td class="r ${cls(r.net_pts)}">${fmt(r.net_pts,0)} <span class="muted">(PF ${r.pf ?? "—"}, n=${r.trades})</span></td>` : `<td class="r muted">—</td>`; }).join("")}</tr>`; }).join("")}</tbody></table>`;
+}
+function halves() {
+  const names = Object.keys(D.strategies), ks = ["2021-2023","2024-2026","ex-2024"];
+  document.getElementById("halves").innerHTML = `<table><thead><tr><th>Strategy</th>${ks.map(k => `<th class="r">${k}</th>`).join("")}</tr></thead><tbody>${
+    names.map(n => { const s = D.strategies[n];
+      return `<tr><td class="tagd">${esc(nm(n))}</td>${ks.map(k => { const h = s.halves[k]; return `<td class="r ${cls(h.net_pts)}">${fmt(h.net_pts,0)} <span class="muted">(PF ${h.pf ?? "—"}, n=${h.trades})</span></td>`; }).join("")}</tr>`; }).join("")}</tbody></table>`;
+}
+function monthly() {
+  const names = Object.keys(D.strategies), months = [...new Set(names.flatMap(n => Object.keys(D.strategies[n].monthly)))].sort();
+  const mx = Math.max(...names.flatMap(n => months.map(m => Math.abs(D.strategies[n].monthly[m] || 0)))) || 1;
+  const cell = v => { const a = Math.min(Math.abs(v)/mx, 1) * 0.55; const c = v >= 0 ? "43,200,90" : "240,100,95";
+    return `<td class="r heat ${cls(v)}" style="background:rgba(${c},${a.toFixed(2)})">${fmt(v,0)}</td>`; };
+  document.getElementById("monthly").innerHTML = `<table><thead><tr><th>Strategy</th>${months.map(m => `<th class="r">${m}</th>`).join("")}</tr></thead><tbody>${
+    names.map(n => `<tr><td class="tagd">${esc(nm(n))}</td>${months.map(m => cell(D.strategies[n].monthly[m] || 0)).join("")}</tr>`).join("")}</tbody></table>`;
+}
+function filters() {
+  document.getElementById("filters").innerHTML = ["ALL",...Object.keys(D.strategies)].map(s => `<button class="${s===FILTER?"on":""}" data-s="${s}">${s === "ALL" ? "All" : nm(s)}</button>`).join("");
+  document.querySelectorAll("#filters button").forEach(b => b.onclick = () => { FILTER = b.dataset.s; filters(); log(); });
+}
+function log() {
+  const t = Object.entries(D.strategies).filter(([n]) => FILTER === "ALL" || n === FILTER).flatMap(([n, s]) => s.trades_list.map(x => ({...x, n, rs: x.net_pts * s.lot})))
+    .sort((a,b) => b.exit_time.localeCompare(a.exit_time));
+  document.getElementById("log").innerHTML = `<table><thead><tr><th>Strategy</th><th>Side</th><th>Entry</th><th class="r">Entry px</th><th>Exit</th><th class="r">Exit px</th><th>Exit reason</th><th class="r">OR range</th><th class="r">Net pts</th><th class="r">Net ₹</th></tr></thead><tbody>${
+    t.map(x => `<tr><td class="tagd">${esc(nm(x.n))}</td><td class="${x.dir}">${x.dir}</td><td>${esc(x.entry_time.slice(0,16))}</td><td class="r">${x.entry}</td><td>${esc(x.exit_time.slice(0,16))}</td><td class="r">${x.exit}</td><td><span class="rsn">${RSN[x.reason] || esc(x.reason)}</span></td><td class="r">${x.range}</td><td class="r ${cls(x.net_pts)}">${fmt(x.net_pts)}</td><td class="r ${cls(x.rs)}">${rs(x.rs)}</td></tr>`).join("")}</tbody></table>`;
+}
+(async () => {
+  try { D = await (await fetch("backtest_data.json?t=" + Date.now())).json(); }
+  catch (e) { document.querySelector(".page").innerHTML = `<div class="card"><h2>Error</h2><div class="verdict"><div class="body">Could not load backtest_data.json — ${esc(e.message)}</div></div></div>`; return; }
+  document.getElementById("params").textContent = D.params + " · " + D.window;
+  document.getElementById("foot").innerHTML = `Buy &amp; hold over the same windows: NIFTY <b class="${cls(D.buy_hold.NIFTY.pts)}">${fmt(D.buy_hold.NIFTY.pts,0)}</b> pts (since ${esc(D.buy_hold.NIFTY.from)}), SENSEX <b class="${cls(D.buy_hold.SENSEX.pts)}">${fmt(D.buy_hold.SENSEX.pts,0)}</b> pts (since ${esc(D.buy_hold.SENSEX.from)}). Results are on the index (spot), not futures or options, so slippage, margin and premium are not modelled. Generated ${esc(D.generated)}. Past results do not predict future results.`;
+  summary(); equity(); years(); halves(); monthly(); filters(); log();
+})();
+</script>
+</body>
+</html>

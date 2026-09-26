@@ -1,0 +1,209 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ORB30 — Paper Trading</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root {
+    color-scheme: light;
+    --page:#eceff8; --surface-1:#ffffff; --surface-2:#f3f5fb; --text-primary:#0e1320; --text-secondary:#4f5a74; --text-muted:#76829c;
+    --gridline:#e2e7f1; --border:rgba(14,19,32,0.10); --shadow:0 1px 2px rgba(14,19,32,0.06), 0 8px 24px rgba(40,50,110,0.08);
+    --brand-a:#4338ca; --brand-b:#7c3aed; --brand-c:#0d9488; --accent:#4f46e5;
+    --nifty:#6d4bd8; --sensex:#0b8f83; --long:#12a150; --short:#d6336c; --good:#12a150; --warning:#c77d00; --critical:#dc3545; --target:#2563eb;
+    --slate-1:#1b2340; --slate-2:#2d3a66;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      color-scheme: dark;
+      --page:#090c14; --surface-1:#131a29; --surface-2:#1a2336; --text-primary:#eef1f9; --text-secondary:#a0abc4; --text-muted:#7f8aa3;
+      --gridline:#253048; --border:rgba(238,241,249,0.11); --shadow:0 1px 2px rgba(0,0,0,0.4), 0 10px 28px rgba(0,0,0,0.35);
+      --brand-a:#4f46e5; --brand-b:#8b5cf6; --brand-c:#14b8a6; --accent:#9b8cf3;
+      --nifty:#8a75ec; --sensex:#17a390; --long:#2bc85a; --short:#e0578a; --good:#2bc85a; --warning:#f2b636; --critical:#f0645f; --target:#5b9cff;
+      --slate-1:#0f1630; --slate-2:#26305a;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { font-size: clamp(15px, 0.55vw + 9px, 19px); }
+  body { margin:0; color:var(--text-primary); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.4;
+    background: radial-gradient(1100px 480px at 8% -8%, color-mix(in srgb, var(--brand-b) 16%, transparent), transparent 70%),
+                radial-gradient(900px 480px at 100% 0%, color-mix(in srgb, var(--brand-c) 14%, transparent), transparent 70%), var(--page);
+    background-attachment: fixed; }
+  .muted { color: var(--text-muted); }
+  b { font-variant-numeric: tabular-nums; }
+  .good { color: var(--good); } .bad { color: var(--critical); }
+
+  .hero { background: linear-gradient(115deg, var(--brand-a) 0%, var(--brand-b) 52%, var(--brand-c) 100%); color:#fff; padding:1.05rem clamp(14px,2vw,32px) 0.9rem; box-shadow:0 6px 26px rgba(67,56,202,0.28); }
+  .hero-inner { max-width:2300px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px 24px; flex-wrap:wrap; }
+  .brand { display:flex; align-items:center; gap:0.9rem; }
+  .logo { width:2.5rem; height:2.5rem; border-radius:0.8rem; background:rgba(255,255,255,0.18); display:grid; place-items:center; font-size:1.35rem; }
+  h1 { font-size:1.45rem; margin:0; font-weight:800; letter-spacing:-0.015em; }
+  .tag { font-size:0.86rem; opacity:0.88; margin-top:1px; }
+  .hero-right { display:flex; align-items:center; gap:10px; flex-wrap:wrap; }
+  .hero-pill { background:rgba(255,255,255,0.16); border:1px solid rgba(255,255,255,0.28); padding:0.32rem 0.75rem; border-radius:999px; font-size:0.82rem; font-variant-numeric:tabular-nums; }
+  a.btn { background:#fff; color:var(--brand-a); text-decoration:none; font-weight:700; font-size:0.88rem; padding:0.45rem 0.95rem; border-radius:999px; box-shadow:0 2px 10px rgba(0,0,0,0.18); }
+  details.rules { max-width:2300px; margin:0.55rem auto 0; font-size:0.83rem; opacity:0.95; }
+  details.rules summary { cursor:pointer; font-weight:600; width:fit-content; }
+  details.rules p { margin:0.4rem 0 0; max-width:1200px; opacity:0.92; }
+
+  .page { max-width:2300px; margin:0 auto; padding:1.1rem clamp(14px,2vw,32px) 2rem; }
+  .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(165px,100%),1fr)); gap:0.9rem; margin-bottom:1rem; }
+  .kpi { position:relative; overflow:hidden; background:var(--surface-1); border:1px solid var(--border); border-radius:1rem; padding:0.95rem 1.1rem; box-shadow:var(--shadow); }
+  .kpi::before { content:""; position:absolute; inset:0 auto 0 0; width:5px; background:var(--kc,var(--accent)); }
+  .kpi .k { font-size:0.72rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); font-weight:700; }
+  .kpi .v { font-size:1.85rem; font-weight:800; letter-spacing:-0.02em; font-variant-numeric:tabular-nums; margin-top:0.1rem; line-height:1.15; }
+  .kpi .s { font-size:0.82rem; color:var(--text-secondary); margin-top:0.15rem; }
+  .kpi.g { --kc:var(--good); } .kpi.b { --kc:var(--critical); } .kpi.v1 { --kc:var(--nifty); } .kpi.v2 { --kc:var(--sensex); }
+
+  .st-pill { display:inline-flex; align-items:center; gap:0.35rem; font-weight:700; font-size:0.78rem; padding:0.15rem 0.55rem; border-radius:999px; }
+  .st-pill.live { background:color-mix(in srgb,var(--good) 16%,var(--surface-1)); color:var(--good); }
+  .st-pill.stale { background:color-mix(in srgb,var(--critical) 16%,var(--surface-1)); color:var(--critical); }
+  .st-pill.closed { background:color-mix(in srgb,var(--warning) 18%,var(--surface-1)); color:var(--warning); }
+  .dot { display:inline-block; width:0.55rem; height:0.55rem; border-radius:50%; background:currentColor; }
+  .st-pill.live .dot { animation:pulse 2s infinite; }
+  @keyframes pulse { 0%,100% { box-shadow:0 0 0 0 color-mix(in srgb,currentColor 55%,transparent); } 60% { box-shadow:0 0 0 6px transparent; } }
+
+  .grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr)); gap:1rem; }
+  .card { background:var(--surface-1); border:1px solid var(--border); border-radius:1.1rem; box-shadow:var(--shadow); overflow:hidden; }
+  .card-h { display:flex; align-items:center; justify-content:space-between; padding:0.85rem 1.1rem; border-bottom:1px solid var(--gridline); gap:0.6rem; flex-wrap:wrap; }
+  .card-h .name { font-weight:800; font-size:1.05rem; }
+  .card-h .name .sym { display:inline-block; padding:0.1rem 0.55rem; border-radius:999px; color:#fff; font-size:0.78rem; margin-right:0.45rem; }
+  .sym.NIFTY { background:var(--nifty); } .sym.SENSEX { background:var(--sensex); }
+  .badge { font-size:0.72rem; font-weight:800; padding:0.18rem 0.6rem; border-radius:999px; color:#fff; letter-spacing:0.04em; }
+  .badge.IN { background:var(--long); } .badge.DONE { background:var(--accent); } .badge.NO { background:var(--slate-2); } .badge.WAIT { background:var(--warning); }
+  .decision { display:flex; align-items:center; gap:0.9rem; padding:0.95rem 1.1rem; color:#fff; }
+  .decision.LONG { background:linear-gradient(120deg,color-mix(in srgb,var(--long) 70%,#000),var(--long)); }
+  .decision.SHORT { background:linear-gradient(120deg,color-mix(in srgb,var(--short) 70%,#000),var(--short)); }
+  .decision.FLAT { background:linear-gradient(120deg,var(--slate-1),var(--slate-2)); }
+  .decision .act { font-size:1.6rem; font-weight:800; line-height:1.1; }
+  .decision .lbl { font-size:0.7rem; text-transform:uppercase; letter-spacing:0.07em; opacity:0.9; font-weight:700; }
+  .decision .meta { font-size:0.84rem; opacity:0.93; margin-top:0.1rem; max-width:34ch; }
+  .decision .pnl { margin-left:auto; text-align:right; }
+  .decision .pnl .big { font-size:1.5rem; font-weight:800; font-variant-numeric:tabular-nums; }
+  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:0; border-bottom:1px solid var(--gridline); }
+  .stat { padding:0.7rem 0.6rem; text-align:center; border-right:1px solid var(--gridline); }
+  .stat:last-child { border-right:0; }
+  .stat .v { font-size:1.1rem; font-weight:700; font-variant-numeric:tabular-nums; }
+  .stat .k { font-size:0.68rem; text-transform:uppercase; letter-spacing:0.06em; color:var(--text-muted); font-weight:700; }
+  .chart { padding:0.6rem 1rem 0.3rem; }
+  .chart svg { width:100%; height:auto; display:block; }
+  .note { padding:0 1.1rem 0.9rem; font-size:0.8rem; color:var(--text-secondary); }
+  .lv { display:flex; flex-wrap:wrap; gap:0.35rem 0.9rem; padding:0 1.1rem 0.6rem; font-size:0.78rem; }
+  .lv span::before { content:""; display:inline-block; width:0.7rem; height:0.18rem; margin-right:0.35rem; vertical-align:middle; background:var(--c); }
+  .bt { margin:0 1.1rem 0.9rem; padding:0.7rem 0.85rem; border-radius:0.8rem; background:var(--surface-2); border:1px solid var(--gridline); }
+  .bt .t { display:flex; justify-content:space-between; align-items:center; font-size:0.7rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); font-weight:700; margin-bottom:0.45rem; }
+  .bt .t a { color:var(--accent); text-decoration:none; text-transform:none; letter-spacing:0; font-size:0.78rem; }
+  .bt .g { display:grid; grid-template-columns:repeat(3,1fr); gap:0.6rem 0.8rem; }
+  .bt .g div b { display:block; font-size:0.98rem; } .bt .g div span { font-size:0.68rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.05em; font-weight:700; }
+  .banner { margin-bottom:1rem; padding:0.8rem 1.1rem; border-radius:0.9rem; font-weight:600; font-size:0.9rem; border:1px solid var(--border); background:var(--surface-1); }
+  .banner.err { background:color-mix(in srgb,var(--critical) 12%,var(--surface-1)); color:var(--critical); }
+  .foot { font-size:0.8rem; color:var(--text-muted); margin-top:1.4rem; line-height:1.6; }
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand"><div class="logo">▤</div>
+      <div><h1>ORB30 — Paper Trading</h1><div class="tag">NIFTY + SENSEX · 30-min opening-range breakout · range cap · intraday, flat by 14:30</div></div></div>
+    <div class="hero-right">
+      <span id="status"></span><span class="hero-pill" id="tick">…</span>
+      <a class="btn" href="trades.html">Day-wise trades &amp; P&amp;L →</a><a class="btn" href="backtest.html">Backtest data →</a>
+    </div>
+  </div>
+  <details class="rules"><summary>Strategy rules</summary>
+    <p>The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>Range cap:</b> skip the day if the OR is wider than 100 pts (NIFTY) or 300 pts (SENSEX). <b>ORB · range cap:</b> go LONG the moment price trades above the OR high, SHORT below the OR low, one trade a day. <b>ORB · range cap + 9:50 filter:</b> the 5-min candle ending 09:50 must close beyond the OR (above the high = LONG, below the low = SHORT), entered at that 09:50 close; if it closes inside the range there is no trade. <b>Both:</b> stop at the opposite end of the OR, target 2R (twice the risk), any open trade closed at 14:30. 1 lot per strategy. The two caps were picked after looking at the backtest data; the 9:50 filter is an unconfirmed lead — this paper trading is the out-of-sample test.</p></details>
+</header>
+<main class="page">
+  <div id="err"></div>
+  <div class="kpis" id="kpis"></div>
+  <div class="grid" id="cards"></div>
+  <div class="foot">Read-only page: it cannot place, modify or cancel any order — it only displays what the paper engine computed. Paper P&amp;L is on the index (spot) in points, net of a fixed cost (NIFTY 2 pts, SENSEX 6 pts per round trip); ₹ = points × lot size (NIFTY 65, SENSEX 20). Paper entries assume the fill happens at the OR edge (or at the 09:50 close for the filtered variant) with no extra slippage, so live results will be somewhat worse. Refreshes every 30 seconds from <code>live_state.json</code>.</div>
+</main>
+<script>
+const STATE_URL = "live_state.json";
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (v, d=1) => (v > 0 ? "+" : "") + Number(v).toFixed(d);
+const rs = v => (v < 0 ? "−₹" : "₹") + Math.abs(Math.round(v)).toLocaleString("en-IN");
+const cls = v => v > 0 ? "good" : v < 0 ? "bad" : "";
+const n0 = v => Math.round(v).toLocaleString("en-IN");
+function istNow() {
+  const p = new Intl.DateTimeFormat("en-GB", {timeZone:"Asia/Kolkata", weekday:"short", hour:"2-digit", minute:"2-digit", hour12:false}).formatToParts(new Date());
+  const g = t => p.find(x => x.type === t).value; return {wd:g("weekday"), mins:(+g("hour"))*60 + (+g("minute"))};
+}
+function chart(v) {
+  const tail = v.tail || []; if (tail.length < 2) return "";
+  const W=420, H=150, P=8, R=62;
+  const raw = [["OR high", v.or_high, "var(--text-muted)", "4 3"], ["OR low", v.or_low, "var(--text-muted)", "4 3"], ["stop", v.stop, "var(--critical)", "2 2"], ["target", v.target, "var(--target)", "2 2"]].filter(l => l[1] != null);
+  const lv = [];   // merge levels that coincide (a stop sits exactly on the opposite OR edge) so their labels do not overprint
+  raw.forEach(l => { const m = lv.find(k => Math.abs(k[1] - l[1]) < 0.5); if (m) { m[0] += " / " + l[0]; if (l[0] === "stop") { m[2] = l[2]; m[3] = l[3]; } } else lv.push(l.slice()); });
+  const vals = tail.map(p => p.c).concat(lv.map(l => l[1])), lo = Math.min(...vals), hi = Math.max(...vals), sp = (hi-lo) || 1;
+  const x = i => P + i*(W-2*P-R)/(tail.length-1), y = val => H-P - (val-lo)*(H-2*P)/sp;
+  const line = tail.map((p,i) => `${x(i).toFixed(1)},${y(p.c).toFixed(1)}`).join(" ");
+  const lines = lv.map(l => `<line x1="${P}" x2="${W-P-R+4}" y1="${y(l[1]).toFixed(1)}" y2="${y(l[1]).toFixed(1)}" stroke="${l[2]}" stroke-width="1.2" stroke-dasharray="${l[3]}"/><text x="${W-P-R+7}" y="${(y(l[1])+3).toFixed(1)}" font-size="8.5" fill="${l[2]}">${l[0]}</text>`).join("");
+  const dotCol = v.session_side === 1 ? "var(--long)" : "var(--short)";
+  const dot = v.entry != null && v.position ? `<circle cx="${x(tail.length-1).toFixed(1)}" cy="${y(v.position.ltp).toFixed(1)}" r="4" fill="${dotCol}"/>` : "";
+  return `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Session price (5-min closes) with opening range, stop and target">${lines}<polyline fill="none" stroke="var(--accent)" stroke-width="2" stroke-linejoin="round" points="${line}"/>${dot}</svg>`;
+}
+function btBlock(b) {
+  if (!b) return "";
+  return `<div class="bt"><div class="t"><span>Backtest reference · ${b.trades} trades since 2021 (1 lot)</span><a href="backtest.html">Full backtest →</a></div><div class="g">
+    <div><b class="${cls(b.net_rs)}">${rs(b.net_rs)}</b><span>Net P&amp;L</span></div><div><b>${b.win_pct}%</b><span>Win rate</span></div><div><b>${b.pf}</b><span>Profit factor</span></div>
+    <div><b class="bad">${rs(b.max_dd_rs)}</b><span>Max DD</span></div><div><b>${b.t_stat}</b><span>t-stat</span></div><div><b>${b.halves["2024-2026"] ? b.halves["2024-2026"].pf : "—"}</b><span>PF 2024–26</span></div></div></div>`;
+}
+function card(sym, key, v, ltp, bt) {
+  const p = v.position, dir = p ? p.dir : "FLAT";
+  const st = v.status || "";
+  const kind = p ? "IN" : st.startsWith("Closed") ? "DONE" : /^(Skipped|No trade|No breakout|No data)/.test(st) ? "NO" : "WAIT";
+  const lab = {IN:"IN TRADE", DONE:"DONE TODAY", NO:"NO TRADE", WAIT:"WAITING"}[kind];
+  const wr = v.closed_trades ? Math.round(100*v.wins/v.closed_trades) + "%" : "—";
+  const sp = v.session_pnl_net_pts;
+  const meta = p ? `since ${esc(p.entry_time.slice(11,16))} @ ${n0(p.entry_price)} · SL ${n0(p.stop)} · TP ${n0(p.target)}` : esc(st);
+  const orNote = v.or_high != null ? `Opening range <b>${n0(v.or_low)} – ${n0(v.or_high)}</b> (${v.or_range.toFixed(0)} pts, cap ${v.cap}).` : "Opening range not formed yet.";
+  const fc = v.filter_close != null ? ` 9:50 close <b>${n0(v.filter_close)}</b>.` : "";
+  const legend = `<div class="lv"><span style="--c:var(--accent)">5-min close</span><span style="--c:var(--text-muted)">opening range</span><span style="--c:var(--critical)">stop</span><span style="--c:var(--target)">target</span></div>`;
+  const done = kind === "DONE" && sp != null && v.counted ? `<div class="note"><b class="${cls(sp)}">Today: ${fmt(sp)} pts net · ${rs(sp * (v.lot||1))}</b></div>` : "";
+  return `<section class="card">
+    <div class="card-h"><div class="name"><span class="sym ${sym}">${sym}</span>${esc(v.name)}</div><span class="badge ${kind}">${lab}</span></div>
+    <div class="decision ${dir}"><div><div class="lbl">Position</div><div class="act">${dir}</div><div class="meta">${meta}</div></div>
+      <div class="pnl"><div class="lbl">Open P&amp;L</div><div class="big">${p ? fmt(p.unrealized_net_pts) : "—"}</div><div class="meta">${p ? rs(p.unrealized_rs) : ""}</div></div></div>
+    <div class="stats">
+      <div class="stat"><div class="v ${cls(v.total_net_rs)}">${rs(v.total_net_rs)}</div><div class="k">Total P&amp;L</div></div>
+      <div class="stat"><div class="v ${cls(v.realized_net_rs)}">${rs(v.realized_net_rs)}</div><div class="k">Realized</div></div>
+      <div class="stat"><div class="v">${v.closed_trades}</div><div class="k">Closed trades</div></div>
+      <div class="stat"><div class="v">${wr}</div><div class="k">Win rate</div></div>
+    </div>
+    <div class="chart">${chart(v)}</div>${legend}
+    <div class="note">Session ${esc(v.session_date)} · ${orNote}${fc} Index ${ltp}.<br><span class="muted">${esc(kind === "IN" ? st : (p ? "" : st))}</span></div>
+    ${done}
+    ${btBlock(bt)}
+  </section>`;
+}
+async function refresh() {
+  try {
+    const s = await (await fetch(STATE_URL + "?t=" + Date.now(), {cache:"no-store"})).json();
+    const now = istNow(), inMkt = !["Sat","Sun"].includes(now.wd) && now.mins >= 555 && now.mins <= 940;
+    const age = (Date.now() - new Date(s.last_tick + "+05:30").getTime()) / 60000;
+    let pill = `<span class="st-pill closed"><span class="dot"></span>MARKET CLOSED</span>`;
+    if (inMkt) pill = age > 4 ? `<span class="st-pill stale"><span class="dot"></span>STALE — ${Math.round(age)} min</span>` : `<span class="st-pill live"><span class="dot"></span>LIVE</span>`;
+    document.getElementById("status").innerHTML = pill;
+    document.getElementById("tick").textContent = "last tick " + s.last_tick.replace("T"," ").slice(5,16) + " IST";
+    document.getElementById("err").innerHTML = (s.errors||[]).length ? `<div class="banner err">Data error: ${esc(s.errors.join(" | "))}</div>` : "";
+    if (!window.BT) { try { window.BT = (await (await fetch("backtest_data.json")).json()).strategies; } catch (e) { window.BT = {}; } }
+    const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
+    const closed = all.reduce((a,x) => a + x.closed_trades, 0), wins = all.reduce((a,x) => a + x.wins, 0);
+    document.getElementById("kpis").innerHTML = `
+      <div class="kpi ${s.total_net_rs>=0?"g":"b"}"><div class="k">Total paper P&amp;L</div><div class="v ${cls(s.total_net_rs)}">${rs(s.total_net_rs)}</div><div class="s">all 4 strategies, incl. open</div></div>
+      <div class="kpi"><div class="k">Realized</div><div class="v ${cls(s.realized_net_rs)}">${rs(s.realized_net_rs)}</div><div class="s">closed trades only</div></div>
+      <div class="kpi v1"><div class="k">Open positions</div><div class="v">${s.open_positions}/4</div><div class="s">1 lot each</div></div>
+      <div class="kpi v2"><div class="k">Closed trades</div><div class="v">${closed}</div><div class="s">win rate ${closed ? Math.round(100*wins/closed) + "%" : "—"}</div></div>
+      <div class="kpi"><div class="k">Paper start</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">backtest: ~49% win rate, PF 1.1–1.6</div></div>`;
+    document.getElementById("cards").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
+      ["ORB","ORB950"].map(k => { const v = i.strategies[k]; v.lot = s.lots[sym]; return card(sym, k, v, i.ltp, BT[sym + " " + k]); })).join("");
+  } catch (e) {
+    document.getElementById("err").innerHTML = `<div class="banner err">Could not load live_state.json — ${esc(e.message)}</div>`;
+  }
+}
+refresh(); setInterval(refresh, 30000);
+</script>
+</body>
+</html>

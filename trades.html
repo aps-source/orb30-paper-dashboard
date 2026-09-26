@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ORB30 — Day-wise Trades</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root { color-scheme: light;
+    --page:#eceff8; --surface-1:#ffffff; --surface-2:#f3f5fb; --text-primary:#0e1320; --text-secondary:#4f5a74; --text-muted:#76829c;
+    --gridline:#e2e7f1; --border:rgba(14,19,32,0.10); --shadow:0 1px 2px rgba(14,19,32,0.06), 0 8px 24px rgba(40,50,110,0.08);
+    --brand-a:#4338ca; --brand-b:#7c3aed; --brand-c:#0d9488; --accent:#4f46e5; --good:#12a150; --critical:#dc3545; --long:#12a150; --short:#d6336c; }
+  @media (prefers-color-scheme: dark) { :root { color-scheme: dark;
+    --page:#090c14; --surface-1:#131a29; --surface-2:#1a2336; --text-primary:#eef1f9; --text-secondary:#a0abc4; --text-muted:#7f8aa3;
+    --gridline:#253048; --border:rgba(238,241,249,0.11); --shadow:0 1px 2px rgba(0,0,0,0.4), 0 10px 28px rgba(0,0,0,0.35);
+    --brand-a:#4f46e5; --brand-b:#8b5cf6; --brand-c:#14b8a6; --accent:#9b8cf3; --good:#2bc85a; --critical:#f0645f; --long:#2bc85a; --short:#e0578a; } }
+  * { box-sizing:border-box; }
+  html { font-size:clamp(15px,0.55vw + 9px,19px); }
+  body { margin:0; color:var(--text-primary); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.4;
+    background:radial-gradient(1100px 480px at 8% -8%, color-mix(in srgb,var(--brand-b) 16%,transparent), transparent 70%),
+               radial-gradient(900px 480px at 100% 0%, color-mix(in srgb,var(--brand-c) 14%,transparent), transparent 70%), var(--page); background-attachment:fixed; }
+  .good { color:var(--good); } .bad { color:var(--critical); } .muted { color:var(--text-muted); }
+  .hero { background:linear-gradient(115deg,var(--brand-a) 0%,var(--brand-b) 52%,var(--brand-c) 100%); color:#fff; padding:1.05rem clamp(14px,2vw,32px); box-shadow:0 6px 26px rgba(67,56,202,0.28); }
+  .hero-inner { max-width:1600px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  h1 { font-size:1.45rem; margin:0; font-weight:800; } .tag { font-size:0.86rem; opacity:0.88; }
+  a.btn { background:#fff; color:var(--brand-a); text-decoration:none; font-weight:700; font-size:0.88rem; padding:0.45rem 0.95rem; border-radius:999px; }
+  .page { max-width:1600px; margin:0 auto; padding:1.1rem clamp(14px,2vw,32px) 2rem; }
+  .card { background:var(--surface-1); border:1px solid var(--border); border-radius:1.1rem; box-shadow:var(--shadow); margin-bottom:1rem; overflow:hidden; }
+  .card h2 { font-size:0.8rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); margin:0; padding:0.85rem 1.1rem; border-bottom:1px solid var(--gridline); }
+  .scroll { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:0.86rem; font-variant-numeric:tabular-nums; }
+  th { text-align:left; padding:0.55rem 0.8rem; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); border-bottom:1px solid var(--gridline); white-space:nowrap; }
+  td { padding:0.5rem 0.8rem; border-bottom:1px solid var(--gridline); white-space:nowrap; }
+  td.r, th.r { text-align:right; }
+  tr.day td { background:var(--surface-2); font-weight:800; }
+  .tagd { font-weight:700; } .LONG { color:var(--long); } .SHORT { color:var(--short); }
+  .filters { display:flex; gap:0.5rem; flex-wrap:wrap; padding:0.8rem 1.1rem; }
+  .filters button { border:1px solid var(--border); background:var(--surface-2); color:var(--text-primary); border-radius:999px; padding:0.3rem 0.85rem; font-size:0.82rem; font-weight:600; cursor:pointer; }
+  .filters button.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .empty { padding:1.3rem 1.1rem; color:var(--text-muted); }
+  .chart { padding:0.6rem 1rem 0.8rem; } .chart svg { width:100%; height:auto; display:block; }
+  .rsn { font-size:0.74rem; font-weight:700; padding:0.1rem 0.5rem; border-radius:999px; background:var(--surface-2); border:1px solid var(--gridline); }
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-inner">
+  <div><h1>ORB30 — Day-wise Trades &amp; P&amp;L</h1><div class="tag">Paper trades, grouped by day · net of fixed costs (NIFTY 2 pts, SENSEX 6 pts per round trip) · ₹ = points × lot (NIFTY 65, SENSEX 20)</div></div>
+  <span style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="index.html">← Live dashboard</a><a class="btn" href="backtest.html">Backtest →</a></span></div></header>
+<main class="page">
+  <div class="card"><h2>Strategy summary</h2><div class="scroll" id="summary"></div></div>
+  <div class="card"><h2>Cumulative net P&amp;L (₹, all strategies)</h2><div class="chart" id="equity"></div></div>
+  <div class="card"><h2>Daily P&amp;L by strategy (₹)</h2><div class="scroll" id="daily"></div></div>
+  <div class="card"><h2>Trades</h2><div class="filters" id="filters"></div><div class="scroll" id="log"></div></div>
+</main>
+<script>
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (v, d=1) => (v > 0 ? "+" : "") + Number(v).toFixed(d);
+const rs = v => (v < 0 ? "−₹" : "₹") + Math.abs(Math.round(v)).toLocaleString("en-IN");
+const cls = v => v > 0 ? "good" : v < 0 ? "bad" : "";
+const STRATS = ["NIFTY ORB","NIFTY ORB950","SENSEX ORB","SENSEX ORB950"];
+const LABEL = {"NIFTY ORB":"NIFTY · range cap","NIFTY ORB950":"NIFTY · cap + 9:50 filter","SENSEX ORB":"SENSEX · range cap","SENSEX ORB950":"SENSEX · cap + 9:50 filter"};
+const RSN = {stop:"stop", target:"target", time:"14:30", both:"both edges"};
+let ALL = [], FILTER = "ALL";
+function summary() {
+  const rows = STRATS.map(s => {
+    const t = ALL.filter(x => x.strategy === s), w = t.filter(x => x.net_pts > 0), l = t.filter(x => x.net_pts < 0);
+    const gw = w.reduce((a,x)=>a+x.net_pts,0), gl = -l.reduce((a,x)=>a+x.net_pts,0), net = t.reduce((a,x)=>a+x.net_pts,0), r = t.reduce((a,x)=>a+x.net_rs,0);
+    return `<tr><td class="tagd">${LABEL[s]}</td><td class="r">${t.length}</td><td class="r">${t.length ? Math.round(100*w.length/t.length)+"%" : "—"}</td>
+      <td class="r ${cls(net)}">${fmt(net)}</td><td class="r ${cls(r)}">${rs(r)}</td><td class="r">${gl ? (gw/gl).toFixed(2) : "—"}</td></tr>`; }).join("");
+  document.getElementById("summary").innerHTML = `<table><thead><tr><th>Strategy</th><th class="r">Trades</th><th class="r">Win %</th><th class="r">Net pts</th><th class="r">Net ₹</th><th class="r">Profit factor</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function equity() {
+  const t = ALL.slice().sort((a,b) => a.exit_time.localeCompare(b.exit_time));
+  if (t.length < 2) { document.getElementById("equity").innerHTML = '<div class="empty">The curve appears after the first two closed trades.</div>'; return; }
+  let c = 0; const pts = t.map(x => c += x.net_rs); const W=900, H=180, P=8;
+  const lo = Math.min(0,...pts), hi = Math.max(0,...pts), sp = (hi-lo)||1;
+  const X = i => P + i*(W-2*P)/(pts.length-1), Y = v => H-P - (v-lo)*(H-2*P)/sp;
+  const line = pts.map((v,i)=>`${X(i).toFixed(1)},${Y(v).toFixed(1)}`).join(" ");
+  document.getElementById("equity").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative net P&L"><line x1="${P}" x2="${W-P}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--gridline)" stroke-width="1.5"/><polyline fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linejoin="round" points="${line}"/></svg>`;
+}
+function daily() {
+  if (!ALL.length) { document.getElementById("daily").innerHTML = '<div class="empty">No closed trades yet — paper trading starts on the first market day after the start date shown on the live page.</div>'; return; }
+  const days = {}; ALL.forEach(x => { const d = x.date; (days[d] ||= {})[x.strategy] = (days[d][x.strategy] || 0) + x.net_rs; });
+  const rows = Object.keys(days).sort().reverse().map(d => { const tot = STRATS.reduce((a,s)=>a+(days[d][s]||0),0);
+    return `<tr><td class="tagd">${esc(d)}</td>${STRATS.map(s => days[d][s] == null ? '<td class="r muted">—</td>' : `<td class="r ${cls(days[d][s])}">${rs(days[d][s])}</td>`).join("")}<td class="r tagd ${cls(tot)}">${rs(tot)}</td></tr>`; }).join("");
+  document.getElementById("daily").innerHTML = `<table><thead><tr><th>Day</th>${STRATS.map(s=>`<th class="r">${LABEL[s]}</th>`).join("")}<th class="r">Total</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function filters() {
+  document.getElementById("filters").innerHTML = ["ALL",...STRATS].map(s => `<button class="${s===FILTER?"on":""}" data-s="${s}">${s === "ALL" ? "All" : LABEL[s]}</button>`).join("");
+  document.querySelectorAll("#filters button").forEach(b => b.onclick = () => { FILTER = b.dataset.s; filters(); log(); });
+}
+function log() {
+  const t = ALL.filter(x => FILTER === "ALL" || x.strategy === FILTER).sort((a,b) => b.exit_time.localeCompare(a.exit_time));
+  if (!t.length) { document.getElementById("log").innerHTML = '<div class="empty">No closed trades yet. The first trade appears after the first breakout on or after the paper start date.</div>'; return; }
+  const days = {}; t.forEach(x => (days[x.date] ||= []).push(x));
+  let h = `<table><thead><tr><th>Strategy</th><th>Side</th><th>Entry</th><th class="r">Entry px</th><th>Exit</th><th class="r">Exit px</th><th>Exit reason</th><th class="r">OR range</th><th class="r">Net pts</th><th class="r">Net ₹</th></tr></thead><tbody>`;
+  Object.keys(days).sort().reverse().forEach(d => {
+    const g = days[d], pts = g.reduce((a,x)=>a+x.net_pts,0), r = g.reduce((a,x)=>a+x.net_rs,0);
+    h += `<tr class="day"><td colspan="8">${esc(d)} · ${g.length} trade${g.length>1?"s":""}</td><td class="r ${cls(pts)}">${fmt(pts)}</td><td class="r ${cls(r)}">${rs(r)}</td></tr>`;
+    g.forEach(x => h += `<tr><td class="tagd">${esc(LABEL[x.strategy] || x.strategy)}</td><td class="tagd ${x.dir}">${x.dir}</td><td>${esc(x.entry_time.slice(11,16))}</td><td class="r">${x.entry}</td><td>${esc(x.exit_time.slice(11,16))}</td><td class="r">${x.exit}</td><td><span class="rsn">${RSN[x.exit_reason] || esc(x.exit_reason)}</span></td><td class="r">${x.or_range}</td><td class="r ${cls(x.net_pts)}">${fmt(x.net_pts)}</td><td class="r ${cls(x.net_rs)}">${rs(x.net_rs)}</td></tr>`);
+  });
+  document.getElementById("log").innerHTML = h + "</tbody></table>";
+}
+async function load() {
+  try { ALL = await (await fetch("trades_history.json?t=" + Date.now(), {cache:"no-store"})).json(); }
+  catch (e) { document.getElementById("log").innerHTML = `<div class="empty">Could not load trades_history.json — ${esc(e.message)}</div>`; return; }
+  summary(); equity(); daily(); filters(); log();
+}
+load(); setInterval(load, 60000);
+</script>
+</body>
+</html>
