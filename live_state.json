@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-09-28T16:15:50",
+ "last_tick": "2026-09-28T23:17:19",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -1384,7 +1384,10 @@
    }
   }
  },
- "errors": [],
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-906', 'error_type': 'Order_Error', 'error_message': 'Invalid Token'}, 'data': ''}",
+  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-906', 'error_type': 'Order_Error', 'error_message': 'Invalid Token'}, 'data': ''}"
+ ],
  "total_net_rs": 0,
  "realized_net_rs": 0,
  "open_positions": 0
