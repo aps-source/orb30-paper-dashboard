@@ -117,7 +117,7 @@
   <div id="err"></div>
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
-  <div class="foot">Read-only page: it cannot place, modify or cancel any order — it only displays what the paper engine computed. Paper P&amp;L is on the index (spot) in points, net of a fixed cost (NIFTY 2 pts, SENSEX 6 pts per round trip); ₹ = points × lot size (NIFTY 65, SENSEX 20). Paper entries assume the fill happens at the OR edge (or at the 09:50 close for the filtered variant) with no extra slippage, so live results will be somewhat worse. Refreshes every 30 seconds from <code>live_state.json</code>.</div>
+  <div class="foot">Read-only page: it cannot place, modify or cancel any order — it only displays what the paper engine computed. Paper P&amp;L is on the index (spot) in points, net of a fixed cost (NIFTY 2 pts, SENSEX 6 pts per round trip); ₹ = points × lot size (NIFTY 65, SENSEX 20). Paper entries assume the fill happens at the OR edge (or at the 09:50 close for the filtered variant) with no extra slippage, so live results will be somewhat worse. Refreshes every 60 seconds from <code>live_state.json</code>.</div>
 </main>
 <script>
 const STATE_URL = "live_state.json";
@@ -203,7 +203,7 @@ async function refresh() {
     document.getElementById("err").innerHTML = `<div class="banner err">Could not load live_state.json — ${esc(e.message)}</div>`;
   }
 }
-refresh(); setInterval(refresh, 30000);
+refresh(); setInterval(refresh, 60000);
 </script>
 </body>
 </html>
