@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-09-28T10:37:10",
+ "last_tick": "2026-09-28T10:42:28",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22845.6,
-   "last_1m": "2026-09-28 10:37:00",
+   "ltp": 22830.05,
+   "last_1m": "2026-09-28 10:41:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -109,10 +109,14 @@
       },
       {
        "t": "10:35",
-       "c": 22845.6
+       "c": 22830.55
+      },
+      {
+       "t": "10:40",
+       "c": 22830.05
       }
      ],
-     "last_1m": "2026-09-28 10:37:00"
+     "last_1m": "2026-09-28 10:41:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -204,16 +208,20 @@
       },
       {
        "t": "10:35",
-       "c": 22845.6
+       "c": 22830.55
+      },
+      {
+       "t": "10:40",
+       "c": 22830.05
       }
      ],
-     "last_1m": "2026-09-28 10:37:00"
+     "last_1m": "2026-09-28 10:41:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72952.84,
-   "last_1m": "2026-09-28 10:37:00",
+   "ltp": 72881.21,
+   "last_1m": "2026-09-28 10:42:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -305,10 +313,14 @@
       },
       {
        "t": "10:35",
-       "c": 72952.84
+       "c": 72903.41
+      },
+      {
+       "t": "10:40",
+       "c": 72881.21
       }
      ],
-     "last_1m": "2026-09-28 10:37:00"
+     "last_1m": "2026-09-28 10:42:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -400,15 +412,21 @@
       },
       {
        "t": "10:35",
-       "c": 72952.84
+       "c": 72903.41
+      },
+      {
+       "t": "10:40",
+       "c": 72881.21
       }
      ],
-     "last_1m": "2026-09-28 10:37:00"
+     "last_1m": "2026-09-28 10:42:00"
     }
    }
   }
  },
- "errors": [],
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
+ ],
  "total_net_rs": 0,
  "realized_net_rs": 0,
  "open_positions": 0
