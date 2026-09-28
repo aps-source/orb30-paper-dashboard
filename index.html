@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>ORB30 — Paper Trading</title>
+<title>ORB30 — Live Trading</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
   :root {
@@ -104,20 +104,20 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="brand"><div class="logo">▤</div>
-      <div><h1>ORB30 — Paper Trading</h1><div class="tag">NIFTY + SENSEX · 30-min opening-range breakout · range cap · intraday, flat by 14:30</div></div></div>
+      <div><h1>ORB30 — Live Trading</h1><div class="tag">NIFTY + SENSEX futures · 30-min opening-range breakout · range cap · intraday, flat by 14:30 · automatic real orders</div></div></div>
     <div class="hero-right">
       <span id="status"></span><span class="hero-pill" id="tick">…</span>
       <a class="btn" href="trades.html">Day-wise trades &amp; P&amp;L →</a><a class="btn" href="backtest.html">Backtest data →</a>
     </div>
   </div>
   <details class="rules"><summary>Strategy rules</summary>
-    <p>The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>Range cap:</b> skip the day if the OR is wider than 100 pts (NIFTY) or 300 pts (SENSEX). <b>ORB · range cap:</b> go LONG the moment price trades above the OR high, SHORT below the OR low, one trade a day. <b>ORB · range cap + 9:50 filter:</b> the 5-min candle ending 09:50 must close beyond the OR (above the high = LONG, below the low = SHORT), entered at that 09:50 close; if it closes inside the range there is no trade. <b>Both:</b> stop at the opposite end of the OR, target 2R (twice the risk), any open trade closed at 14:30. 1 lot per strategy. The two caps were picked after looking at the backtest data; the 9:50 filter is an unconfirmed lead — this paper trading is the out-of-sample test.</p></details>
+    <p>The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>Range cap:</b> skip the day if the OR is wider than 100 pts (NIFTY) or 300 pts (SENSEX). <b>ORB · range cap:</b> go LONG the moment price trades above the OR high, SHORT below the OR low, one trade a day. <b>ORB · range cap + 9:50 filter:</b> the 5-min candle ending 09:50 must close beyond the OR (above the high = LONG, below the low = SHORT), entered at that 09:50 close; if it closes inside the range there is no trade. <b>Both:</b> stop at the opposite end of the OR, target 2R (twice the risk), any open trade closed at 14:30. 1 lot per strategy on NIFTY/SENSEX futures, placed automatically by the live engine subject to the risk limits below. The two caps were picked after looking at the backtest data; the 9:50 filter is an unconfirmed lead, still being tested out-of-sample. Risk limits: Rs.3,000 combined daily loss cap, 2-loss breaker per strategy, 10% funds buffer on every order.</p></details>
 </header>
 <main class="page">
   <div id="err"></div>
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
-  <div class="foot">Read-only page: it cannot place, modify or cancel any order — it only displays what the paper engine computed. Paper P&amp;L is on the index (spot) in points, net of a fixed cost (NIFTY 2 pts, SENSEX 6 pts per round trip); ₹ = points × lot size (NIFTY 65, SENSEX 20). Paper entries assume the fill happens at the OR edge (or at the 09:50 close for the filtered variant) with no extra slippage, so live results will be somewhat worse. Refreshes every 60 seconds from <code>live_state.json</code>.</div>
+  <div class="foot">Read-only page: it cannot itself place, modify or cancel any order — the automatic engine does that separately, gated by AUTO_TRADING.on and the risk limits above. <b>The P&amp;L on this page is still the signal-replay calculation (index points, assumed fill at the OR edge / 9:50 close, no slippage) — it has not yet been reconciled against actual futures fills.</b> Real order state (fills, rupee P&amp;L, broker responses) is recorded in trade_log.jsonl. ₹ = points × lot size (NIFTY 65, SENSEX 20). Refreshes every 60 seconds from <code>live_state.json</code>.</div>
 </main>
 <script>
 const STATE_URL = "live_state.json";
@@ -192,11 +192,11 @@ async function refresh() {
     const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
     const closed = all.reduce((a,x) => a + x.closed_trades, 0), wins = all.reduce((a,x) => a + x.wins, 0);
     document.getElementById("kpis").innerHTML = `
-      <div class="kpi ${s.total_net_rs>=0?"g":"b"}"><div class="k">Total paper P&amp;L</div><div class="v ${cls(s.total_net_rs)}">${rs(s.total_net_rs)}</div><div class="s">all 4 strategies, incl. open</div></div>
+      <div class="kpi ${s.total_net_rs>=0?"g":"b"}"><div class="k">Total P&amp;L</div><div class="v ${cls(s.total_net_rs)}">${rs(s.total_net_rs)}</div><div class="s">all 4 strategies, incl. open</div></div>
       <div class="kpi"><div class="k">Realized</div><div class="v ${cls(s.realized_net_rs)}">${rs(s.realized_net_rs)}</div><div class="s">closed trades only</div></div>
       <div class="kpi v1"><div class="k">Open positions</div><div class="v">${s.open_positions}/4</div><div class="s">1 lot each</div></div>
       <div class="kpi v2"><div class="k">Closed trades</div><div class="v">${closed}</div><div class="s">win rate ${closed ? Math.round(100*wins/closed) + "%" : "—"}</div></div>
-      <div class="kpi"><div class="k">Paper start</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">backtest: ~49% win rate, PF 1.1–1.6</div></div>`;
+      <div class="kpi"><div class="k">Live since</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">backtest: ~49% win rate, PF 1.1–1.6</div></div>`;
     document.getElementById("cards").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
       ["ORB","ORB950"].map(k => { const v = i.strategies[k]; v.lot = s.lots[sym]; return card(sym, k, v, i.ltp, BT[sym + " " + k]); })).join("");
   } catch (e) {

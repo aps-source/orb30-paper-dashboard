@@ -78,7 +78,7 @@ function equity() {
   document.getElementById("equity").innerHTML = `<svg viewBox="0 0 ${W} ${H}" role="img" aria-label="Cumulative net P&L"><line x1="${P}" x2="${W-P}" y1="${Y(0)}" y2="${Y(0)}" stroke="var(--gridline)" stroke-width="1.5"/><polyline fill="none" stroke="var(--accent)" stroke-width="2.4" stroke-linejoin="round" points="${line}"/></svg>`;
 }
 function daily() {
-  if (!ALL.length) { document.getElementById("daily").innerHTML = '<div class="empty">No closed trades yet — paper trading starts on the first market day after the start date shown on the live page.</div>'; return; }
+  if (!ALL.length) { document.getElementById("daily").innerHTML = '<div class="empty">No closed trades yet — live trading starts on the first market day after the start date shown on the live page.</div>'; return; }
   const days = {}; ALL.forEach(x => { const d = x.date; (days[d] ||= {})[x.strategy] = (days[d][x.strategy] || 0) + x.net_rs; });
   const rows = Object.keys(days).sort().reverse().map(d => { const tot = STRATS.reduce((a,s)=>a+(days[d][s]||0),0);
     return `<tr><td class="tagd">${esc(d)}</td>${STRATS.map(s => days[d][s] == null ? '<td class="r muted">—</td>' : `<td class="r ${cls(days[d][s])}">${rs(days[d][s])}</td>`).join("")}<td class="r tagd ${cls(tot)}">${rs(tot)}</td></tr>`; }).join("");
