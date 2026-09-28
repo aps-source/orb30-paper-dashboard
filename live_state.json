@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-09-28T23:17:19",
+ "last_tick": "2026-09-28T23:23:09",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -17,7 +17,7 @@
  "instruments": {
   "NIFTY": {
    "ltp": 22780.25,
-   "last_1m": "2026-09-28 16:15:00",
+   "last_1m": "2026-09-28 21:10:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -354,9 +354,13 @@
       {
        "t": "16:15",
        "c": 22780.25
+      },
+      {
+       "t": "21:10",
+       "c": 22780.25
       }
      ],
-     "last_1m": "2026-09-28 16:15:00"
+     "last_1m": "2026-09-28 21:10:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -693,15 +697,19 @@
       {
        "t": "16:15",
        "c": 22780.25
+      },
+      {
+       "t": "21:10",
+       "c": 22780.25
       }
      ],
-     "last_1m": "2026-09-28 16:15:00"
+     "last_1m": "2026-09-28 21:10:00"
     }
    }
   },
   "SENSEX": {
    "ltp": 72771.72,
-   "last_1m": "2026-09-28 16:15:00",
+   "last_1m": "2026-09-28 17:00:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -1038,9 +1046,13 @@
       {
        "t": "16:15",
        "c": 72771.72
+      },
+      {
+       "t": "17:00",
+       "c": 72771.72
       }
      ],
-     "last_1m": "2026-09-28 16:15:00"
+     "last_1m": "2026-09-28 17:00:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -1377,17 +1389,18 @@
       {
        "t": "16:15",
        "c": 72771.72
+      },
+      {
+       "t": "17:00",
+       "c": 72771.72
       }
      ],
-     "last_1m": "2026-09-28 16:15:00"
+     "last_1m": "2026-09-28 17:00:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-906', 'error_type': 'Order_Error', 'error_message': 'Invalid Token'}, 'data': ''}",
-  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-906', 'error_type': 'Order_Error', 'error_message': 'Invalid Token'}, 'data': ''}"
- ],
+ "errors": [],
  "total_net_rs": 0,
  "realized_net_rs": 0,
  "open_positions": 0
