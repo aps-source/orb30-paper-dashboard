@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-09-29T09:49:47",
+ "last_tick": "2026-09-29T09:54:30",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22597.25,
-   "last_1m": "2026-09-29 09:49:00",
+   "ltp": 22595.9,
+   "last_1m": "2026-09-29 09:53:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -69,10 +69,14 @@
       },
       {
        "t": "09:45",
-       "c": 22597.25
+       "c": 22596.1
+      },
+      {
+       "t": "09:50",
+       "c": 22595.9
       }
      ],
-     "last_1m": "2026-09-29 09:49:00"
+     "last_1m": "2026-09-29 09:53:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -124,16 +128,20 @@
       },
       {
        "t": "09:45",
-       "c": 22597.25
+       "c": 22596.1
+      },
+      {
+       "t": "09:50",
+       "c": 22595.9
       }
      ],
-     "last_1m": "2026-09-29 09:49:00"
+     "last_1m": "2026-09-29 09:53:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72157.25,
-   "last_1m": "2026-09-29 09:49:00",
+   "ltp": 72161.07,
+   "last_1m": "2026-09-29 09:54:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -185,10 +193,14 @@
       },
       {
        "t": "09:45",
-       "c": 72157.25
+       "c": 72147.64
+      },
+      {
+       "t": "09:50",
+       "c": 72161.07
       }
      ],
-     "last_1m": "2026-09-29 09:49:00"
+     "last_1m": "2026-09-29 09:54:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -240,15 +252,21 @@
       },
       {
        "t": "09:45",
-       "c": 72157.25
+       "c": 72147.64
+      },
+      {
+       "t": "09:50",
+       "c": 72161.07
       }
      ],
-     "last_1m": "2026-09-29 09:49:00"
+     "last_1m": "2026-09-29 09:54:00"
     }
    }
   }
  },
- "errors": [],
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
+ ],
  "total_net_rs": 0,
  "realized_net_rs": 0,
  "open_positions": 0
