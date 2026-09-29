@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-09-29T09:59:52",
+ "last_tick": "2026-09-29T10:00:16",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22604.95,
-   "last_1m": "2026-09-29 09:59:00",
+   "ltp": 22601.65,
+   "last_1m": "2026-09-29 10:00:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -77,10 +77,14 @@
       },
       {
        "t": "09:55",
-       "c": 22604.95
+       "c": 22604.35
+      },
+      {
+       "t": "10:00",
+       "c": 22601.65
       }
      ],
-     "last_1m": "2026-09-29 09:59:00"
+     "last_1m": "2026-09-29 10:00:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -140,16 +144,20 @@
       },
       {
        "t": "09:55",
-       "c": 22604.95
+       "c": 22604.35
+      },
+      {
+       "t": "10:00",
+       "c": 22601.65
       }
      ],
-     "last_1m": "2026-09-29 09:59:00"
+     "last_1m": "2026-09-29 10:00:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72184.93,
-   "last_1m": "2026-09-29 09:59:00",
+   "ltp": 72178.72,
+   "last_1m": "2026-09-29 10:00:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -209,10 +217,14 @@
       },
       {
        "t": "09:55",
-       "c": 72184.93
+       "c": 72181.18
+      },
+      {
+       "t": "10:00",
+       "c": 72178.72
       }
      ],
-     "last_1m": "2026-09-29 09:59:00"
+     "last_1m": "2026-09-29 10:00:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -272,15 +284,21 @@
       },
       {
        "t": "09:55",
-       "c": 72184.93
+       "c": 72181.18
+      },
+      {
+       "t": "10:00",
+       "c": 72178.72
       }
      ],
-     "last_1m": "2026-09-29 09:59:00"
+     "last_1m": "2026-09-29 10:00:00"
     }
    }
   }
  },
- "errors": [],
+ "errors": [
+  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
+ ],
  "total_net_rs": 0,
  "realized_net_rs": 0,
  "open_positions": 0
