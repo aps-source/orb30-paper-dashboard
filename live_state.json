@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-09-30T10:17:45",
+ "last_tick": "2026-09-30T10:17:49",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,7 +16,7 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22759.3,
+   "ltp": 22759.4,
    "last_1m": "2026-09-30 10:17:00",
    "strategies": {
     "ORB": {
@@ -34,7 +34,7 @@
      "stop": 22659.8,
      "target": 22890.350000000006,
      "session_side": 1,
-     "session_pnl_net_pts": 20.649999999997817,
+     "session_pnl_net_pts": 20.75,
      "position": {
       "dir": "LONG",
       "date": "2026-09-30",
@@ -42,17 +42,17 @@
       "entry_price": 22736.65,
       "stop": 22659.8,
       "target": 22890.35,
-      "ltp": 22759.3,
-      "unrealized_pts": 22.65,
-      "unrealized_net_pts": 20.65,
-      "unrealized_rs": 1342
+      "ltp": 22759.4,
+      "unrealized_pts": 22.75,
+      "unrealized_net_pts": 20.75,
+      "unrealized_rs": 1349
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": 20.65,
-     "total_net_rs": 1342,
+     "total_net_pts": 20.75,
+     "total_net_rs": 1349,
      "tail": [
       {
        "t": "09:15",
@@ -104,7 +104,7 @@
       },
       {
        "t": "10:15",
-       "c": 22759.3
+       "c": 22759.4
       }
      ],
      "last_1m": "2026-09-30 10:17:00"
@@ -183,7 +183,7 @@
       },
       {
        "t": "10:15",
-       "c": 22759.3
+       "c": 22759.4
       }
      ],
      "last_1m": "2026-09-30 10:17:00"
@@ -191,7 +191,7 @@
    }
   },
   "SENSEX": {
-   "ltp": 72857.11,
+   "ltp": 72860.52,
    "last_1m": "2026-09-30 10:17:00",
    "strategies": {
     "ORB": {
@@ -268,7 +268,7 @@
       },
       {
        "t": "10:15",
-       "c": 72857.11
+       "c": 72860.52
       }
      ],
      "last_1m": "2026-09-30 10:17:00"
@@ -347,7 +347,7 @@
       },
       {
        "t": "10:15",
-       "c": 72857.11
+       "c": 72860.52
       }
      ],
      "last_1m": "2026-09-30 10:17:00"
@@ -356,7 +356,7 @@
   }
  },
  "errors": [],
- "total_net_rs": 1342,
+ "total_net_rs": 1349,
  "realized_net_rs": 0,
  "open_positions": 1
 }
