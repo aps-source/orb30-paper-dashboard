@@ -1,6 +1,8 @@
 {
- "updated_at": "2026-09-30T10:58:37",
+ "updated_at": "2026-09-30T23:56:27",
  "combined_daily_pnl_rupees": 0.0,
+ "closed_trades": 0,
+ "wins": 0,
  "strategies": {
   "NIFTY_ORB": {
    "position": null,
