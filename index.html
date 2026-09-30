@@ -150,30 +150,32 @@ function btBlock(b) {
     <div><b class="${cls(b.net_rs)}">${rs(b.net_rs)}</b><span>Net P&amp;L</span></div><div><b>${b.win_pct}%</b><span>Win rate</span></div><div><b>${b.pf}</b><span>Profit factor</span></div>
     <div><b class="bad">${rs(b.max_dd_rs)}</b><span>Max DD</span></div><div><b>${b.t_stat}</b><span>t-stat</span></div><div><b>${b.halves["2024-2026"] ? b.halves["2024-2026"].pf : "—"}</b><span>PF 2024–26</span></div></div></div>`;
 }
-function card(sym, key, v, ltp, bt) {
-  const p = v.position, dir = p ? p.dir : "FLAT";
+function card(sym, key, v, ltp, bt, real) {
+  const rp = real && real.position;                 // REAL open position (from state.json via real_state.json) -- null unless a real fill happened
+  const dir = rp ? rp.direction : "FLAT";            // the big banner reflects REAL state, never the simulated signal
   const st = v.status || "";
-  const kind = p ? "IN" : st.startsWith("Closed") ? "DONE" : /^(Skipped|No trade|No breakout|No data)/.test(st) ? "NO" : "WAIT";
-  const lab = {IN:"IN TRADE", DONE:"DONE TODAY", NO:"NO TRADE", WAIT:"WAITING"}[kind];
+  const signalOpen = !!v.position;                   // the simulated engine thinks a trade is open (may or may not be real)
+  const kind = rp ? "IN" : st.startsWith("Closed") ? "DONE" : /^(Skipped|No trade|No breakout|No data)/.test(st) ? "NO" : "WAIT";
+  const lab = {IN:"IN TRADE (REAL)", DONE:"DONE TODAY", NO:"NO TRADE", WAIT:"WAITING"}[kind];
   const wr = v.closed_trades ? Math.round(100*v.wins/v.closed_trades) + "%" : "—";
   const sp = v.session_pnl_net_pts;
-  const meta = p ? `since ${esc(p.entry_time.slice(11,16))} @ ${n0(p.entry_price)} · SL ${n0(p.stop)} · TP ${n0(p.target)}` : esc(st);
+  const meta = rp ? `since ${esc(rp.entry_time.slice(11,16))} @ Rs.${n0(rp.entry_ltp)} · ${esc(rp.option_type)} ${n0(rp.strike)}` : "no real position";
   const orNote = v.or_high != null ? `Opening range <b>${n0(v.or_low)} – ${n0(v.or_high)}</b> (${v.or_range.toFixed(0)} pts, cap ${v.cap}).` : "Opening range not formed yet.";
   const fc = v.filter_close != null ? ` 9:50 close <b>${n0(v.filter_close)}</b>.` : "";
   const legend = `<div class="lv"><span style="--c:var(--accent)">5-min close</span><span style="--c:var(--text-muted)">opening range</span><span style="--c:var(--critical)">stop</span><span style="--c:var(--target)">target</span></div>`;
-  const done = kind === "DONE" && sp != null && v.counted ? `<div class="note"><b class="${cls(sp)}">Today: ${fmt(sp)} pts net · ${rs(sp * (v.lot||1))}</b></div>` : "";
+  const done = kind === "DONE" && sp != null && v.counted ? `<div class="note"><b class="${cls(sp)}">Signal (not real): ${fmt(sp)} pts net · ${rs(sp * (v.lot||1))}</b></div>` : "";
+  const signalNote = !rp && signalOpen ? `<div class="note bad"><b>Signal only, no real order placed</b> -- engine shows ${esc(st)}</div>` : "";
   return `<section class="card">
     <div class="card-h"><div class="name"><span class="sym ${sym}">${sym}</span>${esc(v.name)}</div><span class="badge ${kind}">${lab}</span></div>
-    <div class="decision ${dir}"><div><div class="lbl">Position</div><div class="act">${dir}</div><div class="meta">${meta}</div></div>
-      <div class="pnl"><div class="lbl">Open P&amp;L</div><div class="big">${p ? fmt(p.unrealized_net_pts) : "—"}</div><div class="meta">${p ? rs(p.unrealized_rs) : ""}</div></div></div>
+    <div class="decision ${dir}"><div><div class="lbl">Real Position</div><div class="act">${dir}</div><div class="meta">${meta}</div></div>
+      <div class="pnl"><div class="lbl">Booked P&amp;L</div><div class="big">${rp ? "open" : "—"}</div><div class="meta"></div></div></div>
+    ${signalNote}
     <div class="stats">
-      <div class="stat"><div class="v ${cls(v.total_net_rs)}">${rs(v.total_net_rs)}</div><div class="k">Total P&amp;L</div></div>
-      <div class="stat"><div class="v ${cls(v.realized_net_rs)}">${rs(v.realized_net_rs)}</div><div class="k">Realized</div></div>
-      <div class="stat"><div class="v">${v.closed_trades}</div><div class="k">Closed trades</div></div>
-      <div class="stat"><div class="v">${wr}</div><div class="k">Win rate</div></div>
+      <div class="stat"><div class="v">${v.closed_trades}</div><div class="k">Signal trades (sim)</div></div>
+      <div class="stat"><div class="v">${wr}</div><div class="k">Sim win rate</div></div>
     </div>
     <div class="chart">${chart(v)}</div>${legend}
-    <div class="note">Session ${esc(v.session_date)} · ${orNote}${fc} Index ${ltp}.<br><span class="muted">${esc(kind === "IN" ? st : (p ? "" : st))}</span></div>
+    <div class="note">Session ${esc(v.session_date)} · ${orNote}${fc} Index ${ltp}.<br><span class="muted">Signal (not necessarily real): ${esc(st)}</span></div>
     ${done}
     ${btBlock(bt)}
   </section>`;
@@ -189,16 +191,16 @@ async function refresh() {
     document.getElementById("tick").textContent = "last tick " + s.last_tick.replace("T"," ").slice(5,16) + " IST";
     document.getElementById("err").innerHTML = (s.errors||[]).length ? `<div class="banner err">Data error: ${esc(s.errors.join(" | "))}</div>` : "";
     if (!window.BT) { try { window.BT = (await (await fetch("backtest_data.json")).json()).strategies; } catch (e) { window.BT = {}; } }
-    const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
-    const closed = all.reduce((a,x) => a + x.closed_trades, 0), wins = all.reduce((a,x) => a + x.wins, 0);
+    let real = {combined_daily_pnl_rupees: 0, closed_trades: 0, wins: 0, strategies: {}};
+    try { real = await (await fetch("real_state.json?t=" + Date.now(), {cache:"no-store"})).json(); } catch (e) { /* no real trade has ever run yet */ }
+    const openReal = Object.values(real.strategies || {}).filter(x => x.position).length;
     document.getElementById("kpis").innerHTML = `
-      <div class="kpi ${s.total_net_rs>=0?"g":"b"}"><div class="k">Total P&amp;L</div><div class="v ${cls(s.total_net_rs)}">${rs(s.total_net_rs)}</div><div class="s">all 4 strategies, incl. open</div></div>
-      <div class="kpi"><div class="k">Realized</div><div class="v ${cls(s.realized_net_rs)}">${rs(s.realized_net_rs)}</div><div class="s">closed trades only</div></div>
-      <div class="kpi v1"><div class="k">Open positions</div><div class="v">${s.open_positions}/4</div><div class="s">1 lot each</div></div>
-      <div class="kpi v2"><div class="k">Closed trades</div><div class="v">${closed}</div><div class="s">win rate ${closed ? Math.round(100*wins/closed) + "%" : "—"}</div></div>
+      <div class="kpi ${real.combined_daily_pnl_rupees>=0?"g":"b"}"><div class="k">Total P&amp;L (real)</div><div class="v ${cls(real.combined_daily_pnl_rupees)}">${rs(real.combined_daily_pnl_rupees)}</div><div class="s">booked, real fills only</div></div>
+      <div class="kpi v1"><div class="k">Open positions (real)</div><div class="v">${openReal}/4</div><div class="s">1 lot each</div></div>
+      <div class="kpi v2"><div class="k">Closed trades (real)</div><div class="v">${real.closed_trades}</div><div class="s">win rate ${real.closed_trades ? Math.round(100*real.wins/real.closed_trades) + "%" : "—"}</div></div>
       <div class="kpi"><div class="k">Live since</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">backtest: ~49% win rate, PF 1.1–1.6</div></div>`;
     document.getElementById("cards").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
-      ["ORB","ORB950"].map(k => { const v = i.strategies[k]; v.lot = s.lots[sym]; return card(sym, k, v, i.ltp, BT[sym + " " + k]); })).join("");
+      ["ORB","ORB950"].map(k => { const v = i.strategies[k]; v.lot = s.lots[sym]; return card(sym, k, v, i.ltp, BT[sym + " " + k], real.strategies[sym + "_" + k]); })).join("");
   } catch (e) {
     document.getElementById("err").innerHTML = `<div class="banner err">Could not load live_state.json — ${esc(e.message)}</div>`;
   }
