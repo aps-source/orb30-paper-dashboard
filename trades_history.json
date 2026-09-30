@@ -1,1 +1,22 @@
-[]
+[
+ {
+  "strategy": "NIFTY ORB",
+  "symbol": "NIFTY",
+  "variant": "ORB",
+  "date": "2026-09-30",
+  "dir": "LONG",
+  "entry_time": "2026-09-30 10:05",
+  "exit_time": "2026-09-30 14:26",
+  "entry": 22736.65,
+  "exit": 22659.8,
+  "stop": 22659.8,
+  "target": 22890.35,
+  "or_high": 22736.65,
+  "or_low": 22659.8,
+  "or_range": 76.9,
+  "gross_pts": -76.85,
+  "net_pts": -78.85,
+  "net_rs": -5125,
+  "exit_reason": "stop"
+ }
+]
