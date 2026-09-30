@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-09-30T09:49:50",
+ "last_tick": "2026-09-30T09:49:57",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,7 +16,7 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22704.3,
+   "ltp": 22702.45,
    "last_1m": "2026-09-30 09:49:00",
    "strategies": {
     "ORB": {
@@ -69,7 +69,7 @@
       },
       {
        "t": "09:45",
-       "c": 22704.3
+       "c": 22702.45
       }
      ],
      "last_1m": "2026-09-30 09:49:00"
@@ -79,12 +79,12 @@
      "name": "ORB30 \u00b7 cap + 9:50 filter",
      "session_date": "2026-09-30",
      "counted": true,
-     "status": "No trade: 9:50 close 22704 is inside the range",
+     "status": "No trade: 9:50 close 22702 is inside the range",
      "or_high": 22736.65,
      "or_low": 22659.8,
      "or_range": 76.85000000000218,
      "cap": 100.0,
-     "filter_close": 22704.3,
+     "filter_close": 22702.45,
      "entry": null,
      "stop": null,
      "target": null,
@@ -124,7 +124,7 @@
       },
       {
        "t": "09:45",
-       "c": 22704.3
+       "c": 22702.45
       }
      ],
      "last_1m": "2026-09-30 09:49:00"
@@ -132,7 +132,7 @@
    }
   },
   "SENSEX": {
-   "ltp": 72664.1,
+   "ltp": 72659.71,
    "last_1m": "2026-09-30 09:49:00",
    "strategies": {
     "ORB": {
@@ -185,7 +185,7 @@
       },
       {
        "t": "09:45",
-       "c": 72664.1
+       "c": 72659.71
       }
      ],
      "last_1m": "2026-09-30 09:49:00"
@@ -240,7 +240,7 @@
       },
       {
        "t": "09:45",
-       "c": 72664.1
+       "c": 72659.71
       }
      ],
      "last_1m": "2026-09-30 09:49:00"
