@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-09-30T14:20:52",
+ "last_tick": "2026-09-30T14:21:57",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22708.65,
-   "last_1m": "2026-09-30 14:20:00",
+   "ltp": 22695.25,
+   "last_1m": "2026-09-30 14:21:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -34,7 +34,7 @@
      "stop": 22659.8,
      "target": 22890.350000000006,
      "session_side": 1,
-     "session_pnl_net_pts": -30.0,
+     "session_pnl_net_pts": -43.400000000001455,
      "position": {
       "dir": "LONG",
       "date": "2026-09-30",
@@ -42,17 +42,17 @@
       "entry_price": 22736.65,
       "stop": 22659.8,
       "target": 22890.35,
-      "ltp": 22708.65,
-      "unrealized_pts": -28.0,
-      "unrealized_net_pts": -30.0,
-      "unrealized_rs": -1950
+      "ltp": 22695.25,
+      "unrealized_pts": -41.4,
+      "unrealized_net_pts": -43.4,
+      "unrealized_rs": -2821
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": -30.0,
-     "total_net_rs": -1950,
+     "total_net_pts": -43.4,
+     "total_net_rs": -2821,
      "tail": [
       {
        "t": "09:15",
@@ -300,10 +300,10 @@
       },
       {
        "t": "14:20",
-       "c": 22708.65
+       "c": 22695.25
       }
      ],
-     "last_1m": "2026-09-30 14:20:00"
+     "last_1m": "2026-09-30 14:21:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -575,16 +575,16 @@
       },
       {
        "t": "14:20",
-       "c": 22708.65
+       "c": 22695.25
       }
      ],
-     "last_1m": "2026-09-30 14:20:00"
+     "last_1m": "2026-09-30 14:21:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72727.06,
-   "last_1m": "2026-09-30 14:20:00",
+   "ltp": 72689.14,
+   "last_1m": "2026-09-30 14:21:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -856,10 +856,10 @@
       },
       {
        "t": "14:20",
-       "c": 72727.06
+       "c": 72689.14
       }
      ],
-     "last_1m": "2026-09-30 14:20:00"
+     "last_1m": "2026-09-30 14:21:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -1131,16 +1131,16 @@
       },
       {
        "t": "14:20",
-       "c": 72727.06
+       "c": 72689.14
       }
      ],
-     "last_1m": "2026-09-30 14:20:00"
+     "last_1m": "2026-09-30 14:21:00"
     }
    }
   }
  },
  "errors": [],
- "total_net_rs": -1950,
+ "total_net_rs": -2821,
  "realized_net_rs": 0,
  "open_positions": 1
 }
