@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-09-30T12:37:12",
+ "last_tick": "2026-09-30T12:37:25",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,7 +16,7 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22775.3,
+   "ltp": 22778.45,
    "last_1m": "2026-09-30 12:37:00",
    "strategies": {
     "ORB": {
@@ -34,7 +34,7 @@
      "stop": 22659.8,
      "target": 22890.350000000006,
      "session_side": 1,
-     "session_pnl_net_pts": 36.64999999999782,
+     "session_pnl_net_pts": 39.79999999999927,
      "position": {
       "dir": "LONG",
       "date": "2026-09-30",
@@ -42,17 +42,17 @@
       "entry_price": 22736.65,
       "stop": 22659.8,
       "target": 22890.35,
-      "ltp": 22775.3,
-      "unrealized_pts": 38.65,
-      "unrealized_net_pts": 36.65,
-      "unrealized_rs": 2382
+      "ltp": 22778.45,
+      "unrealized_pts": 41.8,
+      "unrealized_net_pts": 39.8,
+      "unrealized_rs": 2587
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": 36.65,
-     "total_net_rs": 2382,
+     "total_net_pts": 39.8,
+     "total_net_rs": 2587,
      "tail": [
       {
        "t": "09:15",
@@ -216,7 +216,7 @@
       },
       {
        "t": "12:35",
-       "c": 22775.3
+       "c": 22778.45
       }
      ],
      "last_1m": "2026-09-30 12:37:00"
@@ -407,7 +407,7 @@
       },
       {
        "t": "12:35",
-       "c": 22775.3
+       "c": 22778.45
       }
      ],
      "last_1m": "2026-09-30 12:37:00"
@@ -415,7 +415,7 @@
    }
   },
   "SENSEX": {
-   "ltp": 72946.3,
+   "ltp": 72954.39,
    "last_1m": "2026-09-30 12:37:00",
    "strategies": {
     "ORB": {
@@ -604,7 +604,7 @@
       },
       {
        "t": "12:35",
-       "c": 72946.3
+       "c": 72954.39
       }
      ],
      "last_1m": "2026-09-30 12:37:00"
@@ -795,7 +795,7 @@
       },
       {
        "t": "12:35",
-       "c": 72946.3
+       "c": 72954.39
       }
      ],
      "last_1m": "2026-09-30 12:37:00"
@@ -804,7 +804,7 @@
   }
  },
  "errors": [],
- "total_net_rs": 2382,
+ "total_net_rs": 2587,
  "realized_net_rs": 0,
  "open_positions": 1
 }
