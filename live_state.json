@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-09-30T14:11:33",
+ "last_tick": "2026-09-30T14:11:50",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,7 +16,7 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22721.5,
+   "ltp": 22723.6,
    "last_1m": "2026-09-30 14:11:00",
    "strategies": {
     "ORB": {
@@ -34,7 +34,7 @@
      "stop": 22659.8,
      "target": 22890.350000000006,
      "session_side": 1,
-     "session_pnl_net_pts": -17.150000000001455,
+     "session_pnl_net_pts": -15.05000000000291,
      "position": {
       "dir": "LONG",
       "date": "2026-09-30",
@@ -42,17 +42,17 @@
       "entry_price": 22736.65,
       "stop": 22659.8,
       "target": 22890.35,
-      "ltp": 22721.5,
-      "unrealized_pts": -15.15,
-      "unrealized_net_pts": -17.15,
-      "unrealized_rs": -1115
+      "ltp": 22723.6,
+      "unrealized_pts": -13.05,
+      "unrealized_net_pts": -15.05,
+      "unrealized_rs": -978
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": -17.15,
-     "total_net_rs": -1115,
+     "total_net_pts": -15.05,
+     "total_net_rs": -978,
      "tail": [
       {
        "t": "09:15",
@@ -292,7 +292,7 @@
       },
       {
        "t": "14:10",
-       "c": 22721.5
+       "c": 22723.6
       }
      ],
      "last_1m": "2026-09-30 14:11:00"
@@ -559,7 +559,7 @@
       },
       {
        "t": "14:10",
-       "c": 22721.5
+       "c": 22723.6
       }
      ],
      "last_1m": "2026-09-30 14:11:00"
@@ -567,7 +567,7 @@
    }
   },
   "SENSEX": {
-   "ltp": 72766.79,
+   "ltp": 72770.79,
    "last_1m": "2026-09-30 14:11:00",
    "strategies": {
     "ORB": {
@@ -832,7 +832,7 @@
       },
       {
        "t": "14:10",
-       "c": 72766.79
+       "c": 72770.79
       }
      ],
      "last_1m": "2026-09-30 14:11:00"
@@ -1099,7 +1099,7 @@
       },
       {
        "t": "14:10",
-       "c": 72766.79
+       "c": 72770.79
       }
      ],
      "last_1m": "2026-09-30 14:11:00"
@@ -1108,7 +1108,7 @@
   }
  },
  "errors": [],
- "total_net_rs": -1115,
+ "total_net_rs": -978,
  "realized_net_rs": 0,
  "open_positions": 1
 }
