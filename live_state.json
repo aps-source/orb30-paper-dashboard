@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-01T12:08:33",
+ "last_tick": "2026-10-01T12:09:10",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22531.05,
-   "last_1m": "2026-10-01 12:08:00",
+   "ltp": 22535.25,
+   "last_1m": "2026-10-01 12:09:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -34,7 +34,7 @@
      "stop": 22508.05,
      "target": 22754.05,
      "session_side": 1,
-     "session_pnl_net_pts": -61.0,
+     "session_pnl_net_pts": -56.79999999999927,
      "position": {
       "dir": "LONG",
       "date": "2026-10-01",
@@ -42,17 +42,17 @@
       "entry_price": 22590.05,
       "stop": 22508.05,
       "target": 22754.05,
-      "ltp": 22531.05,
-      "unrealized_pts": -59.0,
-      "unrealized_net_pts": -61.0,
-      "unrealized_rs": -3965
+      "ltp": 22535.25,
+      "unrealized_pts": -54.8,
+      "unrealized_net_pts": -56.8,
+      "unrealized_rs": -3692
      },
      "closed_trades": 1,
      "wins": 0,
      "realized_net_pts": -78.85,
      "realized_net_rs": -5125,
-     "total_net_pts": -139.85,
-     "total_net_rs": -9090,
+     "total_net_pts": -135.65,
+     "total_net_rs": -8817,
      "tail": [
       {
        "t": "09:15",
@@ -192,10 +192,10 @@
       },
       {
        "t": "12:05",
-       "c": 22531.05
+       "c": 22535.25
       }
      ],
-     "last_1m": "2026-10-01 12:08:00"
+     "last_1m": "2026-10-01 12:09:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -359,16 +359,16 @@
       },
       {
        "t": "12:05",
-       "c": 22531.05
+       "c": 22535.25
       }
      ],
-     "last_1m": "2026-10-01 12:08:00"
+     "last_1m": "2026-10-01 12:09:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72283.01,
-   "last_1m": "2026-10-01 12:08:00",
+   "ltp": 72288.66,
+   "last_1m": "2026-10-01 12:09:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -385,7 +385,7 @@
      "stop": 72187.62,
      "target": 72975.78,
      "session_side": 1,
-     "session_pnl_net_pts": -173.33000000000175,
+     "session_pnl_net_pts": -167.67999999999302,
      "position": {
       "dir": "LONG",
       "date": "2026-10-01",
@@ -393,17 +393,17 @@
       "entry_price": 72450.34,
       "stop": 72187.62,
       "target": 72975.78,
-      "ltp": 72283.01,
-      "unrealized_pts": -167.33,
-      "unrealized_net_pts": -173.33,
-      "unrealized_rs": -3467
+      "ltp": 72288.66,
+      "unrealized_pts": -161.68,
+      "unrealized_net_pts": -167.68,
+      "unrealized_rs": -3354
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": -173.33,
-     "total_net_rs": -3467,
+     "total_net_pts": -167.68,
+     "total_net_rs": -3354,
      "tail": [
       {
        "t": "09:15",
@@ -543,10 +543,10 @@
       },
       {
        "t": "12:05",
-       "c": 72283.01
+       "c": 72288.66
       }
      ],
-     "last_1m": "2026-10-01 12:08:00"
+     "last_1m": "2026-10-01 12:09:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -710,18 +710,16 @@
       },
       {
        "t": "12:05",
-       "c": 72283.01
+       "c": 72288.66
       }
      ],
-     "last_1m": "2026-10-01 12:08:00"
+     "last_1m": "2026-10-01 12:09:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
- "total_net_rs": -12557,
+ "errors": [],
+ "total_net_rs": -12171,
  "realized_net_rs": -5125,
  "open_positions": 2
 }
