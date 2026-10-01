@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-01T10:00:01",
+ "last_tick": "2026-10-01T10:00:24",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,7 +16,7 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22570.6,
+   "ltp": 22577.35,
    "last_1m": "2026-10-01 10:00:00",
    "strategies": {
     "ORB": {
@@ -81,7 +81,7 @@
       },
       {
        "t": "10:00",
-       "c": 22570.6
+       "c": 22577.35
       }
      ],
      "last_1m": "2026-10-01 10:00:00"
@@ -148,7 +148,7 @@
       },
       {
        "t": "10:00",
-       "c": 22570.6
+       "c": 22577.35
       }
      ],
      "last_1m": "2026-10-01 10:00:00"
@@ -156,7 +156,7 @@
    }
   },
   "SENSEX": {
-   "ltp": 72439.33,
+   "ltp": 72455.12,
    "last_1m": "2026-10-01 10:00:00",
    "strategies": {
     "ORB": {
@@ -164,24 +164,35 @@
      "name": "ORB30 \u00b7 range cap",
      "session_date": "2026-10-01",
      "counted": true,
-     "status": "Waiting for a breakout of 72188 - 72450",
+     "status": "In LONG since 10:00 @ 72450",
      "or_high": 72450.34,
      "or_low": 72187.62,
      "or_range": 262.72000000000116,
      "cap": 300.0,
      "filter_close": null,
-     "entry": null,
-     "stop": null,
-     "target": null,
-     "session_side": 0,
-     "session_pnl_net_pts": null,
-     "position": null,
+     "entry": 72450.34,
+     "stop": 72187.62,
+     "target": 72975.78,
+     "session_side": 1,
+     "session_pnl_net_pts": -1.2200000000011642,
+     "position": {
+      "dir": "LONG",
+      "date": "2026-10-01",
+      "entry_time": "2026-10-01 10:00",
+      "entry_price": 72450.34,
+      "stop": 72187.62,
+      "target": 72975.78,
+      "ltp": 72455.12,
+      "unrealized_pts": 4.78,
+      "unrealized_net_pts": -1.22,
+      "unrealized_rs": -24
+     },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": 0.0,
-     "total_net_rs": 0,
+     "total_net_pts": -1.22,
+     "total_net_rs": -24,
      "tail": [
       {
        "t": "09:15",
@@ -221,7 +232,7 @@
       },
       {
        "t": "10:00",
-       "c": 72439.33
+       "c": 72455.12
       }
      ],
      "last_1m": "2026-10-01 10:00:00"
@@ -288,7 +299,7 @@
       },
       {
        "t": "10:00",
-       "c": 72439.33
+       "c": 72455.12
       }
      ],
      "last_1m": "2026-10-01 10:00:00"
@@ -297,7 +308,7 @@
   }
  },
  "errors": [],
- "total_net_rs": -5125,
+ "total_net_rs": -5149,
  "realized_net_rs": -5125,
- "open_positions": 0
+ "open_positions": 1
 }
