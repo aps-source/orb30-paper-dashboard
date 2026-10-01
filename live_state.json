@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-01T09:49:27",
+ "last_tick": "2026-10-01T09:50:00",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22563.75,
-   "last_1m": "2026-10-01 09:49:00",
+   "ltp": 22559.25,
+   "last_1m": "2026-10-01 09:50:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -69,22 +69,26 @@
       },
       {
        "t": "09:45",
-       "c": 22563.75
+       "c": 22558.65
+      },
+      {
+       "t": "09:50",
+       "c": 22559.25
       }
      ],
-     "last_1m": "2026-10-01 09:49:00"
+     "last_1m": "2026-10-01 09:50:00"
     },
     "ORB950": {
      "variant": "ORB950",
      "name": "ORB30 \u00b7 cap + 9:50 filter",
      "session_date": "2026-10-01",
      "counted": true,
-     "status": "No trade: 9:50 close 22564 is inside the range",
+     "status": "No trade: 9:50 close 22559 is inside the range",
      "or_high": 22590.05,
      "or_low": 22508.05,
      "or_range": 82.0,
      "cap": 100.0,
-     "filter_close": 22563.75,
+     "filter_close": 22558.65,
      "entry": null,
      "stop": null,
      "target": null,
@@ -124,16 +128,20 @@
       },
       {
        "t": "09:45",
-       "c": 22563.75
+       "c": 22558.65
+      },
+      {
+       "t": "09:50",
+       "c": 22559.25
       }
      ],
-     "last_1m": "2026-10-01 09:49:00"
+     "last_1m": "2026-10-01 09:50:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72409.68,
-   "last_1m": "2026-10-01 09:49:00",
+   "ltp": 72395.22,
+   "last_1m": "2026-10-01 09:50:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -185,22 +193,26 @@
       },
       {
        "t": "09:45",
-       "c": 72409.68
+       "c": 72390.15
+      },
+      {
+       "t": "09:50",
+       "c": 72395.22
       }
      ],
-     "last_1m": "2026-10-01 09:49:00"
+     "last_1m": "2026-10-01 09:50:00"
     },
     "ORB950": {
      "variant": "ORB950",
      "name": "ORB30 \u00b7 cap + 9:50 filter",
      "session_date": "2026-10-01",
      "counted": true,
-     "status": "No trade: 9:50 close 72410 is inside the range",
+     "status": "No trade: 9:50 close 72390 is inside the range",
      "or_high": 72450.34,
      "or_low": 72187.62,
      "or_range": 262.72000000000116,
      "cap": 300.0,
-     "filter_close": 72409.68,
+     "filter_close": 72390.15,
      "entry": null,
      "stop": null,
      "target": null,
@@ -240,10 +252,14 @@
       },
       {
        "t": "09:45",
-       "c": 72409.68
+       "c": 72390.15
+      },
+      {
+       "t": "09:50",
+       "c": 72395.22
       }
      ],
-     "last_1m": "2026-10-01 09:49:00"
+     "last_1m": "2026-10-01 09:50:00"
     }
    }
   }
