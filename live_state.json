@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-01T10:55:42",
+ "last_tick": "2026-10-01T10:56:47",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -255,8 +255,8 @@
    }
   },
   "SENSEX": {
-   "ltp": 72443.41,
-   "last_1m": "2026-10-01 10:55:00",
+   "ltp": 72429.46,
+   "last_1m": "2026-10-01 10:57:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -273,7 +273,7 @@
      "stop": 72187.62,
      "target": 72975.78,
      "session_side": 1,
-     "session_pnl_net_pts": -12.929999999993015,
+     "session_pnl_net_pts": -26.879999999990105,
      "position": {
       "dir": "LONG",
       "date": "2026-10-01",
@@ -281,17 +281,17 @@
       "entry_price": 72450.34,
       "stop": 72187.62,
       "target": 72975.78,
-      "ltp": 72443.41,
-      "unrealized_pts": -6.93,
-      "unrealized_net_pts": -12.93,
-      "unrealized_rs": -259
+      "ltp": 72429.46,
+      "unrealized_pts": -20.88,
+      "unrealized_net_pts": -26.88,
+      "unrealized_rs": -538
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": -12.93,
-     "total_net_rs": -259,
+     "total_net_pts": -26.88,
+     "total_net_rs": -538,
      "tail": [
       {
        "t": "09:15",
@@ -375,10 +375,10 @@
       },
       {
        "t": "10:55",
-       "c": 72443.41
+       "c": 72429.46
       }
      ],
-     "last_1m": "2026-10-01 10:55:00"
+     "last_1m": "2026-10-01 10:57:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -486,16 +486,18 @@
       },
       {
        "t": "10:55",
-       "c": 72443.41
+       "c": 72429.46
       }
      ],
-     "last_1m": "2026-10-01 10:55:00"
+     "last_1m": "2026-10-01 10:57:00"
     }
    }
   }
  },
- "errors": [],
- "total_net_rs": -7370,
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
+ ],
+ "total_net_rs": -7649,
  "realized_net_rs": -5125,
  "open_positions": 2
 }
