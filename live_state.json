@@ -1,7 +1,7 @@
 {
  "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-02T00:02:26",
+ "last_tick": "2026-10-03T00:01:25",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -1753,8 +1753,8 @@
   }
  },
  "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-906', 'error_type': 'Order_Error', 'error_message': 'Invalid Token'}, 'data': ''}",
-  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-906', 'error_type': 'Order_Error', 'error_message': 'Invalid Token'}, 'data': ''}"
+  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-901', 'error_type': 'Invalid_Authentication', 'error_message': 'Client ID or user generated access token is invalid or expired.'}, 'data': ''}",
+  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-901', 'error_type': 'Invalid_Authentication', 'error_message': 'Client ID or user generated access token is invalid or expired.'}, 'data': ''}"
  ],
  "total_net_rs": -15959,
  "realized_net_rs": -15959,
