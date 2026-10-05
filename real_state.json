@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-05T09:58:58",
+ "updated_at": "2026-10-05T10:00:25",
  "combined_daily_pnl_rupees": 0.0,
  "closed_trades": 0,
  "wins": 0,
@@ -22,7 +22,20 @@
    "day_losses": 0
   },
   "NIFTY_ORB950": {
-   "position": null,
+   "position": {
+    "direction": "LONG",
+    "strategy_key": "NIFTY_ORB950",
+    "symbol": "NIFTY",
+    "variant": "ORB950",
+    "option_type": "CE",
+    "strike": 22750.0,
+    "security_id": "44622",
+    "exchange_segment": "NSE_FNO",
+    "expiry": "2026-10-13",
+    "quantity": 65,
+    "entry_time": "2026-10-05T09:59:08.794615",
+    "entry_ltp": 143.55
+   },
    "day_losses": 0
   },
   "SENSEX_ORB": {
