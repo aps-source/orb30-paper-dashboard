@@ -1,42 +1,16 @@
 {
- "updated_at": "2026-10-05T16:12:33",
- "combined_daily_pnl_rupees": 0.0,
+ "updated_at": "2026-10-05T20:26:28",
+ "combined_daily_pnl_rupees": -6246.5,
  "closed_trades": 0,
  "wins": 0,
  "strategies": {
   "NIFTY_ORB": {
-   "position": {
-    "direction": "LONG",
-    "strategy_key": "NIFTY_ORB",
-    "symbol": "NIFTY",
-    "variant": "ORB",
-    "option_type": "CE",
-    "strike": 22600.0,
-    "security_id": "44616",
-    "exchange_segment": "NSE_FNO",
-    "expiry": "2026-10-13",
-    "quantity": 65,
-    "entry_time": "2026-10-05T09:47:05.463816",
-    "entry_ltp": 237.1
-   },
-   "day_losses": 0
+   "position": null,
+   "day_losses": 1
   },
   "NIFTY_ORB950": {
-   "position": {
-    "direction": "LONG",
-    "strategy_key": "NIFTY_ORB950",
-    "symbol": "NIFTY",
-    "variant": "ORB950",
-    "option_type": "CE",
-    "strike": 22750.0,
-    "security_id": "44622",
-    "exchange_segment": "NSE_FNO",
-    "expiry": "2026-10-13",
-    "quantity": 65,
-    "entry_time": "2026-10-05T09:59:08.794615",
-    "entry_ltp": 143.55
-   },
-   "day_losses": 0
+   "position": null,
+   "day_losses": 1
   },
   "SENSEX_ORB": {
    "position": null,
