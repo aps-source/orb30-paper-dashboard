@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-05T09:57:48",
+ "last_tick": "2026-10-05T09:57:53",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,7 +16,7 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22598.65,
+   "ltp": 22596.0,
    "last_1m": "2026-10-05 09:57:00",
    "strategies": {
     "ORB": {
@@ -34,7 +34,7 @@
      "stop": 22506.35,
      "target": 22773.500000000007,
      "session_side": 1,
-     "session_pnl_net_pts": 1.25,
+     "session_pnl_net_pts": -1.4000000000014552,
      "position": {
       "dir": "LONG",
       "date": "2026-10-05",
@@ -42,17 +42,17 @@
       "entry_price": 22595.4,
       "stop": 22506.35,
       "target": 22773.5,
-      "ltp": 22598.65,
-      "unrealized_pts": 3.25,
-      "unrealized_net_pts": 1.25,
-      "unrealized_rs": 81
+      "ltp": 22596.0,
+      "unrealized_pts": 0.6,
+      "unrealized_net_pts": -1.4,
+      "unrealized_rs": -91
      },
      "closed_trades": 2,
      "wins": 0,
      "realized_net_pts": -162.85,
      "realized_net_rs": -10585,
-     "total_net_pts": -161.6,
-     "total_net_rs": -10504,
+     "total_net_pts": -164.25,
+     "total_net_rs": -10676,
      "tail": [
       {
        "t": "09:15",
@@ -88,7 +88,7 @@
       },
       {
        "t": "09:55",
-       "c": 22598.65
+       "c": 22596.0
       }
      ],
      "last_1m": "2026-10-05 09:57:00"
@@ -108,7 +108,7 @@
      "stop": 22506.35,
      "target": 22818.050000000003,
      "session_side": 1,
-     "session_pnl_net_pts": -13.599999999998545,
+     "session_pnl_net_pts": -16.25,
      "position": {
       "dir": "LONG",
       "date": "2026-10-05",
@@ -116,17 +116,17 @@
       "entry_price": 22610.25,
       "stop": 22506.35,
       "target": 22818.05,
-      "ltp": 22598.65,
-      "unrealized_pts": -11.6,
-      "unrealized_net_pts": -13.6,
-      "unrealized_rs": -884
+      "ltp": 22596.0,
+      "unrealized_pts": -14.25,
+      "unrealized_net_pts": -16.25,
+      "unrealized_rs": -1056
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": -13.6,
-     "total_net_rs": -884,
+     "total_net_pts": -16.25,
+     "total_net_rs": -1056,
      "tail": [
       {
        "t": "09:15",
@@ -162,7 +162,7 @@
       },
       {
        "t": "09:55",
-       "c": 22598.65
+       "c": 22596.0
       }
      ],
      "last_1m": "2026-10-05 09:57:00"
@@ -170,7 +170,7 @@
    }
   },
   "SENSEX": {
-   "ltp": 72559.69,
+   "ltp": 72555.94,
    "last_1m": "2026-10-05 09:57:00",
    "strategies": {
     "ORB": {
@@ -231,7 +231,7 @@
       },
       {
        "t": "09:55",
-       "c": 72559.69
+       "c": 72555.94
       }
      ],
      "last_1m": "2026-10-05 09:57:00"
@@ -294,7 +294,7 @@
       },
       {
        "t": "09:55",
-       "c": 72559.69
+       "c": 72555.94
       }
      ],
      "last_1m": "2026-10-05 09:57:00"
@@ -303,7 +303,7 @@
   }
  },
  "errors": [],
- "total_net_rs": -16762,
+ "total_net_rs": -17106,
  "realized_net_rs": -15959,
  "open_positions": 2
 }
