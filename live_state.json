@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-06T09:46:29",
+ "last_tick": "2026-10-06T09:47:02",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22617.25,
-   "last_1m": "2026-10-06 09:45:00",
+   "ltp": 22620.75,
+   "last_1m": "2026-10-06 09:47:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -69,10 +69,10 @@
       },
       {
        "t": "09:45",
-       "c": 22617.25
+       "c": 22620.75
       }
      ],
-     "last_1m": "2026-10-06 09:45:00"
+     "last_1m": "2026-10-06 09:47:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -124,40 +124,51 @@
       },
       {
        "t": "09:45",
-       "c": 22617.25
+       "c": 22620.75
       }
      ],
-     "last_1m": "2026-10-06 09:45:00"
+     "last_1m": "2026-10-06 09:47:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72597.1,
-   "last_1m": "2026-10-06 09:46:00",
+   "ltp": 72594.13,
+   "last_1m": "2026-10-06 09:47:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30 \u00b7 range cap",
      "session_date": "2026-10-06",
      "counted": true,
-     "status": "Waiting for a breakout of 72385 - 72606",
+     "status": "In LONG since 09:46 @ 72606",
      "or_high": 72606.18,
      "or_low": 72384.83,
      "or_range": 221.34999999999127,
      "cap": 300.0,
      "filter_close": null,
-     "entry": null,
-     "stop": null,
-     "target": null,
-     "session_side": 0,
-     "session_pnl_net_pts": null,
-     "position": null,
+     "entry": 72606.18,
+     "stop": 72384.83,
+     "target": 73048.87999999998,
+     "session_side": 1,
+     "session_pnl_net_pts": -18.04999999998836,
+     "position": {
+      "dir": "LONG",
+      "date": "2026-10-06",
+      "entry_time": "2026-10-06 09:46",
+      "entry_price": 72606.18,
+      "stop": 72384.83,
+      "target": 73048.88,
+      "ltp": 72594.13,
+      "unrealized_pts": -12.05,
+      "unrealized_net_pts": -18.05,
+      "unrealized_rs": -361
+     },
      "closed_trades": 1,
      "wins": 0,
      "realized_net_pts": -268.72,
      "realized_net_rs": -5374,
-     "total_net_pts": -268.72,
-     "total_net_rs": -5374,
+     "total_net_pts": -286.77,
+     "total_net_rs": -5735,
      "tail": [
       {
        "t": "09:15",
@@ -185,10 +196,10 @@
       },
       {
        "t": "09:45",
-       "c": 72597.1
+       "c": 72594.13
       }
      ],
-     "last_1m": "2026-10-06 09:46:00"
+     "last_1m": "2026-10-06 09:47:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -240,18 +251,16 @@
       },
       {
        "t": "09:45",
-       "c": 72597.1
+       "c": 72594.13
       }
      ],
-     "last_1m": "2026-10-06 09:46:00"
+     "last_1m": "2026-10-06 09:47:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
- ],
- "total_net_rs": -28762,
+ "errors": [],
+ "total_net_rs": -29123,
  "realized_net_rs": -28762,
- "open_positions": 0
+ "open_positions": 1
 }
