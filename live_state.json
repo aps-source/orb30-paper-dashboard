@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-06T09:47:02",
+ "last_tick": "2026-10-06T09:47:34",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,7 +16,7 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22620.75,
+   "ltp": 22626.15,
    "last_1m": "2026-10-06 09:47:00",
    "strategies": {
     "ORB": {
@@ -69,7 +69,7 @@
       },
       {
        "t": "09:45",
-       "c": 22620.75
+       "c": 22626.15
       }
      ],
      "last_1m": "2026-10-06 09:47:00"
@@ -124,7 +124,7 @@
       },
       {
        "t": "09:45",
-       "c": 22620.75
+       "c": 22626.15
       }
      ],
      "last_1m": "2026-10-06 09:47:00"
@@ -132,7 +132,7 @@
    }
   },
   "SENSEX": {
-   "ltp": 72594.13,
+   "ltp": 72602.52,
    "last_1m": "2026-10-06 09:47:00",
    "strategies": {
     "ORB": {
@@ -150,7 +150,7 @@
      "stop": 72384.83,
      "target": 73048.87999999998,
      "session_side": 1,
-     "session_pnl_net_pts": -18.04999999998836,
+     "session_pnl_net_pts": -9.65999999998894,
      "position": {
       "dir": "LONG",
       "date": "2026-10-06",
@@ -158,17 +158,17 @@
       "entry_price": 72606.18,
       "stop": 72384.83,
       "target": 73048.88,
-      "ltp": 72594.13,
-      "unrealized_pts": -12.05,
-      "unrealized_net_pts": -18.05,
-      "unrealized_rs": -361
+      "ltp": 72602.52,
+      "unrealized_pts": -3.66,
+      "unrealized_net_pts": -9.66,
+      "unrealized_rs": -193
      },
      "closed_trades": 1,
      "wins": 0,
      "realized_net_pts": -268.72,
      "realized_net_rs": -5374,
-     "total_net_pts": -286.77,
-     "total_net_rs": -5735,
+     "total_net_pts": -278.38,
+     "total_net_rs": -5568,
      "tail": [
       {
        "t": "09:15",
@@ -196,7 +196,7 @@
       },
       {
        "t": "09:45",
-       "c": 72594.13
+       "c": 72602.52
       }
      ],
      "last_1m": "2026-10-06 09:47:00"
@@ -251,7 +251,7 @@
       },
       {
        "t": "09:45",
-       "c": 72594.13
+       "c": 72602.52
       }
      ],
      "last_1m": "2026-10-06 09:47:00"
@@ -260,7 +260,7 @@
   }
  },
  "errors": [],
- "total_net_rs": -29123,
+ "total_net_rs": -28956,
  "realized_net_rs": -28762,
  "open_positions": 1
 }
