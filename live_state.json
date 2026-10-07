@@ -1,7 +1,7 @@
 {
  "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-07T13:06:33",
+ "last_tick": "2026-10-07T13:09:37",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22609.7,
-   "last_1m": "2026-10-07 13:05:00",
+   "ltp": 22564.85,
+   "last_1m": "2026-10-07 13:09:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -229,10 +229,10 @@
       },
       {
        "t": "13:05",
-       "c": 22609.7
+       "c": 22564.85
       }
      ],
-     "last_1m": "2026-10-07 13:05:00"
+     "last_1m": "2026-10-07 13:09:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -444,10 +444,10 @@
       },
       {
        "t": "13:05",
-       "c": 22609.7
+       "c": 22564.85
       }
      ],
-     "last_1m": "2026-10-07 13:05:00"
+     "last_1m": "2026-10-07 13:09:00"
     }
    }
   },
@@ -889,7 +889,7 @@
   }
  },
  "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': \"('Connection aborted.', ConnectionAbortedError(10053, 'An established connection was aborted by the software in your host machine', None, 10053, None))\", 'data': ''}"
+  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
  ],
  "total_net_rs": -12426,
  "realized_net_rs": -12426,
