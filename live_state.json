@@ -1,7 +1,7 @@
 {
  "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-07T20:02:11",
+ "last_tick": "2026-10-07T20:07:41",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -1465,7 +1465,8 @@
   }
  },
  "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
+  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne",
+  "SENSEX: {'status': 'failure', 'remarks': \"HTTPSConnectionPool(host='api.dhan.co', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by SSLError(SSLEOFError(8, '[SSL: UNEXPECTED_EOF_WHILE_R"
  ],
  "total_net_rs": -12426,
  "realized_net_rs": -12426,
