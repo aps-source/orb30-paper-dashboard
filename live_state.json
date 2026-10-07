@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-07T13:08:22",
+ "last_tick": "2026-10-07T13:06:33",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22586.8,
-   "last_1m": "2026-10-07 13:08:00",
+   "ltp": 22609.7,
+   "last_1m": "2026-10-07 13:05:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -229,10 +229,10 @@
       },
       {
        "t": "13:05",
-       "c": 22586.8
+       "c": 22609.7
       }
      ],
-     "last_1m": "2026-10-07 13:08:00"
+     "last_1m": "2026-10-07 13:05:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -444,15 +444,15 @@
       },
       {
        "t": "13:05",
-       "c": 22586.8
+       "c": 22609.7
       }
      ],
-     "last_1m": "2026-10-07 13:08:00"
+     "last_1m": "2026-10-07 13:05:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72598.5,
+   "ltp": 72595.39,
    "last_1m": "2026-10-07 13:08:00",
    "strategies": {
     "ORB": {
@@ -665,7 +665,7 @@
       },
       {
        "t": "13:05",
-       "c": 72598.5
+       "c": 72595.39
       }
      ],
      "last_1m": "2026-10-07 13:08:00"
@@ -880,7 +880,7 @@
       },
       {
        "t": "13:05",
-       "c": 72598.5
+       "c": 72595.39
       }
      ],
      "last_1m": "2026-10-07 13:08:00"
@@ -888,7 +888,9 @@
    }
   }
  },
- "errors": [],
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': \"('Connection aborted.', ConnectionAbortedError(10053, 'An established connection was aborted by the software in your host machine', None, 10053, None))\", 'data': ''}"
+ ],
  "total_net_rs": -12426,
  "realized_net_rs": -12426,
  "open_positions": 0
