@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-08T14:35:16",
+ "last_tick": "2026-10-08T14:35:28",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22240.45,
-   "last_1m": "2026-10-08 14:34:00",
+   "ltp": 22242.5,
+   "last_1m": "2026-10-08 14:35:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -297,10 +297,14 @@
       },
       {
        "t": "14:30",
-       "c": 22240.45
+       "c": 22235.45
+      },
+      {
+       "t": "14:35",
+       "c": 22242.5
       }
      ],
-     "last_1m": "2026-10-08 14:34:00"
+     "last_1m": "2026-10-08 14:35:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -580,15 +584,19 @@
       },
       {
        "t": "14:30",
-       "c": 22240.45
+       "c": 22235.45
+      },
+      {
+       "t": "14:35",
+       "c": 22242.5
       }
      ],
-     "last_1m": "2026-10-08 14:34:00"
+     "last_1m": "2026-10-08 14:35:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 71564.52,
+   "ltp": 71567.07,
    "last_1m": "2026-10-08 14:35:00",
    "strategies": {
     "ORB": {
@@ -873,7 +881,7 @@
       },
       {
        "t": "14:35",
-       "c": 71564.52
+       "c": 71567.07
       }
      ],
      "last_1m": "2026-10-08 14:35:00"
@@ -1160,7 +1168,7 @@
       },
       {
        "t": "14:35",
-       "c": 71564.52
+       "c": 71567.07
       }
      ],
      "last_1m": "2026-10-08 14:35:00"
@@ -1168,9 +1176,7 @@
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
+ "errors": [],
  "total_net_rs": -12426,
  "realized_net_rs": -12426,
  "open_positions": 0
