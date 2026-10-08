@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-08T13:16:11",
+ "last_tick": "2026-10-08T13:17:15",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22259.8,
-   "last_1m": "2026-10-08 13:16:00",
+   "ltp": 22265.05,
+   "last_1m": "2026-10-08 13:17:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -237,10 +237,10 @@
       },
       {
        "t": "13:15",
-       "c": 22259.8
+       "c": 22265.05
       }
      ],
-     "last_1m": "2026-10-08 13:16:00"
+     "last_1m": "2026-10-08 13:17:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -460,16 +460,16 @@
       },
       {
        "t": "13:15",
-       "c": 22259.8
+       "c": 22265.05
       }
      ],
-     "last_1m": "2026-10-08 13:16:00"
+     "last_1m": "2026-10-08 13:17:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 71659.76,
-   "last_1m": "2026-10-08 13:16:00",
+   "ltp": 71665.18,
+   "last_1m": "2026-10-08 13:17:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -689,10 +689,10 @@
       },
       {
        "t": "13:15",
-       "c": 71659.76
+       "c": 71665.18
       }
      ],
-     "last_1m": "2026-10-08 13:16:00"
+     "last_1m": "2026-10-08 13:17:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -912,17 +912,15 @@
       },
       {
        "t": "13:15",
-       "c": 71659.76
+       "c": 71665.18
       }
      ],
-     "last_1m": "2026-10-08 13:16:00"
+     "last_1m": "2026-10-08 13:17:00"
     }
    }
   }
  },
- "errors": [
-  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
- ],
+ "errors": [],
  "total_net_rs": -12426,
  "realized_net_rs": -12426,
  "open_positions": 0
