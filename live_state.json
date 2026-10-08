@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-08T09:43:56",
+ "last_tick": "2026-10-08T09:44:11",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,18 +16,18 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22468.75,
-   "last_1m": "2026-10-08 09:43:00",
+   "ltp": 22470.1,
+   "last_1m": "2026-10-08 09:44:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30 \u00b7 range cap",
      "session_date": "2026-10-08",
      "counted": true,
-     "status": "Opening range forming (09:15-09:45)",
-     "or_high": null,
-     "or_low": null,
-     "or_range": null,
+     "status": "Skipped: opening range 132 pts is wider than the 100-pt cap",
+     "or_high": 22599.05,
+     "or_low": 22467.5,
+     "or_range": 131.54999999999927,
      "cap": 100.0,
      "filter_close": null,
      "entry": null,
@@ -65,20 +65,20 @@
       },
       {
        "t": "09:40",
-       "c": 22468.75
+       "c": 22470.1
       }
      ],
-     "last_1m": "2026-10-08 09:43:00"
+     "last_1m": "2026-10-08 09:44:00"
     },
     "ORB950": {
      "variant": "ORB950",
      "name": "ORB30 \u00b7 cap + 9:50 filter",
      "session_date": "2026-10-08",
      "counted": true,
-     "status": "Opening range forming (09:15-09:45)",
-     "or_high": null,
-     "or_low": null,
-     "or_range": null,
+     "status": "Skipped: opening range 132 pts is wider than the 100-pt cap",
+     "or_high": 22599.05,
+     "or_low": 22467.5,
+     "or_range": 131.54999999999927,
      "cap": 100.0,
      "filter_close": null,
      "entry": null,
@@ -116,26 +116,26 @@
       },
       {
        "t": "09:40",
-       "c": 22468.75
+       "c": 22470.1
       }
      ],
-     "last_1m": "2026-10-08 09:43:00"
+     "last_1m": "2026-10-08 09:44:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72258.72,
-   "last_1m": "2026-10-08 09:43:00",
+   "ltp": 72244.36,
+   "last_1m": "2026-10-08 09:44:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30 \u00b7 range cap",
      "session_date": "2026-10-08",
      "counted": true,
-     "status": "Opening range forming (09:15-09:45)",
-     "or_high": null,
-     "or_low": null,
-     "or_range": null,
+     "status": "Skipped: opening range 457 pts is wider than the 300-pt cap",
+     "or_high": 72693.97,
+     "or_low": 72236.98,
+     "or_range": 456.99000000000524,
      "cap": 300.0,
      "filter_close": null,
      "entry": null,
@@ -173,20 +173,20 @@
       },
       {
        "t": "09:40",
-       "c": 72258.72
+       "c": 72244.36
       }
      ],
-     "last_1m": "2026-10-08 09:43:00"
+     "last_1m": "2026-10-08 09:44:00"
     },
     "ORB950": {
      "variant": "ORB950",
      "name": "ORB30 \u00b7 cap + 9:50 filter",
      "session_date": "2026-10-08",
      "counted": true,
-     "status": "Opening range forming (09:15-09:45)",
-     "or_high": null,
-     "or_low": null,
-     "or_range": null,
+     "status": "Skipped: opening range 457 pts is wider than the 300-pt cap",
+     "or_high": 72693.97,
+     "or_low": 72236.98,
+     "or_range": 456.99000000000524,
      "cap": 300.0,
      "filter_close": null,
      "entry": null,
@@ -224,10 +224,10 @@
       },
       {
        "t": "09:40",
-       "c": 72258.72
+       "c": 72244.36
       }
      ],
-     "last_1m": "2026-10-08 09:43:00"
+     "last_1m": "2026-10-08 09:44:00"
     }
    }
   }
