@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-09T11:31:02",
+ "last_tick": "2026-10-09T11:31:14",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,7 +16,7 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22510.8,
+   "ltp": 22508.6,
    "last_1m": "2026-10-09 11:31:00",
    "strategies": {
     "ORB": {
@@ -153,7 +153,7 @@
       },
       {
        "t": "11:30",
-       "c": 22510.8
+       "c": 22508.6
       }
      ],
      "last_1m": "2026-10-09 11:31:00"
@@ -292,7 +292,7 @@
       },
       {
        "t": "11:30",
-       "c": 22510.8
+       "c": 22508.6
       }
      ],
      "last_1m": "2026-10-09 11:31:00"
@@ -300,7 +300,7 @@
    }
   },
   "SENSEX": {
-   "ltp": 72432.66,
+   "ltp": 72430.21,
    "last_1m": "2026-10-09 11:31:00",
    "strategies": {
     "ORB": {
@@ -437,7 +437,7 @@
       },
       {
        "t": "11:30",
-       "c": 72432.66
+       "c": 72430.21
       }
      ],
      "last_1m": "2026-10-09 11:31:00"
@@ -576,7 +576,7 @@
       },
       {
        "t": "11:30",
-       "c": 72432.66
+       "c": 72430.21
       }
      ],
      "last_1m": "2026-10-09 11:31:00"
@@ -584,7 +584,9 @@
    }
   }
  },
- "errors": [],
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
+ ],
  "total_net_rs": -12426,
  "realized_net_rs": -12426,
  "open_positions": 0
