@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-12T15:05:52",
+ "last_tick": "2026-10-12T15:05:53",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -644,7 +644,7 @@
    }
   },
   "SENSEX": {
-   "ltp": 71731.22,
+   "ltp": 71729.8,
    "last_1m": "2026-10-12 15:05:00",
    "strategies": {
     "ORB": {
@@ -953,7 +953,7 @@
       },
       {
        "t": "15:05",
-       "c": 71731.22
+       "c": 71729.8
       }
      ],
      "last_1m": "2026-10-12 15:05:00"
@@ -1264,7 +1264,7 @@
       },
       {
        "t": "15:05",
-       "c": 71731.22
+       "c": 71729.8
       }
      ],
      "last_1m": "2026-10-12 15:05:00"
@@ -1272,7 +1272,9 @@
    }
   }
  },
- "errors": [],
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
+ ],
  "total_net_rs": -12426,
  "realized_net_rs": -12426,
  "open_positions": 0
