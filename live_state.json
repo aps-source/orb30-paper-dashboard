@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-12T09:44:24",
+ "last_tick": "2026-10-12T09:45:17",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22512.1,
-   "last_1m": "2026-10-12 09:44:00",
+   "ltp": 22521.6,
+   "last_1m": "2026-10-12 09:45:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -65,10 +65,14 @@
       },
       {
        "t": "09:40",
-       "c": 22512.1
+       "c": 22512.15
+      },
+      {
+       "t": "09:45",
+       "c": 22521.6
       }
      ],
-     "last_1m": "2026-10-12 09:44:00"
+     "last_1m": "2026-10-12 09:45:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -116,26 +120,30 @@
       },
       {
        "t": "09:40",
-       "c": 22512.1
+       "c": 22512.15
+      },
+      {
+       "t": "09:45",
+       "c": 22521.6
       }
      ],
-     "last_1m": "2026-10-12 09:44:00"
+     "last_1m": "2026-10-12 09:45:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72370.15,
-   "last_1m": "2026-10-12 09:44:00",
+   "ltp": 72379.34,
+   "last_1m": "2026-10-12 09:45:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30 \u00b7 range cap",
      "session_date": "2026-10-12",
      "counted": true,
-     "status": "Skipped: opening range 527 pts is wider than the 300-pt cap",
+     "status": "Skipped: opening range 529 pts is wider than the 300-pt cap",
      "or_high": 72884.25,
-     "or_low": 72357.05,
-     "or_range": 527.1999999999971,
+     "or_low": 72355.41,
+     "or_range": 528.8399999999965,
      "cap": 300.0,
      "filter_close": null,
      "entry": null,
@@ -173,20 +181,24 @@
       },
       {
        "t": "09:40",
-       "c": 72370.15
+       "c": 72362.72
+      },
+      {
+       "t": "09:45",
+       "c": 72379.34
       }
      ],
-     "last_1m": "2026-10-12 09:44:00"
+     "last_1m": "2026-10-12 09:45:00"
     },
     "ORB950": {
      "variant": "ORB950",
      "name": "ORB30 \u00b7 cap + 9:50 filter",
      "session_date": "2026-10-12",
      "counted": true,
-     "status": "Skipped: opening range 527 pts is wider than the 300-pt cap",
+     "status": "Skipped: opening range 529 pts is wider than the 300-pt cap",
      "or_high": 72884.25,
-     "or_low": 72357.05,
-     "or_range": 527.1999999999971,
+     "or_low": 72355.41,
+     "or_range": 528.8399999999965,
      "cap": 300.0,
      "filter_close": null,
      "entry": null,
@@ -224,10 +236,14 @@
       },
       {
        "t": "09:40",
-       "c": 72370.15
+       "c": 72362.72
+      },
+      {
+       "t": "09:45",
+       "c": 72379.34
       }
      ],
-     "last_1m": "2026-10-12 09:44:00"
+     "last_1m": "2026-10-12 09:45:00"
     }
    }
   }
