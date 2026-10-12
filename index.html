@@ -98,6 +98,29 @@
   .banner { margin-bottom:1rem; padding:0.8rem 1.1rem; border-radius:0.9rem; font-weight:600; font-size:0.9rem; border:1px solid var(--border); background:var(--surface-1); }
   .banner.err { background:color-mix(in srgb,var(--critical) 12%,var(--surface-1)); color:var(--critical); }
   .foot { font-size:0.8rem; color:var(--text-muted); margin-top:1.4rem; line-height:1.6; }
+  .toggle-wrap { display: flex; align-items: center; gap: 0.55rem; background: rgba(255,255,255,0.14); padding: 0.4rem 0.7rem 0.4rem 0.9rem; border-radius: 999px; }
+  .toggle-label { font-size: 0.78rem; font-weight: 700; }
+  .switch { position: relative; width: 3rem; height: 1.6rem; border-radius: 999px; border: none; cursor: pointer; background: #8a93a8; transition: background 0.15s; flex: none; }
+  .switch.on { background: var(--good); }
+  .switch::after { content: ""; position: absolute; top: 2px; left: 2px; width: 1.2rem; height: 1.2rem; border-radius: 50%; background: #fff; transition: left 0.15s; box-shadow: 0 1px 3px rgba(0,0,0,0.3); }
+  .switch.on::after { left: 1.42rem; }
+  .switch:disabled { opacity: 0.55; cursor: wait; }
+  .toggle-state { font-size: 0.72rem; opacity: 0.85; min-width: 6.5rem; color: #fff; }
+
+  .chart-section { margin-top: 1.2rem; }
+  .chart-section h2 { font-size: 1.05rem; margin: 0 0 0.7rem; }
+  .chart-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(360px,100%), 1fr)); gap: 1rem; }
+  .chart-tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 1rem; box-shadow: var(--shadow); overflow: hidden; }
+  .chart-tile .ct-head { padding: 0.7rem 1rem 0.5rem; font-size: 0.85rem; font-weight: 700; }
+  .chart-tile .ct-cap { padding: 0 1rem 0.7rem; font-size: 0.76rem; color: var(--text-muted); }
+  .chart-tile button.ct-img { display: block; width: 100%; border: none; padding: 0; margin: 0; background: var(--surface-2); cursor: zoom-in; }
+  .chart-tile img { display: block; width: 100%; height: auto; }
+  .chart-tile .ct-empty { padding: 2.2rem 1rem; text-align: center; color: var(--text-muted); font-size: 0.85rem; }
+  #lightbox { position: fixed; inset: 0; background: rgba(10,12,20,0.92); display: none; align-items: center; justify-content: center; z-index: 999; padding: 24px; cursor: zoom-out; }
+  #lightbox.open { display: flex; }
+  #lightbox img { max-width: 96vw; max-height: 90vh; border-radius: 0.6rem; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
+  #lightbox .lb-cap { position: absolute; bottom: 18px; left: 0; right: 0; text-align: center; color: #eef1f9; font-size: 0.85rem; }
+  #lightbox .lb-close { position: absolute; top: 16px; right: 22px; color: #eef1f9; font-size: 1.6rem; font-weight: 700; cursor: pointer; }
 </style>
 </head>
 <body>
@@ -108,6 +131,11 @@
     <div class="hero-right">
       <span class="hero-pill" id="clock">…</span>
       <span id="status"></span><span class="hero-pill" id="tick">…</span>
+      <div class="toggle-wrap">
+        <span class="toggle-label">Trading</span>
+        <button class="switch" id="trading-switch" title="Turn new entries on/off for the live engine (both instruments)"></button>
+        <span class="toggle-state" id="trading-switch-state">loading…</span>
+      </div>
       <a class="btn" href="trades.html">Day-wise trades &amp; P&amp;L →</a><a class="btn" href="backtest.html">Backtest data →</a>
     </div>
   </div>
@@ -119,7 +147,20 @@
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
   <div class="foot">Read-only page: it cannot itself place, modify or cancel any order — the automatic engine does that separately, gated by AUTO_TRADING.on and the risk limits above. <b>The P&amp;L on this page is still the signal-replay calculation (index points, assumed fill at the OR edge / 9:50 close, no slippage) — it has not yet been reconciled against actual futures fills.</b> Real order state (fills, rupee P&amp;L, broker responses) is recorded in trade_log.jsonl. ₹ = points × lot size (NIFTY 65, SENSEX 20). Refreshes every 60 seconds from <code>live_state.json</code>.</div>
+
+  <section class="chart-section">
+    <h2>Today's chart &middot; strategy, signals &amp; trades</h2>
+    <div class="chart-grid" id="chart-grid">
+      <div class="chart-tile"><div class="ct-empty">Loading…</div></div>
+    </div>
+  </section>
 </main>
+
+<div id="lightbox" onclick="closeLightbox()">
+  <span class="lb-close" onclick="closeLightbox(event)">&times;</span>
+  <img id="lightbox-img" src="" alt="" />
+  <div class="lb-cap" id="lightbox-cap"></div>
+</div>
 <script>
 const STATE_URL = "live_state.json";
 const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -214,6 +255,130 @@ function tickClock() {
 }
 tickClock(); setInterval(tickClock, 1000);
 refresh(); setInterval(refresh, 60000);
+
+/* ---------- trading on/off toggle: writes control.json in this repo via the GitHub API.
+   The live engine pulls this repo once per tick and blocks every new entry, both NIFTY and
+   SENSEX, whenever trading_enabled is false -- same effect as the engine's local PAUSE.flag,
+   just reachable from the dashboard instead of the trading PC. A GitHub token is required to
+   WRITE; asked for once, kept only in this browser's localStorage, never sent anywhere but
+   github.com. */
+const GH_REPO = "aps-source/orb30-paper-dashboard";
+const GH_API = `https://api.github.com/repos/${GH_REPO}/contents/control.json`;
+const switchBtn = document.getElementById("trading-switch");
+const switchState = document.getElementById("trading-switch-state");
+let controlSha = null;
+
+function renderSwitch(enabled, note) {
+  switchBtn.classList.toggle("on", !!enabled);
+  switchState.textContent = note || (enabled ? "ON — entries allowed" : "OFF — entries blocked");
+}
+
+async function loadControl() {
+  try {
+    const res = await fetch("control.json?t=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const c = await res.json();
+    renderSwitch(c.trading_enabled !== false);
+  } catch (e) {
+    renderSwitch(true, "status unknown");
+  }
+}
+
+async function flipTrading() {
+  const turningOn = !switchBtn.classList.contains("on");
+  if (!confirm(turningOn
+    ? "Turn trading back ON for NIFTY + SENSEX?"
+    : "Turn trading OFF for NIFTY + SENSEX?\n\nThe live engine will stop taking new entries (open positions are not touched) until switched back on here.")) return;
+
+  let pat = localStorage.getItem("orb30_gh_pat");
+  if (!pat) {
+    pat = prompt("GitHub token with write access to this repo (saved only in this browser):");
+    if (!pat) return;
+    localStorage.setItem("orb30_gh_pat", pat.trim());
+    pat = pat.trim();
+  }
+
+  switchBtn.disabled = true;
+  switchState.textContent = "saving…";
+  try {
+    if (!controlSha) {
+      const cur = await fetch(GH_API, { headers: { Authorization: "Bearer " + pat } });
+      if (!cur.ok) throw new Error("could not read current file (HTTP " + cur.status + ")");
+      controlSha = (await cur.json()).sha;
+    }
+    const body = {
+      trading_enabled: turningOn,
+      updated_at: new Date().toISOString(),
+      updated_by: "dashboard",
+    };
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(body, null, 2) + "\n")));
+    const res = await fetch(GH_API, {
+      method: "PUT",
+      headers: { Authorization: "Bearer " + pat, "Content-Type": "application/json" },
+      body: JSON.stringify({
+        message: `Trading ${turningOn ? "ON" : "OFF"} via dashboard toggle`,
+        content, sha: controlSha, branch: "main",
+      }),
+    });
+    if (!res.ok) {
+      if (res.status === 401 || res.status === 403) localStorage.removeItem("orb30_gh_pat");
+      throw new Error("GitHub rejected the write (HTTP " + res.status + ")");
+    }
+    controlSha = (await res.json()).content.sha;
+    renderSwitch(turningOn, (turningOn ? "ON" : "OFF") + " — reaches the engine on its next tick");
+  } catch (e) {
+    alert("Could not update trading status: " + e.message);
+    renderSwitch(!turningOn);
+  } finally {
+    switchBtn.disabled = false;
+  }
+}
+
+switchBtn.addEventListener("click", flipTrading);
+loadControl();
+setInterval(loadControl, 30000);
+
+/* ---------- today's chart section: trades-table image + per-instrument annotated/strategy
+   chart, same PNGs already sent to Telegram at 15:40 by send_daily_trades_image.py, copied here
+   under fixed names each day. Click any tile to view full screen. */
+function openLightbox(src, cap) {
+  document.getElementById("lightbox-img").src = src;
+  document.getElementById("lightbox-cap").textContent = cap || "";
+  document.getElementById("lightbox").classList.add("open");
+}
+function closeLightbox(e) {
+  if (e) e.stopPropagation();
+  document.getElementById("lightbox").classList.remove("open");
+}
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeLightbox(); });
+
+function chartTile(src, label, caption, exists) {
+  if (!exists) return `<div class="chart-tile"><div class="ct-head">${label}</div><div class="ct-empty">No chart yet today.</div></div>`;
+  const esc2 = (s) => (s || "").replace(/'/g, "\\'");
+  return `<div class="chart-tile">
+    <div class="ct-head">${label}</div>
+    <button class="ct-img" onclick="openLightbox('${src}','${esc2(caption)}')"><img src="${src}" loading="lazy" alt="${label}" /></button>
+    <div class="ct-cap">${caption || ""}</div>
+  </div>`;
+}
+
+async function loadTodayCharts() {
+  const grid = document.getElementById("chart-grid");
+  try {
+    const res = await fetch("today_meta.json?t=" + Date.now(), { cache: "no-store" });
+    if (!res.ok) throw new Error("HTTP " + res.status);
+    const m = await res.json();
+    const t = Date.now();
+    grid.innerHTML =
+      chartTile(`today_trades.png?t=${t}`, "Today's trades", m.trades_caption, true) +
+      chartTile(`today_chart_nifty.png?t=${t}`, "NIFTY", m.nifty_caption, !!m.has_nifty_chart) +
+      chartTile(`today_chart_sensex.png?t=${t}`, "SENSEX", m.sensex_caption, !!m.has_sensex_chart);
+  } catch (e) {
+    grid.innerHTML = `<div class="chart-tile"><div class="ct-empty">Today's chart hasn't been published yet &mdash; it goes out once the 15:40 daily job runs.</div></div>`;
+  }
+}
+loadTodayCharts();
+setInterval(loadTodayCharts, 5 * 60 * 1000);
 </script>
 </body>
 </html>
