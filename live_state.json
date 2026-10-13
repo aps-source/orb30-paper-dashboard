@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-13T11:14:07",
+ "last_tick": "2026-10-13T11:14:20",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22500.45,
-   "last_1m": "2026-10-13 11:13:00",
+   "ltp": 22495.75,
+   "last_1m": "2026-10-13 11:14:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -137,10 +137,10 @@
       },
       {
        "t": "11:10",
-       "c": 22500.45
+       "c": 22495.75
       }
      ],
-     "last_1m": "2026-10-13 11:13:00"
+     "last_1m": "2026-10-13 11:14:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -260,16 +260,16 @@
       },
       {
        "t": "11:10",
-       "c": 22500.45
+       "c": 22495.75
       }
      ],
-     "last_1m": "2026-10-13 11:13:00"
+     "last_1m": "2026-10-13 11:14:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 72351.36,
-   "last_1m": "2026-10-13 11:13:00",
+   "ltp": 72331.98,
+   "last_1m": "2026-10-13 11:14:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -389,10 +389,10 @@
       },
       {
        "t": "11:10",
-       "c": 72351.36
+       "c": 72331.98
       }
      ],
-     "last_1m": "2026-10-13 11:13:00"
+     "last_1m": "2026-10-13 11:14:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -512,18 +512,15 @@
       },
       {
        "t": "11:10",
-       "c": 72351.36
+       "c": 72331.98
       }
      ],
-     "last_1m": "2026-10-13 11:13:00"
+     "last_1m": "2026-10-13 11:14:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne",
-  "SENSEX: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
+ "errors": [],
  "total_net_rs": -12426,
  "realized_net_rs": -12426,
  "open_positions": 0
