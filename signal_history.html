@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>ORB30 — Signal History</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<style>
+  :root { color-scheme: light;
+    --page:#eceff8; --surface-1:#ffffff; --surface-2:#f3f5fb; --text-primary:#0e1320; --text-secondary:#4f5a74; --text-muted:#76829c;
+    --gridline:#e2e7f1; --border:rgba(14,19,32,0.10); --shadow:0 1px 2px rgba(14,19,32,0.06), 0 8px 24px rgba(40,50,110,0.08);
+    --brand-a:#4338ca; --brand-b:#7c3aed; --brand-c:#0d9488; --accent:#4f46e5; --good:#12a150; --critical:#dc3545; --warning:#c77d00; --long:#12a150; --short:#d6336c; }
+  @media (prefers-color-scheme: dark) { :root { color-scheme: dark;
+    --page:#090c14; --surface-1:#131a29; --surface-2:#1a2336; --text-primary:#eef1f9; --text-secondary:#a0abc4; --text-muted:#7f8aa3;
+    --gridline:#253048; --border:rgba(238,241,249,0.11); --shadow:0 1px 2px rgba(0,0,0,0.4), 0 10px 28px rgba(0,0,0,0.35);
+    --brand-a:#4f46e5; --brand-b:#8b5cf6; --brand-c:#14b8a6; --accent:#9b8cf3; --good:#2bc85a; --critical:#f0645f; --warning:#f2b636; --long:#2bc85a; --short:#e0578a; } }
+  * { box-sizing:border-box; }
+  html { font-size:clamp(15px,0.55vw + 9px,19px); }
+  body { margin:0; color:var(--text-primary); font-family:system-ui,-apple-system,"Segoe UI",sans-serif; line-height:1.4;
+    background:radial-gradient(1100px 480px at 8% -8%, color-mix(in srgb,var(--brand-b) 16%,transparent), transparent 70%),
+               radial-gradient(900px 480px at 100% 0%, color-mix(in srgb,var(--brand-c) 14%,transparent), transparent 70%), var(--page); background-attachment:fixed; }
+  .good { color:var(--good); } .bad { color:var(--critical); } .muted { color:var(--text-muted); }
+  .hero { background:linear-gradient(115deg,var(--brand-a) 0%,var(--brand-b) 52%,var(--brand-c) 100%); color:#fff; padding:1.05rem clamp(14px,2vw,32px); box-shadow:0 6px 26px rgba(67,56,202,0.28); }
+  .hero-inner { max-width:1700px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; }
+  h1 { font-size:1.45rem; margin:0; font-weight:800; } .tag { font-size:0.86rem; opacity:0.88; }
+  a.btn { background:#fff; color:var(--brand-a); text-decoration:none; font-weight:700; font-size:0.88rem; padding:0.45rem 0.95rem; border-radius:999px; }
+  .page { max-width:1700px; margin:0 auto; padding:1.1rem clamp(14px,2vw,32px) 2rem; }
+  .card { background:var(--surface-1); border:1px solid var(--border); border-radius:1.1rem; box-shadow:var(--shadow); margin-bottom:1rem; overflow:hidden; }
+  .card h2 { font-size:0.8rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--text-muted); margin:0; padding:0.85rem 1.1rem; border-bottom:1px solid var(--gridline); }
+  .scroll { overflow-x:auto; }
+  table { width:100%; border-collapse:collapse; font-size:0.86rem; font-variant-numeric:tabular-nums; }
+  th { text-align:left; padding:0.55rem 0.8rem; font-size:0.72rem; text-transform:uppercase; letter-spacing:0.05em; color:var(--text-muted); border-bottom:1px solid var(--gridline); white-space:nowrap; }
+  td { padding:0.5rem 0.8rem; border-bottom:1px solid var(--gridline); white-space:nowrap; }
+  td.r, th.r { text-align:right; }
+  .tagd { font-weight:700; } .LONG { color:var(--long); } .SHORT { color:var(--short); } .BOTH { color:var(--text-muted); }
+  .filters { display:flex; gap:0.5rem; flex-wrap:wrap; padding:0.8rem 1.1rem; }
+  .filters button { border:1px solid var(--border); background:var(--surface-2); color:var(--text-primary); border-radius:999px; padding:0.3rem 0.85rem; font-size:0.82rem; font-weight:600; cursor:pointer; }
+  .filters button.on { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .empty { padding:1.3rem 1.1rem; color:var(--text-muted); }
+  .badge { font-size:0.72rem; font-weight:800; padding:0.15rem 0.55rem; border-radius:999px; color:#fff; white-space:nowrap; }
+  .badge.real { background:var(--good); } .badge.held { background:var(--warning); } .badge.none { background:var(--text-muted); }
+  .rsn { font-size:0.74rem; font-weight:700; padding:0.1rem 0.5rem; border-radius:999px; background:var(--surface-2); border:1px solid var(--gridline); }
+</style>
+</head>
+<body>
+<header class="hero"><div class="hero-inner">
+  <div><h1>ORB30 — Signal History</h1><div class="tag">Every ORB/ORB950 signal since go-live, from the same engine as the backtest, cross-checked against real fills in trade_log.jsonl</div></div>
+  <span style="display:flex;gap:8px;flex-wrap:wrap"><a class="btn" href="index.html">← Live dashboard</a><a class="btn" href="trades.html">Day-wise trades →</a></span></div></header>
+<main class="page">
+  <div class="card"><h2>Summary</h2><div class="scroll" id="summary"></div></div>
+  <div class="card"><h2>Signals</h2><div class="filters" id="filters"></div><div class="scroll" id="log"></div></div>
+</main>
+<script>
+const esc = s => String(s).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const fmt = (v, d=1) => v == null ? "—" : (v > 0 ? "+" : "") + Number(v).toFixed(d);
+const rs = v => v == null ? "—" : (v < 0 ? "−₹" : "₹") + Math.abs(Math.round(v)).toLocaleString("en-IN");
+const cls = v => v > 0 ? "good" : v < 0 ? "bad" : "";
+const STRATS = ["NIFTY_ORB","NIFTY_ORB950","SENSEX_ORB","SENSEX_ORB950"];
+const LABEL = {"NIFTY_ORB":"NIFTY · range cap","NIFTY_ORB950":"NIFTY · cap + 9:50 filter","SENSEX_ORB":"SENSEX · range cap","SENSEX_ORB950":"SENSEX · cap + 9:50 filter"};
+const RSN = {stop:"stop", target:"target", time:"14:30", both:"both edges"};
+let ALL = [], FILTER = "ALL";
+function statusOf(r) {
+  if (r.real_entry) return r.real_exit ? ["real", "Real: filled &amp; exited"] : ["real", "Real: open/filled"];
+  if (r.held_reason) return ["held", "Not placed: " + esc(r.held_reason)];
+  return ["none", "Signal only (engine never proposed a real order)"];
+}
+function summary() {
+  const rows = STRATS.map(s => {
+    const t = ALL.filter(x => x.strategy_key === s), real = t.filter(x => x.real_entry), held = t.filter(x => !x.real_entry && x.held_reason);
+    return `<tr><td class="tagd">${LABEL[s]}</td><td class="r">${t.length}</td><td class="r good">${real.length}</td><td class="r" style="color:var(--warning)">${held.length}</td><td class="r muted">${t.length - real.length - held.length}</td></tr>`; }).join("");
+  document.getElementById("summary").innerHTML = `<table><thead><tr><th>Strategy</th><th class="r">Signals</th><th class="r">Real orders</th><th class="r">Held/missed</th><th class="r">Other</th></tr></thead><tbody>${rows}</tbody></table>`;
+}
+function filters() {
+  document.getElementById("filters").innerHTML = ["ALL",...STRATS].map(s => `<button class="${s===FILTER?"on":""}" data-s="${s}">${s === "ALL" ? "All" : LABEL[s]}</button>`).join("");
+  document.querySelectorAll("#filters button").forEach(b => b.onclick = () => { FILTER = b.dataset.s; filters(); log(); });
+}
+function log() {
+  const t = ALL.filter(x => FILTER === "ALL" || x.strategy_key === FILTER);
+  if (!t.length) { document.getElementById("log").innerHTML = '<div class="empty">No signals yet.</div>'; return; }
+  let h = `<table><thead><tr><th>Date</th><th>Strategy</th><th>Side</th><th>Entry</th><th class="r">Level</th><th>Exit</th><th class="r">Level</th><th>Reason</th><th class="r">Sim net pts</th><th>Status</th><th class="r">Real fill</th><th class="r">Real P&amp;L</th></tr></thead><tbody>`;
+  t.forEach(x => {
+    const [sc, label] = statusOf(x);
+    const rf = x.real_entry ? `${esc(x.real_entry.option_type || "")} ${x.real_entry.strike ?? ""} @${x.real_entry.fill ?? "—"}` : "—";
+    const rp = x.real_exit ? rs(x.real_exit.pnl) : "—";
+    h += `<tr><td>${esc(x.date)}</td><td class="tagd">${LABEL[x.strategy_key] || esc(x.strategy_key)}</td><td class="tagd ${x.side}">${x.side}</td>
+      <td>${esc(x.entry_t || "")}</td><td class="r">${x.entry ?? "—"}</td><td>${esc(x.exit_t || "")}</td><td class="r">${x.exit ?? "—"}</td>
+      <td>${x.reason ? `<span class="rsn">${RSN[x.reason] || esc(x.reason)}</span>` : "—"}</td><td class="r ${cls(x.pnl_net_pts)}">${fmt(x.pnl_net_pts)}</td>
+      <td><span class="badge ${sc}" title="${label}">${sc === "real" ? "REAL" : sc === "held" ? "HELD" : "SIGNAL ONLY"}</span></td>
+      <td class="r">${rf}</td><td class="r ${cls(x.real_exit ? x.real_exit.pnl : null)}">${rp}</td></tr>`;
+  });
+  document.getElementById("log").innerHTML = h + "</tbody></table>";
+}
+async function load() {
+  try { ALL = await (await fetch("signal_history.json?t=" + Date.now(), {cache:"no-store"})).json(); }
+  catch (e) { document.getElementById("log").innerHTML = `<div class="empty">Could not load signal_history.json — ${esc(e.message)}</div>`; return; }
+  summary(); filters(); log();
+}
+load(); setInterval(load, 60000);
+</script>
+</body>
+</html>
