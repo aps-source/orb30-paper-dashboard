@@ -12,9 +12,13 @@
   "exit_t": null,
   "exit": null,
   "reason": null,
-  "pnl_net_pts": -2.720000000001164,
+  "pnl_net_pts": -48.69000000000233,
   "status": "In LONG since 09:47 @ 73179",
-  "real_entry": null,
+  "real_entry": {
+   "fill": 626.85,
+   "option_type": "CE",
+   "strike": 73200.0
+  },
   "real_exit": null,
   "held_reason": null
  },
@@ -31,9 +35,13 @@
   "exit_t": null,
   "exit": null,
   "reason": null,
-  "pnl_net_pts": -0.7999999999992724,
+  "pnl_net_pts": -15.75,
   "status": "In LONG since 09:47 @ 22752",
-  "real_entry": null,
+  "real_entry": {
+   "fill": 127.6,
+   "option_type": "CE",
+   "strike": 22800.0
+  },
   "real_exit": null,
   "held_reason": null
  },
