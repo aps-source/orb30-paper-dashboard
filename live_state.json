@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-14T11:21:35",
+ "last_tick": "2026-10-14T11:22:36",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -295,8 +295,8 @@
    }
   },
   "SENSEX": {
-   "ltp": 73028.32,
-   "last_1m": "2026-10-14 11:21:00",
+   "ltp": 73025.21,
+   "last_1m": "2026-10-14 11:22:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -313,7 +313,7 @@
      "stop": 72894.41,
      "target": 73748.11999999998,
      "session_side": 1,
-     "session_pnl_net_pts": -156.65999999998894,
+     "session_pnl_net_pts": -159.76999999998952,
      "position": {
       "dir": "LONG",
       "date": "2026-10-14",
@@ -321,17 +321,17 @@
       "entry_price": 73178.98,
       "stop": 72894.41,
       "target": 73748.12,
-      "ltp": 73028.32,
-      "unrealized_pts": -150.66,
-      "unrealized_net_pts": -156.66,
-      "unrealized_rs": -3133
+      "ltp": 73025.21,
+      "unrealized_pts": -153.77,
+      "unrealized_net_pts": -159.77,
+      "unrealized_rs": -3195
      },
      "closed_trades": 2,
      "wins": 1,
      "realized_net_pts": -29.08,
      "realized_net_rs": -582,
-     "total_net_pts": -185.74,
-     "total_net_rs": -3715,
+     "total_net_pts": -188.85,
+     "total_net_rs": -3777,
      "tail": [
       {
        "t": "09:15",
@@ -435,10 +435,10 @@
       },
       {
        "t": "11:20",
-       "c": 73028.32
+       "c": 73025.21
       }
      ],
-     "last_1m": "2026-10-14 11:21:00"
+     "last_1m": "2026-10-14 11:22:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -566,16 +566,18 @@
       },
       {
        "t": "11:20",
-       "c": 73028.32
+       "c": 73025.21
       }
      ],
-     "last_1m": "2026-10-14 11:21:00"
+     "last_1m": "2026-10-14 11:22:00"
     }
    }
   }
  },
- "errors": [],
- "total_net_rs": -18881,
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
+ ],
+ "total_net_rs": -18943,
  "realized_net_rs": -12426,
  "open_positions": 2
 }
