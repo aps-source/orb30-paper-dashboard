@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-15T11:00:26",
+ "last_tick": "2026-10-15T11:01:07",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22932.3,
-   "last_1m": "2026-10-15 11:00:00",
+   "ltp": 22935.35,
+   "last_1m": "2026-10-15 11:01:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -129,10 +129,10 @@
       },
       {
        "t": "11:00",
-       "c": 22932.3
+       "c": 22935.35
       }
      ],
-     "last_1m": "2026-10-15 11:00:00"
+     "last_1m": "2026-10-15 11:01:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -244,10 +244,10 @@
       },
       {
        "t": "11:00",
-       "c": 22932.3
+       "c": 22935.35
       }
      ],
-     "last_1m": "2026-10-15 11:00:00"
+     "last_1m": "2026-10-15 11:01:00"
     }
    }
   },
@@ -488,7 +488,9 @@
    }
   }
  },
- "errors": [],
+ "errors": [
+  "SENSEX: {'status': 'failure', 'remarks': \"('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))\", 'data': ''}"
+ ],
  "total_net_rs": -24120,
  "realized_net_rs": -24120,
  "open_positions": 0
