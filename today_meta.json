@@ -1,8 +1,9 @@
 {
-  "updated_at": "2026-10-16T15:31:20.716963",
+  "updated_at": "2026-10-16T15:40:14.304455",
   "date": "2026-10-16",
-  "nifty_caption": "ORB30 NIFTY \u2014 strategy chart (OR + breakout levels + signals), live \u2014 16 Oct 2026",
-  "sensex_caption": "ORB30 SENSEX \u2014 strategy chart (OR + breakout levels + signals), live \u2014 16 Oct 2026",
+  "trades_caption": "ORB30 daily trades \u2014 16 Oct 2026: 0 trades, +\u20b90",
+  "nifty_caption": "ORB30 NIFTY \u2014 strategy chart (OR + breakout levels + signals), 16 Oct 2026",
+  "sensex_caption": "ORB30 SENSEX \u2014 strategy chart (OR + breakout levels + signals), 16 Oct 2026",
   "has_nifty_chart": true,
   "has_sensex_chart": true
 }
