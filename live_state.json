@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-16T10:56:35",
+ "last_tick": "2026-10-16T10:57:13",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 23092.3,
-   "last_1m": "2026-10-16 10:55:00",
+   "ltp": 23099.15,
+   "last_1m": "2026-10-16 10:57:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -125,10 +125,10 @@
       },
       {
        "t": "10:55",
-       "c": 23092.3
+       "c": 23099.15
       }
      ],
-     "last_1m": "2026-10-16 10:55:00"
+     "last_1m": "2026-10-16 10:57:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -236,16 +236,16 @@
       },
       {
        "t": "10:55",
-       "c": 23092.3
+       "c": 23099.15
       }
      ],
-     "last_1m": "2026-10-16 10:55:00"
+     "last_1m": "2026-10-16 10:57:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 74585.0,
-   "last_1m": "2026-10-16 10:55:00",
+   "ltp": 74606.57,
+   "last_1m": "2026-10-16 10:57:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -353,10 +353,10 @@
       },
       {
        "t": "10:55",
-       "c": 74585.0
+       "c": 74606.57
       }
      ],
-     "last_1m": "2026-10-16 10:55:00"
+     "last_1m": "2026-10-16 10:57:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -464,18 +464,15 @@
       },
       {
        "t": "10:55",
-       "c": 74585.0
+       "c": 74606.57
       }
      ],
-     "last_1m": "2026-10-16 10:55:00"
+     "last_1m": "2026-10-16 10:57:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne",
-  "SENSEX: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
+ "errors": [],
  "total_net_rs": -24120,
  "realized_net_rs": -24120,
  "open_positions": 0
