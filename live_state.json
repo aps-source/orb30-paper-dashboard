@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-09-28",
- "last_tick": "2026-10-22T11:23:59",
+ "last_tick": "2026-10-22T11:25:06",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22763.05,
-   "last_1m": "2026-10-22 11:24:00",
+   "ltp": 22752.15,
+   "last_1m": "2026-10-22 11:25:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -145,10 +145,14 @@
       },
       {
        "t": "11:20",
-       "c": 22763.05
+       "c": 22749.9
+      },
+      {
+       "t": "11:25",
+       "c": 22752.15
       }
      ],
-     "last_1m": "2026-10-22 11:24:00"
+     "last_1m": "2026-10-22 11:25:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -276,10 +280,14 @@
       },
       {
        "t": "11:20",
-       "c": 22763.05
+       "c": 22749.9
+      },
+      {
+       "t": "11:25",
+       "c": 22752.15
       }
      ],
-     "last_1m": "2026-10-22 11:24:00"
+     "last_1m": "2026-10-22 11:25:00"
     }
    }
   },
@@ -552,7 +560,9 @@
    }
   }
  },
- "errors": [],
+ "errors": [
+  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
+ ],
  "total_net_rs": -24120,
  "realized_net_rs": -24120,
  "open_positions": 0
