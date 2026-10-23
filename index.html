@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>ORB30 — Live Trading</title>
+<title>ORB30 — Paper Trading</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
   :root {
@@ -127,7 +127,7 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="brand"><div class="logo">▤</div>
-      <div><h1>ORB30 — Live Trading</h1><div class="tag">NIFTY + SENSEX futures · 30-min opening-range breakout · range cap · intraday, flat by 14:30 · automatic real orders</div></div></div>
+      <div><h1>ORB30 — Paper Trading</h1><div class="tag">NIFTY + SENSEX · 30-min opening-range breakout · range cap · intraday, flat by 14:30 · signal replay only</div></div></div>
     <div class="hero-right">
       <span class="hero-pill" id="clock">…</span>
       <span id="status"></span><span class="hero-pill" id="tick">…</span>
@@ -140,13 +140,13 @@
     </div>
   </div>
   <details class="rules"><summary>Strategy rules</summary>
-    <p>The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>Range cap:</b> skip the day if the OR is wider than 100 pts (NIFTY) or 300 pts (SENSEX). <b>ORB · range cap:</b> go LONG the moment price trades above the OR high, SHORT below the OR low, one trade a day. <b>ORB · range cap + 9:50 filter:</b> the 5-min candle ending 09:50 must close beyond the OR (above the high = LONG, below the low = SHORT), entered at that 09:50 close; if it closes inside the range there is no trade. <b>Both:</b> stop at the opposite end of the OR, target 2R (twice the risk), any open trade closed at 14:30. 1 lot per strategy on NIFTY/SENSEX futures, placed automatically by the live engine subject to the risk limits below. The two caps were picked after looking at the backtest data; the 9:50 filter is an unconfirmed lead, still being tested out-of-sample. Risk limits: Rs.3,000 combined daily loss cap, 2-loss breaker per strategy, 10% funds buffer on every order.</p></details>
+    <p>The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>Range cap:</b> skip the day if the OR is wider than 100 pts (NIFTY) or 300 pts (SENSEX). <b>ORB · range cap:</b> go LONG the moment price trades above the OR high, SHORT below the OR low, one trade a day. <b>ORB · range cap + 9:50 filter:</b> the 5-min candle ending 09:50 must close beyond the OR (above the high = LONG, below the low = SHORT), entered at that 09:50 close; if it closes inside the range there is no trade. <b>Both:</b> stop at the opposite end of the OR, target 2R (twice the risk), any open trade closed at 14:30. 1 lot per strategy, 1 trade/day per strategy. The two caps were picked after looking at the backtest data; the 9:50 filter is an unconfirmed lead, still being tested out-of-sample. Paper-only since 2026-10-23: this project ran real automatic orders (NIFTY/SENSEX options) from 2026-09-30 to 2026-10-23, converted back to paper for lack of a durable edge -- see the historical real-trading figures below.</p></details>
 </header>
 <main class="page">
   <div id="err"></div>
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
-  <div class="foot">Read-only page: it cannot itself place, modify or cancel any order — the automatic engine does that separately, gated by AUTO_TRADING.on and the risk limits above. <b>The P&amp;L on this page is still the signal-replay calculation (index points, assumed fill at the OR edge / 9:50 close, no slippage) — it has not yet been reconciled against actual futures fills.</b> Real order state (fills, rupee P&amp;L, broker responses) is recorded in trade_log.jsonl. ₹ = points × lot size (NIFTY 65, SENSEX 20). Refreshes every 60 seconds from <code>live_state.json</code>.</div>
+  <div class="foot">Read-only page: it never places, modifies or cancels any order. P&amp;L is the signal-replay calculation (index points, assumed fill at the OR edge / 9:50 close, no slippage). ₹ = points × lot size (NIFTY 65, SENSEX 20). The KPI row's "(real, historical)" figures are frozen from the 2026-09-30 to 2026-10-23 real-trading period and no longer update. Refreshes every 60 seconds from <code>live_state.json</code>.</div>
 
   <section class="chart-section">
     <h2>Today's chart &middot; strategy, signals &amp; trades</h2>
@@ -198,7 +198,7 @@ function card(sym, key, v, ltp, bt, real) {
   const st = v.status || "";
   const signalOpen = !!v.position;                   // the simulated engine thinks a trade is open (may or may not be real)
   const kind = rp ? "IN" : st.startsWith("Closed") ? "DONE" : /^(Skipped|No trade|No breakout|No data)/.test(st) ? "NO" : "WAIT";
-  const lab = {IN:"IN TRADE (REAL)", DONE:"DONE TODAY", NO:"NO TRADE", WAIT:"WAITING"}[kind];
+  const lab = {IN:"IN TRADE", DONE:"DONE TODAY", NO:"NO TRADE", WAIT:"WAITING"}[kind];
   const wr = v.closed_trades ? Math.round(100*v.wins/v.closed_trades) + "%" : "—";
   const sp = v.session_pnl_net_pts;
   const meta = rp ? `since ${esc(rp.entry_time.slice(11,16))} @ Rs.${n0(rp.entry_ltp)} · ${esc(rp.option_type)} ${n0(rp.strike)}` : "no real position";
