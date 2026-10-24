@@ -1,7 +1,7 @@
 {
  "engine_status": "data_error",
  "paper_start": "2026-10-23",
- "last_tick": "2026-10-24T20:29:23",
+ "last_tick": "2026-10-24T20:34:33",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -1457,7 +1457,7 @@
   }
  },
  "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-901', 'error_type': 'Invalid_Authentication', 'error_message': 'Client ID or user generated access token is invalid or expired.'}, 'data': ''}",
+  "NIFTY: {'status': 'failure', 'remarks': \"('Connection aborted.', ConnectionResetError(10054, 'An existing connection was forcibly closed by the remote host', None, 10054, None))\", 'data': ''}",
   "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-901', 'error_type': 'Invalid_Authentication', 'error_message': 'Client ID or user generated access token is invalid or expired.'}, 'data': ''}"
  ],
  "total_net_rs": 0,
