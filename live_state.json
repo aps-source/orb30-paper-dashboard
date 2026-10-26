@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-10-23",
- "last_tick": "2026-10-26T11:13:38",
+ "last_tick": "2026-10-26T11:14:47",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -268,8 +268,8 @@
    }
   },
   "SENSEX": {
-   "ltp": 73115.59,
-   "last_1m": "2026-10-26 11:13:00",
+   "ltp": 73100.78,
+   "last_1m": "2026-10-26 11:15:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -389,10 +389,14 @@
       },
       {
        "t": "11:10",
-       "c": 73115.59
+       "c": 73097.05
+      },
+      {
+       "t": "11:15",
+       "c": 73100.78
       }
      ],
-     "last_1m": "2026-10-26 11:13:00"
+     "last_1m": "2026-10-26 11:15:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -512,15 +516,21 @@
       },
       {
        "t": "11:10",
-       "c": 73115.59
+       "c": 73097.05
+      },
+      {
+       "t": "11:15",
+       "c": 73100.78
       }
      ],
-     "last_1m": "2026-10-26 11:13:00"
+     "last_1m": "2026-10-26 11:15:00"
     }
    }
   }
  },
- "errors": [],
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
+ ],
  "total_net_rs": 0,
  "realized_net_rs": 0,
  "open_positions": 0
