@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-10-26T12:54:24",
+ "last_tick": "2026-10-26T12:55:42",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22580.25,
-   "last_1m": "2026-10-26 12:53:00",
+   "ltp": 22583.1,
+   "last_1m": "2026-10-26 12:55:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -217,10 +217,14 @@
       },
       {
        "t": "12:50",
-       "c": 22580.25
+       "c": 22584.75
+      },
+      {
+       "t": "12:55",
+       "c": 22583.1
       }
      ],
-     "last_1m": "2026-10-26 12:53:00"
+     "last_1m": "2026-10-26 12:55:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -420,16 +424,20 @@
       },
       {
        "t": "12:50",
-       "c": 22580.25
+       "c": 22584.75
+      },
+      {
+       "t": "12:55",
+       "c": 22583.1
       }
      ],
-     "last_1m": "2026-10-26 12:53:00"
+     "last_1m": "2026-10-26 12:55:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 73092.66,
-   "last_1m": "2026-10-26 12:54:00",
+   "ltp": 73090.39,
+   "last_1m": "2026-10-26 12:55:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -629,10 +637,14 @@
       },
       {
        "t": "12:50",
-       "c": 73092.66
+       "c": 73092.84
+      },
+      {
+       "t": "12:55",
+       "c": 73090.39
       }
      ],
-     "last_1m": "2026-10-26 12:54:00"
+     "last_1m": "2026-10-26 12:55:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -832,17 +844,19 @@
       },
       {
        "t": "12:50",
-       "c": 73092.66
+       "c": 73092.84
+      },
+      {
+       "t": "12:55",
+       "c": 73090.39
       }
      ],
-     "last_1m": "2026-10-26 12:54:00"
+     "last_1m": "2026-10-26 12:55:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
+ "errors": [],
  "total_net_rs": 0,
  "realized_net_rs": 0,
  "open_positions": 0
