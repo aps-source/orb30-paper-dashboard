@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-10-30T10:15:54",
+ "last_tick": "2026-10-30T10:17:01",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,15 +16,15 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22928.55,
-   "last_1m": "2026-10-30 10:15:00",
+   "ltp": 22907.1,
+   "last_1m": "2026-10-30 10:17:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30 \u00b7 range cap",
      "session_date": "2026-10-30",
      "counted": true,
-     "status": "In LONG since 09:50 @ 22995",
+     "status": "Closed LONG: stopped out at 22920",
      "or_high": 22994.7,
      "or_low": 22919.85,
      "or_range": 74.85000000000218,
@@ -34,25 +34,14 @@
      "stop": 22919.85,
      "target": 23144.400000000005,
      "session_side": 1,
-     "session_pnl_net_pts": -68.15000000000146,
-     "position": {
-      "dir": "LONG",
-      "date": "2026-10-30",
-      "entry_time": "2026-10-30 09:50",
-      "entry_price": 22994.7,
-      "stop": 22919.85,
-      "target": 23144.4,
-      "ltp": 22928.55,
-      "unrealized_pts": -66.15,
-      "unrealized_net_pts": -68.15,
-      "unrealized_rs": -4430
-     },
-     "closed_trades": 0,
+     "session_pnl_net_pts": -76.85000000000218,
+     "position": null,
+     "closed_trades": 1,
      "wins": 0,
-     "realized_net_pts": 0.0,
-     "realized_net_rs": 0,
-     "total_net_pts": -68.15,
-     "total_net_rs": -4430,
+     "realized_net_pts": -76.85,
+     "realized_net_rs": -4995,
+     "total_net_pts": -76.85,
+     "total_net_rs": -4995,
      "tail": [
       {
        "t": "09:15",
@@ -104,10 +93,10 @@
       },
       {
        "t": "10:15",
-       "c": 22928.55
+       "c": 22907.1
       }
      ],
-     "last_1m": "2026-10-30 10:15:00"
+     "last_1m": "2026-10-30 10:17:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -183,23 +172,23 @@
       },
       {
        "t": "10:15",
-       "c": 22928.55
+       "c": 22907.1
       }
      ],
-     "last_1m": "2026-10-30 10:15:00"
+     "last_1m": "2026-10-30 10:17:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 74147.17,
-   "last_1m": "2026-10-30 10:15:00",
+   "ltp": 74082.66,
+   "last_1m": "2026-10-30 10:17:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30 \u00b7 range cap",
      "session_date": "2026-10-30",
      "counted": true,
-     "status": "In LONG since 09:50 @ 74358",
+     "status": "Closed LONG: stopped out at 74099",
      "or_high": 74357.55,
      "or_low": 74099.33,
      "or_range": 258.22000000000116,
@@ -209,25 +198,14 @@
      "stop": 74099.33,
      "target": 74873.99,
      "session_side": 1,
-     "session_pnl_net_pts": -216.38000000000466,
-     "position": {
-      "dir": "LONG",
-      "date": "2026-10-30",
-      "entry_time": "2026-10-30 09:50",
-      "entry_price": 74357.55,
-      "stop": 74099.33,
-      "target": 74873.99,
-      "ltp": 74147.17,
-      "unrealized_pts": -210.38,
-      "unrealized_net_pts": -216.38,
-      "unrealized_rs": -4328
-     },
-     "closed_trades": 0,
+     "session_pnl_net_pts": -264.22000000000116,
+     "position": null,
+     "closed_trades": 1,
      "wins": 0,
-     "realized_net_pts": 0.0,
-     "realized_net_rs": 0,
-     "total_net_pts": -216.38,
-     "total_net_rs": -4328,
+     "realized_net_pts": -264.22,
+     "realized_net_rs": -5284,
+     "total_net_pts": -264.22,
+     "total_net_rs": -5284,
      "tail": [
       {
        "t": "09:15",
@@ -279,10 +257,10 @@
       },
       {
        "t": "10:15",
-       "c": 74147.17
+       "c": 74082.66
       }
      ],
-     "last_1m": "2026-10-30 10:15:00"
+     "last_1m": "2026-10-30 10:17:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -358,16 +336,16 @@
       },
       {
        "t": "10:15",
-       "c": 74147.17
+       "c": 74082.66
       }
      ],
-     "last_1m": "2026-10-30 10:15:00"
+     "last_1m": "2026-10-30 10:17:00"
     }
    }
   }
  },
  "errors": [],
- "total_net_rs": -8758,
- "realized_net_rs": 0,
- "open_positions": 2
+ "total_net_rs": -10279,
+ "realized_net_rs": -10279,
+ "open_positions": 0
 }

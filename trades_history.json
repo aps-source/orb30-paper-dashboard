@@ -1,1 +1,42 @@
-[]
+[
+ {
+  "strategy": "NIFTY ORB",
+  "symbol": "NIFTY",
+  "variant": "ORB",
+  "date": "2026-10-30",
+  "dir": "LONG",
+  "entry_time": "2026-10-30 09:50",
+  "exit_time": "2026-10-30 10:16",
+  "entry": 22994.7,
+  "exit": 22919.85,
+  "stop": 22919.85,
+  "target": 23144.4,
+  "or_high": 22994.7,
+  "or_low": 22919.85,
+  "or_range": 74.9,
+  "gross_pts": -74.85,
+  "net_pts": -76.85,
+  "net_rs": -4995,
+  "exit_reason": "stop"
+ },
+ {
+  "strategy": "SENSEX ORB",
+  "symbol": "SENSEX",
+  "variant": "ORB",
+  "date": "2026-10-30",
+  "dir": "LONG",
+  "entry_time": "2026-10-30 09:50",
+  "exit_time": "2026-10-30 10:16",
+  "entry": 74357.55,
+  "exit": 74099.33,
+  "stop": 74099.33,
+  "target": 74873.99,
+  "or_high": 74357.55,
+  "or_low": 74099.33,
+  "or_range": 258.2,
+  "gross_pts": -258.22,
+  "net_pts": -264.22,
+  "net_rs": -5284,
+  "exit_reason": "stop"
+ }
+]
