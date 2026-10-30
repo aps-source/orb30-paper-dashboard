@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-10-23",
- "last_tick": "2026-10-30T10:06:39",
+ "last_tick": "2026-10-30T10:07:45",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -175,8 +175,8 @@
    }
   },
   "SENSEX": {
-   "ltp": 74254.57,
-   "last_1m": "2026-10-30 10:06:00",
+   "ltp": 74228.4,
+   "last_1m": "2026-10-30 10:07:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -193,7 +193,7 @@
      "stop": 74099.33,
      "target": 74873.99,
      "session_side": 1,
-     "session_pnl_net_pts": -108.97999999999593,
+     "session_pnl_net_pts": -135.15000000000873,
      "position": {
       "dir": "LONG",
       "date": "2026-10-30",
@@ -201,17 +201,17 @@
       "entry_price": 74357.55,
       "stop": 74099.33,
       "target": 74873.99,
-      "ltp": 74254.57,
-      "unrealized_pts": -102.98,
-      "unrealized_net_pts": -108.98,
-      "unrealized_rs": -2180
+      "ltp": 74228.4,
+      "unrealized_pts": -129.15,
+      "unrealized_net_pts": -135.15,
+      "unrealized_rs": -2703
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": -108.98,
-     "total_net_rs": -2180,
+     "total_net_pts": -135.15,
+     "total_net_rs": -2703,
      "tail": [
       {
        "t": "09:15",
@@ -255,10 +255,10 @@
       },
       {
        "t": "10:05",
-       "c": 74254.57
+       "c": 74228.4
       }
      ],
-     "last_1m": "2026-10-30 10:06:00"
+     "last_1m": "2026-10-30 10:07:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -326,16 +326,18 @@
       },
       {
        "t": "10:05",
-       "c": 74254.57
+       "c": 74228.4
       }
      ],
-     "last_1m": "2026-10-30 10:06:00"
+     "last_1m": "2026-10-30 10:07:00"
     }
    }
   }
  },
- "errors": [],
- "total_net_rs": -4647,
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
+ ],
+ "total_net_rs": -5170,
  "realized_net_rs": 0,
  "open_positions": 2
 }
