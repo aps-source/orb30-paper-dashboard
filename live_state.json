@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-10-30T09:48:38",
+ "last_tick": "2026-10-30T09:49:45",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 22956.9,
-   "last_1m": "2026-10-30 09:48:00",
+   "ltp": 22974.95,
+   "last_1m": "2026-10-30 09:49:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -69,22 +69,22 @@
       },
       {
        "t": "09:45",
-       "c": 22956.9
+       "c": 22974.95
       }
      ],
-     "last_1m": "2026-10-30 09:48:00"
+     "last_1m": "2026-10-30 09:49:00"
     },
     "ORB950": {
      "variant": "ORB950",
      "name": "ORB30 \u00b7 cap + 9:50 filter",
      "session_date": "2026-10-30",
      "counted": true,
-     "status": "Waiting for the 9:50 close",
+     "status": "No trade: 9:50 close 22975 is inside the range",
      "or_high": 22994.7,
      "or_low": 22919.85,
      "or_range": 74.85000000000218,
      "cap": 100.0,
-     "filter_close": null,
+     "filter_close": 22974.95,
      "entry": null,
      "stop": null,
      "target": null,
@@ -124,16 +124,16 @@
       },
       {
        "t": "09:45",
-       "c": 22956.9
+       "c": 22974.95
       }
      ],
-     "last_1m": "2026-10-30 09:48:00"
+     "last_1m": "2026-10-30 09:49:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 74232.48,
-   "last_1m": "2026-10-30 09:48:00",
+   "ltp": 74287.87,
+   "last_1m": "2026-10-30 09:49:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -185,22 +185,22 @@
       },
       {
        "t": "09:45",
-       "c": 74232.48
+       "c": 74287.87
       }
      ],
-     "last_1m": "2026-10-30 09:48:00"
+     "last_1m": "2026-10-30 09:49:00"
     },
     "ORB950": {
      "variant": "ORB950",
      "name": "ORB30 \u00b7 cap + 9:50 filter",
      "session_date": "2026-10-30",
      "counted": true,
-     "status": "Waiting for the 9:50 close",
+     "status": "No trade: 9:50 close 74288 is inside the range",
      "or_high": 74357.55,
      "or_low": 74099.33,
      "or_range": 258.22000000000116,
      "cap": 300.0,
-     "filter_close": null,
+     "filter_close": 74287.87,
      "entry": null,
      "stop": null,
      "target": null,
@@ -240,10 +240,10 @@
       },
       {
        "t": "09:45",
-       "c": 74232.48
+       "c": 74287.87
       }
      ],
-     "last_1m": "2026-10-30 09:48:00"
+     "last_1m": "2026-10-30 09:49:00"
     }
    }
   }
