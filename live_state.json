@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-02T12:10:12",
+ "last_tick": "2026-11-02T12:11:26",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 23314.75,
-   "last_1m": "2026-11-02 12:09:00",
+   "ltp": 23326.55,
+   "last_1m": "2026-11-02 12:11:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -181,10 +181,14 @@
       },
       {
        "t": "12:05",
-       "c": 23314.75
+       "c": 23322.55
+      },
+      {
+       "t": "12:10",
+       "c": 23326.55
       }
      ],
-     "last_1m": "2026-11-02 12:09:00"
+     "last_1m": "2026-11-02 12:11:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -348,16 +352,20 @@
       },
       {
        "t": "12:05",
-       "c": 23314.75
+       "c": 23322.55
+      },
+      {
+       "t": "12:10",
+       "c": 23326.55
       }
      ],
-     "last_1m": "2026-11-02 12:09:00"
+     "last_1m": "2026-11-02 12:11:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 75381.26,
-   "last_1m": "2026-11-02 12:10:00",
+   "ltp": 75395.64,
+   "last_1m": "2026-11-02 12:11:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -525,10 +533,10 @@
       },
       {
        "t": "12:10",
-       "c": 75381.26
+       "c": 75395.64
       }
      ],
-     "last_1m": "2026-11-02 12:10:00"
+     "last_1m": "2026-11-02 12:11:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -696,17 +704,15 @@
       },
       {
        "t": "12:10",
-       "c": 75381.26
+       "c": 75395.64
       }
      ],
-     "last_1m": "2026-11-02 12:10:00"
+     "last_1m": "2026-11-02 12:11:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
+ "errors": [],
  "total_net_rs": -10279,
  "realized_net_rs": -10279,
  "open_positions": 0
