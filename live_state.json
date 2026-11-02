@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-02T10:59:38",
+ "last_tick": "2026-11-02T11:00:49",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 23327.5,
-   "last_1m": "2026-11-02 10:59:00",
+   "ltp": 23331.85,
+   "last_1m": "2026-11-02 11:00:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -125,10 +125,14 @@
       },
       {
        "t": "10:55",
-       "c": 23327.5
+       "c": 23326.85
+      },
+      {
+       "t": "11:00",
+       "c": 23331.85
       }
      ],
-     "last_1m": "2026-11-02 10:59:00"
+     "last_1m": "2026-11-02 11:00:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -236,16 +240,20 @@
       },
       {
        "t": "10:55",
-       "c": 23327.5
+       "c": 23326.85
+      },
+      {
+       "t": "11:00",
+       "c": 23331.85
       }
      ],
-     "last_1m": "2026-11-02 10:59:00"
+     "last_1m": "2026-11-02 11:00:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 75462.18,
-   "last_1m": "2026-11-02 10:58:00",
+   "ltp": 75447.23,
+   "last_1m": "2026-11-02 11:00:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -353,10 +361,14 @@
       },
       {
        "t": "10:55",
-       "c": 75462.18
+       "c": 75443.5
+      },
+      {
+       "t": "11:00",
+       "c": 75447.23
       }
      ],
-     "last_1m": "2026-11-02 10:58:00"
+     "last_1m": "2026-11-02 11:00:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -464,17 +476,19 @@
       },
       {
        "t": "10:55",
-       "c": 75462.18
+       "c": 75443.5
+      },
+      {
+       "t": "11:00",
+       "c": 75447.23
       }
      ],
-     "last_1m": "2026-11-02 10:58:00"
+     "last_1m": "2026-11-02 11:00:00"
     }
    }
   }
  },
- "errors": [
-  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
- ],
+ "errors": [],
  "total_net_rs": -10279,
  "realized_net_rs": -10279,
  "open_positions": 0
