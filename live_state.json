@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-03T13:10:30",
+ "last_tick": "2026-11-03T13:11:51",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 23696.9,
-   "last_1m": "2026-11-03 13:09:00",
+   "ltp": 23697.9,
+   "last_1m": "2026-11-03 13:11:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -229,10 +229,14 @@
       },
       {
        "t": "13:05",
-       "c": 23696.9
+       "c": 23695.85
+      },
+      {
+       "t": "13:10",
+       "c": 23697.9
       }
      ],
-     "last_1m": "2026-11-03 13:09:00"
+     "last_1m": "2026-11-03 13:11:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -444,16 +448,20 @@
       },
       {
        "t": "13:05",
-       "c": 23696.9
+       "c": 23695.85
+      },
+      {
+       "t": "13:10",
+       "c": 23697.9
       }
      ],
-     "last_1m": "2026-11-03 13:09:00"
+     "last_1m": "2026-11-03 13:11:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 76618.43,
-   "last_1m": "2026-11-03 13:10:00",
+   "ltp": 76629.0,
+   "last_1m": "2026-11-03 13:11:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -669,10 +677,10 @@
       },
       {
        "t": "13:10",
-       "c": 76618.43
+       "c": 76629.0
       }
      ],
-     "last_1m": "2026-11-03 13:10:00"
+     "last_1m": "2026-11-03 13:11:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -888,17 +896,15 @@
       },
       {
        "t": "13:10",
-       "c": 76618.43
+       "c": 76629.0
       }
      ],
-     "last_1m": "2026-11-03 13:10:00"
+     "last_1m": "2026-11-03 13:11:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
+ "errors": [],
  "total_net_rs": -10279,
  "realized_net_rs": -10279,
  "open_positions": 0
