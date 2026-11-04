@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-04T13:06:07",
+ "last_tick": "2026-11-04T13:07:23",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 23830.1,
-   "last_1m": "2026-11-04 13:04:00",
+   "ltp": 23844.25,
+   "last_1m": "2026-11-04 13:07:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -225,10 +225,14 @@
       },
       {
        "t": "13:00",
-       "c": 23830.1
+       "c": 23830.55
+      },
+      {
+       "t": "13:05",
+       "c": 23844.25
       }
      ],
-     "last_1m": "2026-11-04 13:04:00"
+     "last_1m": "2026-11-04 13:07:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -436,16 +440,20 @@
       },
       {
        "t": "13:00",
-       "c": 23830.1
+       "c": 23830.55
+      },
+      {
+       "t": "13:05",
+       "c": 23844.25
       }
      ],
-     "last_1m": "2026-11-04 13:04:00"
+     "last_1m": "2026-11-04 13:07:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 76998.17,
-   "last_1m": "2026-11-04 13:06:00",
+   "ltp": 77014.5,
+   "last_1m": "2026-11-04 13:07:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -657,10 +665,10 @@
       },
       {
        "t": "13:05",
-       "c": 76998.17
+       "c": 77014.5
       }
      ],
-     "last_1m": "2026-11-04 13:06:00"
+     "last_1m": "2026-11-04 13:07:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -872,17 +880,15 @@
       },
       {
        "t": "13:05",
-       "c": 76998.17
+       "c": 77014.5
       }
      ],
-     "last_1m": "2026-11-04 13:06:00"
+     "last_1m": "2026-11-04 13:07:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
+ "errors": [],
  "total_net_rs": -10279,
  "realized_net_rs": -10279,
  "open_positions": 0
