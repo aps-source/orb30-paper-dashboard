@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-05T09:48:30",
+ "last_tick": "2026-11-05T09:49:36",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 24413.6,
-   "last_1m": "2026-11-05 09:48:00",
+   "ltp": 24412.9,
+   "last_1m": "2026-11-05 09:49:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -34,7 +34,7 @@
      "stop": 24296.3,
      "target": 24583.250000000004,
      "session_side": 1,
-     "session_pnl_net_pts": 19.649999999997817,
+     "session_pnl_net_pts": 18.950000000000728,
      "position": {
       "dir": "LONG",
       "date": "2026-11-05",
@@ -42,17 +42,17 @@
       "entry_price": 24391.95,
       "stop": 24296.3,
       "target": 24583.25,
-      "ltp": 24413.6,
-      "unrealized_pts": 21.65,
-      "unrealized_net_pts": 19.65,
-      "unrealized_rs": 1277
+      "ltp": 24412.9,
+      "unrealized_pts": 20.95,
+      "unrealized_net_pts": 18.95,
+      "unrealized_rs": 1232
      },
      "closed_trades": 1,
      "wins": 0,
      "realized_net_pts": -76.85,
      "realized_net_rs": -4995,
-     "total_net_pts": -57.2,
-     "total_net_rs": -3718,
+     "total_net_pts": -57.9,
+     "total_net_rs": -3763,
      "tail": [
       {
        "t": "09:15",
@@ -80,34 +80,45 @@
       },
       {
        "t": "09:45",
-       "c": 24413.6
+       "c": 24412.9
       }
      ],
-     "last_1m": "2026-11-05 09:48:00"
+     "last_1m": "2026-11-05 09:49:00"
     },
     "ORB950": {
      "variant": "ORB950",
      "name": "ORB30 \u00b7 cap + 9:50 filter",
      "session_date": "2026-11-05",
      "counted": true,
-     "status": "Waiting for the 9:50 close",
+     "status": "In LONG since 09:50 @ 24413",
      "or_high": 24391.95,
      "or_low": 24296.3,
      "or_range": 95.65000000000146,
      "cap": 100.0,
-     "filter_close": null,
-     "entry": null,
-     "stop": null,
-     "target": null,
-     "session_side": 0,
-     "session_pnl_net_pts": null,
-     "position": null,
+     "filter_close": 24412.9,
+     "entry": 24412.9,
+     "stop": 24296.3,
+     "target": 24646.100000000006,
+     "session_side": 1,
+     "session_pnl_net_pts": -2.0,
+     "position": {
+      "dir": "LONG",
+      "date": "2026-11-05",
+      "entry_time": "2026-11-05 09:50",
+      "entry_price": 24412.9,
+      "stop": 24296.3,
+      "target": 24646.1,
+      "ltp": 24412.9,
+      "unrealized_pts": 0.0,
+      "unrealized_net_pts": -2.0,
+      "unrealized_rs": -130
+     },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": 0.0,
-     "total_net_rs": 0,
+     "total_net_pts": -2.0,
+     "total_net_rs": -130,
      "tail": [
       {
        "t": "09:15",
@@ -135,16 +146,16 @@
       },
       {
        "t": "09:45",
-       "c": 24413.6
+       "c": 24412.9
       }
      ],
-     "last_1m": "2026-11-05 09:48:00"
+     "last_1m": "2026-11-05 09:49:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 78905.77,
-   "last_1m": "2026-11-05 09:48:00",
+   "ltp": 78908.16,
+   "last_1m": "2026-11-05 09:49:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -196,10 +207,10 @@
       },
       {
        "t": "09:45",
-       "c": 78905.77
+       "c": 78908.16
       }
      ],
-     "last_1m": "2026-11-05 09:48:00"
+     "last_1m": "2026-11-05 09:49:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -251,16 +262,16 @@
       },
       {
        "t": "09:45",
-       "c": 78905.77
+       "c": 78908.16
       }
      ],
-     "last_1m": "2026-11-05 09:48:00"
+     "last_1m": "2026-11-05 09:49:00"
     }
    }
   }
  },
  "errors": [],
- "total_net_rs": -9002,
+ "total_net_rs": -9177,
  "realized_net_rs": -10279,
- "open_positions": 1
+ "open_positions": 2
 }
