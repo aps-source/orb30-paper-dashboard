@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-06T11:45:46",
+ "last_tick": "2026-11-06T11:47:13",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 24612.6,
-   "last_1m": "2026-11-06 11:44:00",
+   "ltp": 24612.8,
+   "last_1m": "2026-11-06 11:47:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -161,10 +161,14 @@
       },
       {
        "t": "11:40",
-       "c": 24612.6
+       "c": 24608.9
+      },
+      {
+       "t": "11:45",
+       "c": 24612.8
       }
      ],
-     "last_1m": "2026-11-06 11:44:00"
+     "last_1m": "2026-11-06 11:47:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -308,16 +312,20 @@
       },
       {
        "t": "11:40",
-       "c": 24612.6
+       "c": 24608.9
+      },
+      {
+       "t": "11:45",
+       "c": 24612.8
       }
      ],
-     "last_1m": "2026-11-06 11:44:00"
+     "last_1m": "2026-11-06 11:47:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 79755.86,
-   "last_1m": "2026-11-06 11:45:00",
+   "ltp": 79761.9,
+   "last_1m": "2026-11-06 11:47:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -465,10 +473,10 @@
       },
       {
        "t": "11:45",
-       "c": 79755.86
+       "c": 79761.9
       }
      ],
-     "last_1m": "2026-11-06 11:45:00"
+     "last_1m": "2026-11-06 11:47:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -616,17 +624,15 @@
       },
       {
        "t": "11:45",
-       "c": 79755.86
+       "c": 79761.9
       }
      ],
-     "last_1m": "2026-11-06 11:45:00"
+     "last_1m": "2026-11-06 11:47:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
+ "errors": [],
  "total_net_rs": 4343,
  "realized_net_rs": 4343,
  "open_positions": 0
