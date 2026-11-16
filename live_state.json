@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-16T10:35:39",
+ "last_tick": "2026-11-16T10:36:58",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 25220.95,
-   "last_1m": "2026-11-16 10:34:00",
+   "ltp": 25213.6,
+   "last_1m": "2026-11-16 10:36:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -105,10 +105,14 @@
       },
       {
        "t": "10:30",
-       "c": 25220.95
+       "c": 25216.55
+      },
+      {
+       "t": "10:35",
+       "c": 25213.6
       }
      ],
-     "last_1m": "2026-11-16 10:34:00"
+     "last_1m": "2026-11-16 10:36:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -196,16 +200,20 @@
       },
       {
        "t": "10:30",
-       "c": 25220.95
+       "c": 25216.55
+      },
+      {
+       "t": "10:35",
+       "c": 25213.6
       }
      ],
-     "last_1m": "2026-11-16 10:34:00"
+     "last_1m": "2026-11-16 10:36:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 81943.38,
-   "last_1m": "2026-11-16 10:35:00",
+   "ltp": 81902.57,
+   "last_1m": "2026-11-16 10:36:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -297,10 +305,10 @@
       },
       {
        "t": "10:35",
-       "c": 81943.38
+       "c": 81902.57
       }
      ],
-     "last_1m": "2026-11-16 10:35:00"
+     "last_1m": "2026-11-16 10:36:00"
     },
     "ORB950": {
      "variant": "ORB950",
@@ -392,17 +400,15 @@
       },
       {
        "t": "10:35",
-       "c": 81943.38
+       "c": 81902.57
       }
      ],
-     "last_1m": "2026-11-16 10:35:00"
+     "last_1m": "2026-11-16 10:36:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
- ],
+ "errors": [],
  "total_net_rs": 4343,
  "realized_net_rs": 4343,
  "open_positions": 0
