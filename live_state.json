@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-17T20:11:12",
+ "last_tick": "2026-11-18T00:27:45",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -11,8 +11,8 @@
   "SENSEX": 6.0
  },
  "caps_pts": {
-  "NIFTY": 100.0,
-  "SENSEX": 300.0
+  "NIFTY": "none",
+  "SENSEX": "ATR k=0.75"
  },
  "instruments": {
   "NIFTY": {
@@ -24,24 +24,24 @@
      "name": "ORB30",
      "session_date": "2026-11-17",
      "counted": true,
-     "status": "Closed LONG: 14:30 time exit at 25464",
+     "status": "Closed LONG: sync-exit (other leg hit target) at 25495",
      "or_high": 25358.05,
      "or_low": 25267.3,
      "or_range": 90.75,
-     "cap": 100.0,
+     "cap": null,
      "filter_close": null,
      "entry": 25358.05,
-     "stop": 25267.3,
+     "stop": 25312.675,
      "target": 25539.55,
      "session_side": 1,
-     "session_pnl_net_pts": 103.65000000000146,
+     "session_pnl_net_pts": 134.75,
      "position": null,
-     "closed_trades": 16,
-     "wins": 7,
-     "realized_net_pts": -2.8,
-     "realized_net_rs": -182,
-     "total_net_pts": -2.8,
-     "total_net_rs": -182,
+     "closed_trades": 12,
+     "wins": 6,
+     "realized_net_pts": 843.31,
+     "realized_net_rs": 54815,
+     "total_net_pts": 843.31,
+     "total_net_rs": 54815,
      "tail": [
       {
        "t": "09:15",
@@ -365,20 +365,20 @@
      "or_high": 82349.58,
      "or_low": 82091.9,
      "or_range": 257.68000000000757,
-     "cap": 300.0,
+     "cap": 798.4548214285717,
      "filter_close": null,
      "entry": 82349.58,
-     "stop": 82091.9,
+     "stop": 82220.73999999999,
      "target": 82864.94000000002,
      "session_side": 1,
      "session_pnl_net_pts": 509.36000000001513,
      "position": null,
-     "closed_trades": 16,
-     "wins": 7,
-     "realized_net_pts": -328.23,
-     "realized_net_rs": -6565,
-     "total_net_pts": -328.23,
-     "total_net_rs": -6565,
+     "closed_trades": 13,
+     "wins": 6,
+     "realized_net_pts": 2584.81,
+     "realized_net_rs": 51696,
+     "total_net_pts": 2584.81,
+     "total_net_rs": 51696,
      "tail": [
       {
        "t": "09:15",
@@ -539,7 +539,7 @@
   }
  },
  "errors": [],
- "total_net_rs": -6747,
- "realized_net_rs": -6747,
+ "total_net_rs": 106511,
+ "realized_net_rs": 106511,
  "open_positions": 0
 }
