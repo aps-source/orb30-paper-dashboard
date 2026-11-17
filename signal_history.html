@@ -57,7 +57,7 @@ const fmt = (v, d=1) => v == null ? "—" : (v > 0 ? "+" : "") + Number(v).toFix
 const rs = v => v == null ? "—" : (v < 0 ? "−₹" : "₹") + Math.abs(Math.round(v)).toLocaleString("en-IN");
 const cls = v => v > 0 ? "good" : v < 0 ? "bad" : "";
 const STRATS = ["NIFTY_ORB","NIFTY_ORB950","SENSEX_ORB","SENSEX_ORB950"];
-const LABEL = {"NIFTY_ORB":"NIFTY · range cap","NIFTY_ORB950":"NIFTY · cap + 9:50 filter","SENSEX_ORB":"SENSEX · range cap","SENSEX_ORB950":"SENSEX · cap + 9:50 filter"};
+const LABEL = {"NIFTY_ORB":"NIFTY ORB30","NIFTY_ORB950":"NIFTY · cap + 9:50 filter (historical)","SENSEX_ORB":"SENSEX ORB30","SENSEX_ORB950":"SENSEX · cap + 9:50 filter (historical)"};
 const RSN = {stop:"stop", target:"target", time:"14:30", both:"both edges"};
 let ALL = [], FILTER = "ALL";
 function statusOf(r) {

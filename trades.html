@@ -59,7 +59,7 @@ const fmt = (v, d=1) => (v > 0 ? "+" : "") + Number(v).toFixed(d);
 const rs = v => (v < 0 ? "−₹" : "₹") + Math.abs(Math.round(v)).toLocaleString("en-IN");
 const cls = v => v > 0 ? "good" : v < 0 ? "bad" : "";
 const STRATS = ["NIFTY ORB","SENSEX ORB"];
-const LABEL = {"NIFTY ORB":"NIFTY · range cap","SENSEX ORB":"SENSEX · range cap"};
+const LABEL = {"NIFTY ORB":"NIFTY ORB30","SENSEX ORB":"SENSEX ORB30"};
 const RSN = {stop:"stop", target:"target", time:"14:30", both:"both edges"};
 let ALL = [], FILTER = "ALL";
 function summary() {

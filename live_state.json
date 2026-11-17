@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-17T20:03:16",
+ "last_tick": "2026-11-17T20:11:12",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -21,7 +21,7 @@
    "strategies": {
     "ORB": {
      "variant": "ORB",
-     "name": "ORB30 \u00b7 range cap",
+     "name": "ORB30",
      "session_date": "2026-11-17",
      "counted": true,
      "status": "Closed LONG: 14:30 time exit at 25464",
@@ -36,12 +36,12 @@
      "session_side": 1,
      "session_pnl_net_pts": 103.65000000000146,
      "position": null,
-     "closed_trades": 3,
-     "wins": 2,
-     "realized_net_pts": 149.85,
-     "realized_net_rs": 9740,
-     "total_net_pts": 149.85,
-     "total_net_rs": 9740,
+     "closed_trades": 16,
+     "wins": 7,
+     "realized_net_pts": -2.8,
+     "realized_net_rs": -182,
+     "total_net_pts": -2.8,
+     "total_net_rs": -182,
      "tail": [
       {
        "t": "09:15",
@@ -358,7 +358,7 @@
    "strategies": {
     "ORB": {
      "variant": "ORB",
-     "name": "ORB30 \u00b7 range cap",
+     "name": "ORB30",
      "session_date": "2026-11-17",
      "counted": true,
      "status": "Closed LONG: target hit at 82865",
@@ -373,12 +373,12 @@
      "session_side": 1,
      "session_pnl_net_pts": 509.36000000001513,
      "position": null,
-     "closed_trades": 2,
-     "wins": 1,
-     "realized_net_pts": 245.14,
-     "realized_net_rs": 4903,
-     "total_net_pts": 245.14,
-     "total_net_rs": 4903,
+     "closed_trades": 16,
+     "wins": 7,
+     "realized_net_pts": -328.23,
+     "realized_net_rs": -6565,
+     "total_net_pts": -328.23,
+     "total_net_rs": -6565,
      "tail": [
       {
        "t": "09:15",
@@ -539,7 +539,7 @@
   }
  },
  "errors": [],
- "total_net_rs": 14643,
- "realized_net_rs": 14643,
+ "total_net_rs": -6747,
+ "realized_net_rs": -6747,
  "open_positions": 0
 }

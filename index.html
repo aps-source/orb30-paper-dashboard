@@ -129,7 +129,7 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="brand"><div class="logo">▤</div>
-      <div><h1>ORB30 — Paper Trading</h1><div class="tag">NIFTY + SENSEX · 30-min opening-range breakout · range cap · intraday, flat by 14:30 · signal replay only</div></div></div>
+      <div><h1>ORB30 — Paper Trading</h1><div class="tag">NIFTY + SENSEX · 30-min opening-range breakout · intraday, flat by 14:30 · signal replay only</div></div></div>
     <div class="hero-right">
       <span class="hero-pill" id="clock">…</span>
       <span id="status"></span><span class="hero-pill" id="tick">…</span>
@@ -142,7 +142,7 @@
     </div>
   </div>
   <details class="rules"><summary>Strategy rules</summary>
-    <p>The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>Range cap:</b> skip the day if the OR is wider than 100 pts (NIFTY) or 300 pts (SENSEX). <b>ORB:</b> go LONG the moment price trades above the OR high, SHORT below the OR low, one trade a day. Stop at the opposite end of the OR, target 2R (twice the risk), any open trade closed at 14:30. 1 lot per strategy, 1 trade/day per strategy. The two caps were picked after looking at the backtest data. (The 9:50 confirmation-filter variant, ORB950, was removed 2026-11-17 — it backtested stronger than plain ORB, but was dropped by explicit choice.) Paper-only since 2026-10-23: this project ran real automatic orders (NIFTY/SENSEX options) from 2026-09-30 to 2026-10-23, converted back to paper for lack of a durable edge -- see the historical real-trading figures below.</p></details>
+    <p>The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>ORB:</b> go LONG the moment price trades above the OR high, SHORT below the OR low, one trade a day, however wide the OR is. Stop at the opposite end of the OR, target 2R (twice the risk), any open trade closed at 14:30. 1 lot per strategy, 1 trade/day per strategy. (The NIFTY 0-100 / SENSEX 0-300 range cap was removed 2026-11-19 -- the backtest's edge sits almost entirely inside that cap, so this is expected to run close to break-even; kept anyway by explicit choice. The 9:50 confirmation-filter variant, ORB950, was removed 2026-11-17 — it backtested stronger than plain ORB, but was dropped by explicit choice.) Paper-only since 2026-10-23: this project ran real automatic orders (NIFTY/SENSEX options) from 2026-09-30 to 2026-10-23, converted back to paper for lack of a durable edge -- see the historical real-trading figures below.</p></details>
 </header>
 <main class="page">
   <div id="err"></div>
@@ -202,7 +202,7 @@ function card(sym, key, v, ltp, bt) {
   const wr = v.closed_trades ? Math.round(100*v.wins/v.closed_trades) + "%" : "—";
   const sp = v.session_pnl_net_pts;
   const meta = p ? `since ${esc(p.entry_time.slice(11,16))} @ ${n0(p.entry_price)} · SL ${n0(p.stop)} · TP ${n0(p.target)}` : esc(st);
-  const orNote = v.or_high != null ? `Opening range <b>${n0(v.or_low)} – ${n0(v.or_high)}</b> (${v.or_range.toFixed(0)} pts, cap ${v.cap}).` : "Opening range not formed yet.";
+  const orNote = v.or_high != null ? `Opening range <b>${n0(v.or_low)} – ${n0(v.or_high)}</b> (${v.or_range.toFixed(0)} pts).` : "Opening range not formed yet.";
   const fc = v.filter_close != null ? ` 9:50 close <b>${n0(v.filter_close)}</b>.` : "";
   const legend = `<div class="lv"><span style="--c:var(--accent)">5-min close</span><span style="--c:var(--text-muted)">opening range</span><span style="--c:var(--critical)">stop</span><span style="--c:var(--target)">target</span></div>`;
   const done = kind === "DONE" && sp != null && v.counted ? `<div class="note"><b class="${cls(sp)}">Today: ${fmt(sp)} pts net · ${rs(sp * (v.lot||1))}</b></div>` : "";
