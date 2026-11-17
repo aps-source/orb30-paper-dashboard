@@ -142,7 +142,7 @@
     </div>
   </div>
   <details class="rules"><summary>Strategy rules</summary>
-    <p>The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>Range cap:</b> skip the day if the OR is wider than 100 pts (NIFTY) or 300 pts (SENSEX). <b>ORB · range cap:</b> go LONG the moment price trades above the OR high, SHORT below the OR low, one trade a day. <b>ORB · range cap + 9:50 filter:</b> the 5-min candle ending 09:50 must close beyond the OR (above the high = LONG, below the low = SHORT), entered at that 09:50 close; if it closes inside the range there is no trade. <b>Both:</b> stop at the opposite end of the OR, target 2R (twice the risk), any open trade closed at 14:30. 1 lot per strategy, 1 trade/day per strategy. The two caps were picked after looking at the backtest data; the 9:50 filter is an unconfirmed lead, still being tested out-of-sample. Paper-only since 2026-10-23: this project ran real automatic orders (NIFTY/SENSEX options) from 2026-09-30 to 2026-10-23, converted back to paper for lack of a durable edge -- see the historical real-trading figures below.</p></details>
+    <p>The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>Range cap:</b> skip the day if the OR is wider than 100 pts (NIFTY) or 300 pts (SENSEX). <b>ORB:</b> go LONG the moment price trades above the OR high, SHORT below the OR low, one trade a day. Stop at the opposite end of the OR, target 2R (twice the risk), any open trade closed at 14:30. 1 lot per strategy, 1 trade/day per strategy. The two caps were picked after looking at the backtest data. (The 9:50 confirmation-filter variant, ORB950, was removed 2026-11-17 — it backtested stronger than plain ORB, but was dropped by explicit choice.) Paper-only since 2026-10-23: this project ran real automatic orders (NIFTY/SENSEX options) from 2026-09-30 to 2026-10-23, converted back to paper for lack of a durable edge -- see the historical real-trading figures below.</p></details>
 </header>
 <main class="page">
   <div id="err"></div>
@@ -241,13 +241,13 @@ async function refresh() {
       <div class="kpi ${real.combined_daily_pnl_rupees>=0?"g":"b"}"><div class="k">Total P&amp;L (real, historical)</div><div class="v ${cls(real.combined_daily_pnl_rupees)}">${rs(real.combined_daily_pnl_rupees)}</div><div class="s">booked 2026-09-30 to 2026-10-23, frozen</div></div>
       <div class="kpi v2"><div class="k">Closed trades (real, historical)</div><div class="v">${real.closed_trades}</div><div class="s">win rate ${real.closed_trades ? Math.round(100*real.wins/real.closed_trades) + "%" : "—"}</div></div>` : "";
     document.getElementById("kpis").innerHTML = `
-      <div class="kpi ${s.total_net_rs>=0?"g":"b"}"><div class="k">Total P&amp;L</div><div class="v ${cls(s.total_net_rs)}">${rs(s.total_net_rs)}</div><div class="s">all 4 strategies, incl. open</div></div>
+      <div class="kpi ${s.total_net_rs>=0?"g":"b"}"><div class="k">Total P&amp;L</div><div class="v ${cls(s.total_net_rs)}">${rs(s.total_net_rs)}</div><div class="s">both strategies, incl. open</div></div>
       <div class="kpi"><div class="k">Realized</div><div class="v ${cls(s.realized_net_rs)}">${rs(s.realized_net_rs)}</div><div class="s">closed trades only</div></div>
-      <div class="kpi v1"><div class="k">Open positions</div><div class="v">${s.open_positions}/4</div><div class="s">1 lot each</div></div>
+      <div class="kpi v1"><div class="k">Open positions</div><div class="v">${s.open_positions}/2</div><div class="s">1 lot each</div></div>
       <div class="kpi v2"><div class="k">Closed trades</div><div class="v">${closed}</div><div class="s">win rate ${closed ? Math.round(100*wins/closed) + "%" : "—"}</div></div>
       <div class="kpi"><div class="k">Paper start</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">backtest: ~49% win rate, PF 1.1–1.6</div></div>${realHtml}`;
     document.getElementById("cards").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
-      ["ORB","ORB950"].map(k => { const v = i.strategies[k]; v.lot = s.lots[sym]; return card(sym, k, v, i.ltp, BT[sym + " " + k]); })).join("");
+      ["ORB"].map(k => { const v = i.strategies[k]; v.lot = s.lots[sym]; return card(sym, k, v, i.ltp, BT[sym + " " + k]); })).join("");
   } catch (e) {
     document.getElementById("err").innerHTML = `<div class="banner err">Could not load live_state.json — ${esc(e.message)}</div>`;
   }
