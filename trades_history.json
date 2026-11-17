@@ -98,5 +98,25 @@
   "net_pts": 509.36,
   "net_rs": 10187,
   "exit_reason": "target"
+ },
+ {
+  "strategy": "SENSEX ORB950",
+  "symbol": "SENSEX",
+  "variant": "ORB950",
+  "date": "2026-11-17",
+  "dir": "LONG",
+  "entry_time": "2026-11-17 09:50",
+  "exit_time": "2026-11-17 12:13",
+  "entry": 82356.87,
+  "exit": 82886.81,
+  "stop": 82091.9,
+  "target": 82886.81,
+  "or_high": 82349.58,
+  "or_low": 82091.9,
+  "or_range": 257.7,
+  "gross_pts": 529.94,
+  "net_pts": 523.94,
+  "net_rs": 10479,
+  "exit_reason": "target"
  }
 ]
