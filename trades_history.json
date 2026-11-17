@@ -78,5 +78,25 @@
   "net_pts": 101.9,
   "net_rs": 6624,
   "exit_reason": "time"
+ },
+ {
+  "strategy": "SENSEX ORB",
+  "symbol": "SENSEX",
+  "variant": "ORB",
+  "date": "2026-11-17",
+  "dir": "LONG",
+  "entry_time": "2026-11-17 09:45",
+  "exit_time": "2026-11-17 12:00",
+  "entry": 82349.58,
+  "exit": 82864.94,
+  "stop": 82091.9,
+  "target": 82864.94,
+  "or_high": 82349.58,
+  "or_low": 82091.9,
+  "or_range": 257.7,
+  "gross_pts": 515.36,
+  "net_pts": 509.36,
+  "net_rs": 10187,
+  "exit_reason": "target"
  }
 ]
