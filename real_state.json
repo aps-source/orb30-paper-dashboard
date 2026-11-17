@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-10-23T10:50:43",
+ "updated_at": "2026-11-18T00:38:58",
  "combined_daily_pnl_rupees": 0.0,
  "closed_trades": 0,
  "wins": 0,
@@ -8,15 +8,7 @@
    "position": null,
    "day_losses": 0
   },
-  "NIFTY_ORB950": {
-   "position": null,
-   "day_losses": 0
-  },
   "SENSEX_ORB": {
-   "position": null,
-   "day_losses": 0
-  },
-  "SENSEX_ORB950": {
    "position": null,
    "day_losses": 0
   }
