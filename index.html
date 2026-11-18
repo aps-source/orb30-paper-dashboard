@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8" />
-<title>ORB30 — Paper Trading</title>
+<title>ORB30 — Live Trading</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <style>
   :root {
@@ -121,25 +121,26 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="brand"><div class="logo">▤</div>
-      <div><h1>ORB30 — Paper Trading</h1><div class="tag">NIFTY + SENSEX · 30-min opening-range breakout · intraday, flat by 14:30 · signal replay only</div></div></div>
+      <div><h1>ORB30 — Live Trading</h1><div class="tag">NIFTY + SENSEX · 30-min opening range · CPR bias + ATR cap (SENSEX) + trailing stop + sync-exit · real ATM options, real money</div></div></div>
     <div class="hero-right">
       <span class="hero-pill" id="clock">…</span>
       <span id="status"></span><span class="hero-pill" id="tick">…</span>
-      <!-- There is NO trading on/off toggle here, by deliberate, repeated user decision (removed 2026-10-?? and again
-           2026-11-19, after a different session mistakenly "restored" it on 2026-10-12 believing the removal was an
-           accidental regression). This project is paper-only -- there is no real engine for a toggle to control.
-           Do not re-add it. If a future change genuinely needs a remote on/off switch, ask the user first. -->
+      <!-- There is NO trading on/off toggle here. The project is real-money again since 2026-11-18, but
+           entries/exits are still controlled off-page: AUTO_TRADING.on (presence arms it), PAUSE.flag
+           (new entries stop, open positions still get managed), and site/control.json (read by
+           confirm_and_place.run_auto, toggled by the emergency stop/resume scripts in the Dhan Token
+           Updater folder). Ask the user first before adding an on-page toggle. -->
       <a class="btn" href="trades.html">Day-wise trades &amp; P&amp;L →</a><a class="btn" href="signal_history.html">Signal history →</a><a class="btn" href="backtest.html">Backtest data →</a>
     </div>
   </div>
   <details class="rules"><summary>Strategy rules</summary>
-    <p>The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>ORB:</b> go LONG the moment price trades above the OR high, SHORT below the OR low, one trade a day, however wide the OR is. Stop at the opposite end of the OR, target 2R (twice the risk), any open trade closed at 14:30. 1 lot per strategy, 1 trade/day per strategy. (The NIFTY 0-100 / SENSEX 0-300 range cap was removed 2026-11-19 -- the backtest's edge sits almost entirely inside that cap, so this is expected to run close to break-even; kept anyway by explicit choice. The 9:50 confirmation-filter variant, ORB950, was removed 2026-11-17 — it backtested stronger than plain ORB, but was dropped by explicit choice.) Paper-only since 2026-10-23: this project ran real automatic orders (NIFTY/SENSEX options) from 2026-09-30 to 2026-10-23, converted back to paper for lack of a durable edge -- see the historical real-trading figures below.</p></details>
+    <p><b>Real-money live since 2026-11-18</b> (ran real automatic orders once before, 2026-09-30 to 2026-10-23, paused for lack of a durable edge, then this new rule set validated and went live again). The opening range (OR) is the 09:15–09:45 high and low (the first two 15-min candles). <b>CPR directional bias:</b> from the previous day's CPR (pivot/BC/TC) -- only the breakout matching the bias is taken; the opposite breakout and CPR-neutral days are skipped, for both symbols. <b>ATR cap:</b> SENSEX only, the day is skipped if the OR is wider than 0.75 × the prior day's ATR(14); NIFTY has no cap. <b>Entry:</b> the moment price trades above the OR high (LONG) or below the OR low (SHORT), 09:45–14:29. <b>Stop:</b> starts at the opposite OR edge, ratchets once to the OR midpoint after price touches it in favour. <b>Target:</b> 2R off the original risk. <b>No 14:30 time exit</b> any more -- a trade is managed through to the last 1-min bar of the day. <b>Sync-exit:</b> the instant either NIFTY or SENSEX hits its OWN target, the OTHER open leg is force-closed immediately. 1 lot per strategy, 1 trade/day per strategy. Real fills are on the ATM option premium (CALL for a LONG signal, PUT for a SHORT), not the index itself.</p></details>
 </header>
 <main class="page">
   <div id="err"></div>
   <div class="kpis" id="kpis"></div>
   <div class="grid" id="cards"></div>
-  <div class="foot">Read-only page: it never places, modifies or cancels any order. P&amp;L is the signal-replay calculation (index points, assumed fill at the OR edge / 9:50 close, no slippage). ₹ = points × lot size (NIFTY 65, SENSEX 20). The KPI row's "(real, historical)" figures are frozen from the 2026-09-30 to 2026-10-23 real-trading period and no longer update. Refreshes every 60 seconds from <code>live_state.json</code>.</div>
+  <div class="foot">This page never places, modifies or cancels any order itself -- that happens in <code>confirm_and_place.py</code>, driven by <code>live_tick.py</code>'s signals. The <b>REAL</b> KPI row is the actual booked P&amp;L on ATM option premium, summed from every real exit fill since 2026-11-18. The <b>signal-replay</b> row below it is the same rule engine run on index points with an assumed fill at the OR edge and no slippage -- useful as a live sanity check against the backtest, not real money. ₹ = points × lot size (NIFTY 65, SENSEX 20) for the signal-replay row. Refreshes every 60 seconds from <code>live_state.json</code> / <code>real_state.json</code>.</div>
 
   <section class="chart-section">
     <h2>Today's chart &middot; strategy, signals &amp; trades</h2>
@@ -225,18 +226,19 @@ async function refresh() {
     document.getElementById("err").innerHTML = (s.errors||[]).length ? `<div class="banner err">Data error: ${esc(s.errors.join(" | "))}</div>` : "";
     if (!window.BT) { try { window.BT = (await (await fetch("backtest_data.json")).json()).strategies; } catch (e) { window.BT = {}; } }
     let real = null;
-    try { real = await (await fetch("real_state.json?t=" + Date.now(), {cache:"no-store"})).json(); } catch (e) { /* real trading period left no record, or file removed */ }
+    try { real = await (await fetch("real_state.json?t=" + Date.now(), {cache:"no-store"})).json(); } catch (e) { /* no real exit has ever been logged yet, or file missing */ }
     const all = Object.values(s.instruments).flatMap(i => Object.values(i.strategies));
     const closed = all.reduce((a,x) => a + x.closed_trades, 0), wins = all.reduce((a,x) => a + x.wins, 0);
     const realHtml = real ? `
-      <div class="kpi ${real.combined_daily_pnl_rupees>=0?"g":"b"}"><div class="k">Total P&amp;L (real, historical)</div><div class="v ${cls(real.combined_daily_pnl_rupees)}">${rs(real.combined_daily_pnl_rupees)}</div><div class="s">booked 2026-09-30 to 2026-10-23, frozen</div></div>
-      <div class="kpi v2"><div class="k">Closed trades (real, historical)</div><div class="v">${real.closed_trades}</div><div class="s">win rate ${real.closed_trades ? Math.round(100*real.wins/real.closed_trades) + "%" : "—"}</div></div>` : "";
-    document.getElementById("kpis").innerHTML = `
-      <div class="kpi ${s.total_net_rs>=0?"g":"b"}"><div class="k">Total P&amp;L</div><div class="v ${cls(s.total_net_rs)}">${rs(s.total_net_rs)}</div><div class="s">both strategies, incl. open</div></div>
-      <div class="kpi"><div class="k">Realized</div><div class="v ${cls(s.realized_net_rs)}">${rs(s.realized_net_rs)}</div><div class="s">closed trades only</div></div>
-      <div class="kpi v1"><div class="k">Open positions</div><div class="v">${s.open_positions}/2</div><div class="s">1 lot each</div></div>
-      <div class="kpi v2"><div class="k">Closed trades</div><div class="v">${closed}</div><div class="s">win rate ${closed ? Math.round(100*wins/closed) + "%" : "—"}</div></div>
-      <div class="kpi"><div class="k">Paper start</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">backtest: ~49% win rate, PF 1.1–1.6</div></div>${realHtml}`;
+      <div class="kpi ${real.combined_pnl_rupees>=0?"g":"b"}"><div class="k">Real P&amp;L</div><div class="v ${cls(real.combined_pnl_rupees)}">${rs(real.combined_pnl_rupees)}</div><div class="s">booked, ATM option premium, since ${esc(real.live_since)}</div></div>
+      <div class="kpi v1"><div class="k">Real closed trades</div><div class="v">${real.closed_trades}</div><div class="s">win rate ${real.closed_trades ? Math.round(100*real.wins/real.closed_trades) + "%" : "—"}</div></div>` :
+      `<div class="kpi"><div class="k">Real P&amp;L</div><div class="v">₹0</div><div class="s">no real exit logged yet since 2026-11-18</div></div>`;
+    document.getElementById("kpis").innerHTML = realHtml + `
+      <div class="kpi ${s.total_net_rs>=0?"g":"b"}"><div class="k">Signal-replay P&amp;L</div><div class="v ${cls(s.total_net_rs)}">${rs(s.total_net_rs)}</div><div class="s">both strategies, incl. open -- NOT real money</div></div>
+      <div class="kpi"><div class="k">Signal-replay realized</div><div class="v ${cls(s.realized_net_rs)}">${rs(s.realized_net_rs)}</div><div class="s">closed trades only</div></div>
+      <div class="kpi v2"><div class="k">Open positions</div><div class="v">${s.open_positions}/2</div><div class="s">1 lot each</div></div>
+      <div class="kpi v2"><div class="k">Signal-replay closed trades</div><div class="v">${closed}</div><div class="s">win rate ${closed ? Math.round(100*wins/closed) + "%" : "—"}</div></div>
+      <div class="kpi"><div class="k">Signal-replay since</div><div class="v" style="font-size:1.35rem">${esc(s.paper_start)}</div><div class="s">see Backtest for current win%/PF</div></div>`;
     document.getElementById("cards").innerHTML = Object.entries(s.instruments).flatMap(([sym, i]) =>
       ["ORB"].map(k => { const v = i.strategies[k]; v.lot = s.lots[sym]; return card(sym, k, v, i.ltp, BT[sym + " " + k]); })).join("");
   } catch (e) {
