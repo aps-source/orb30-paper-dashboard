@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-18T16:16:49",
+ "last_tick": "2026-11-18T16:16:51",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -762,7 +762,10 @@
    }
   }
  },
- "errors": [],
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},",
+  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
+ ],
  "total_net_rs": 106511,
  "realized_net_rs": 106511,
  "open_positions": 0
