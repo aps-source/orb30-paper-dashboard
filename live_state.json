@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-19T09:49:56",
+ "last_tick": "2026-11-19T09:51:03",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,15 +16,15 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 25249.05,
-   "last_1m": "2026-11-19 09:49:00",
+   "ltp": 25277.9,
+   "last_1m": "2026-11-19 09:51:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30",
      "session_date": "2026-11-19",
      "counted": true,
-     "status": "Waiting for a breakout of 25105 - 25256",
+     "status": "No trade: LONG breakout disagrees with CPR bias (-1)",
      "or_high": 25255.6,
      "or_low": 25104.8,
      "or_range": 150.79999999999927,
@@ -69,23 +69,27 @@
       },
       {
        "t": "09:45",
-       "c": 25249.05
+       "c": 25257.1
+      },
+      {
+       "t": "09:50",
+       "c": 25277.9
       }
      ],
-     "last_1m": "2026-11-19 09:49:00"
+     "last_1m": "2026-11-19 09:51:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 82125.52,
-   "last_1m": "2026-11-19 09:49:00",
+   "ltp": 82225.24,
+   "last_1m": "2026-11-19 09:51:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30",
      "session_date": "2026-11-19",
      "counted": true,
-     "status": "Waiting for a breakout of 81699 - 82177",
+     "status": "No trade: LONG breakout disagrees with CPR bias (-1)",
      "or_high": 82177.04,
      "or_low": 81698.63,
      "or_range": 478.40999999998894,
@@ -130,10 +134,14 @@
       },
       {
        "t": "09:45",
-       "c": 82125.52
+       "c": 82134.37
+      },
+      {
+       "t": "09:50",
+       "c": 82225.24
       }
      ],
-     "last_1m": "2026-11-19 09:49:00"
+     "last_1m": "2026-11-19 09:51:00"
     }
    }
   }
