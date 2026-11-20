@@ -12,7 +12,7 @@
   "exit_t": null,
   "exit": null,
   "reason": null,
-  "pnl_net_pts": 666.6300000000047,
+  "pnl_net_pts": 710.3699999999953,
   "status": "In LONG since 09:45 @ 82962 (SL at mid)",
   "real_entry": null,
   "real_exit": null,
@@ -31,7 +31,7 @@
   "exit_t": null,
   "exit": null,
   "reason": null,
-  "pnl_net_pts": 191.45000000000073,
+  "pnl_net_pts": 205.0,
   "status": "In LONG since 09:45 @ 25500 (SL at mid)",
   "real_entry": {
    "fill": 98.85,
