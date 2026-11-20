@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-20T09:45:56",
+ "updated_at": "2026-11-20T09:47:34",
  "live_since": "2026-11-18",
  "combined_pnl_rupees": 0.0,
  "closed_trades": 0,
@@ -13,7 +13,20 @@
  },
  "strategies": {
   "NIFTY_ORB": {
-   "position": null,
+   "position": {
+    "direction": "LONG",
+    "strategy_key": "NIFTY_ORB",
+    "symbol": "NIFTY",
+    "variant": "ORB",
+    "option_type": "CE",
+    "strike": 25550.0,
+    "security_id": "64475",
+    "exchange_segment": "NSE_FNO",
+    "expiry": "2026-11-23",
+    "quantity": 65,
+    "entry_time": "2026-11-20T09:46:23.612499",
+    "entry_ltp": 98.85
+   },
    "day_losses": 0
   },
   "SENSEX_ORB": {

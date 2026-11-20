@@ -12,11 +12,11 @@
   "exit_t": null,
   "exit": null,
   "reason": null,
-  "pnl_net_pts": 37.11999999999534,
+  "pnl_net_pts": 4.959999999991851,
   "status": "In LONG since 09:45 @ 82962 (SL at mid)",
   "real_entry": null,
   "real_exit": null,
-  "held_reason": null
+  "held_reason": "insufficient balance for Rs.8,606 + 10% buffer"
  },
  {
   "date": "2026-11-20",
@@ -31,9 +31,13 @@
   "exit_t": null,
   "exit": null,
   "reason": null,
-  "pnl_net_pts": 10.950000000000728,
+  "pnl_net_pts": -1.3999999999978172,
   "status": "In LONG since 09:45 @ 25500 (SL at mid)",
-  "real_entry": null,
+  "real_entry": {
+   "fill": 98.85,
+   "option_type": "CE",
+   "strike": 25550.0
+  },
   "real_exit": null,
   "held_reason": null
  },
