@@ -1,7 +1,7 @@
 {
- "engine_status": "running",
+ "engine_status": "data_error",
  "paper_start": "2026-10-23",
- "last_tick": "2026-11-20T14:46:35",
+ "last_tick": "2026-11-20T14:47:14",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -328,8 +328,8 @@
    }
   },
   "SENSEX": {
-   "ltp": 83784.18,
-   "last_1m": "2026-11-20 14:46:00",
+   "ltp": 83763.9,
+   "last_1m": "2026-11-20 14:47:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -346,7 +346,7 @@
      "stop": 82682.87,
      "target": 84080.87,
      "session_side": 1,
-     "session_pnl_net_pts": 815.7099999999919,
+     "session_pnl_net_pts": 795.429999999993,
      "position": {
       "dir": "LONG",
       "date": "2026-11-20",
@@ -354,17 +354,17 @@
       "entry_price": 82962.47,
       "stop": 82682.87,
       "target": 84080.87,
-      "ltp": 83784.18,
-      "unrealized_pts": 821.71,
-      "unrealized_net_pts": 815.71,
-      "unrealized_rs": 16314
+      "ltp": 83763.9,
+      "unrealized_pts": 801.43,
+      "unrealized_net_pts": 795.43,
+      "unrealized_rs": 15909
      },
      "closed_trades": 13,
      "wins": 6,
      "realized_net_pts": 2584.81,
      "realized_net_rs": 51696,
-     "total_net_pts": 3400.52,
-     "total_net_rs": 68010,
+     "total_net_pts": 3380.24,
+     "total_net_rs": 67605,
      "tail": [
       {
        "t": "09:15",
@@ -632,16 +632,18 @@
       },
       {
        "t": "14:45",
-       "c": 83784.18
+       "c": 83763.9
       }
      ],
-     "last_1m": "2026-11-20 14:46:00"
+     "last_1m": "2026-11-20 14:47:00"
     }
    }
   }
  },
- "errors": [],
- "total_net_rs": 138058,
+ "errors": [
+  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne"
+ ],
+ "total_net_rs": 137653,
  "realized_net_rs": 106511,
  "open_positions": 2
 }
