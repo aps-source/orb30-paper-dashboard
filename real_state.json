@@ -1,5 +1,5 @@
 {
- "updated_at": "2026-11-21T17:08:28",
+ "updated_at": "2026-11-22T23:37:18",
  "live_since": "2026-11-18",
  "combined_pnl_rupees": 0.0,
  "closed_trades": 0,
@@ -7,6 +7,11 @@
  "prior_period": {
   "from": "2026-09-30",
   "to": "2026-10-23",
+  "pnl_rupees": 0.0,
+  "closed_trades": 0,
+  "wins": 0
+ },
+ "all_time": {
   "pnl_rupees": 0.0,
   "closed_trades": 0,
   "wins": 0
