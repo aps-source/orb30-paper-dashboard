@@ -1,7 +1,7 @@
 {
  "engine_status": "data_error",
- "paper_start": "2026-10-23",
- "last_tick": "2026-11-21T17:08:30",
+ "paper_start": "2026-11-22",
+ "last_tick": "2026-11-22T23:33:41",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -23,8 +23,8 @@
      "variant": "ORB",
      "name": "ORB30",
      "session_date": "2026-11-20",
-     "counted": true,
-     "status": "Closed LONG: day close at 25801",
+     "counted": false,
+     "status": "Paper trading starts Sun 22 Nov 2026. Last session 20 Nov (before start, not counted): Closed LONG: day close at 25801",
      "or_high": 25499.85,
      "or_low": 25345.2,
      "or_range": 154.64999999999782,
@@ -36,12 +36,12 @@
      "session_side": 1,
      "session_pnl_net_pts": 298.75,
      "position": null,
-     "closed_trades": 13,
-     "wins": 7,
-     "realized_net_pts": 1142.06,
-     "realized_net_rs": 74234,
-     "total_net_pts": 1142.06,
-     "total_net_rs": 74234,
+     "closed_trades": 0,
+     "wins": 0,
+     "realized_net_pts": 0.0,
+     "realized_net_rs": 0,
+     "total_net_pts": 0.0,
+     "total_net_rs": 0,
      "tail": [
       {
        "t": "09:15",
@@ -380,8 +380,8 @@
      "variant": "ORB",
      "name": "ORB30",
      "session_date": "2026-11-20",
-     "counted": true,
-     "status": "Closed LONG: day close at 83920",
+     "counted": false,
+     "status": "Paper trading starts Sun 22 Nov 2026. Last session 20 Nov (before start, not counted): Closed LONG: day close at 83920",
      "or_high": 82962.47,
      "or_low": 82403.27,
      "or_range": 559.1999999999971,
@@ -393,12 +393,12 @@
      "session_side": 1,
      "session_pnl_net_pts": 951.2400000000052,
      "position": null,
-     "closed_trades": 14,
-     "wins": 7,
-     "realized_net_pts": 3536.05,
-     "realized_net_rs": 70721,
-     "total_net_pts": 3536.05,
-     "total_net_rs": 70721,
+     "closed_trades": 0,
+     "wins": 0,
+     "realized_net_pts": 0.0,
+     "realized_net_rs": 0,
+     "total_net_pts": 0.0,
+     "total_net_rs": 0,
      "tail": [
       {
        "t": "09:15",
@@ -734,7 +734,7 @@
   "NIFTY: {'status': 'failure', 'remarks': {'error_code': 'DH-901', 'error_type': 'Invalid_Authentication', 'error_message': 'Client ID or user generated access token is invalid or expired.'}, 'data': ''}",
   "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-901', 'error_type': 'Invalid_Authentication', 'error_message': 'Client ID or user generated access token is invalid or expired.'}, 'data': ''}"
  ],
- "total_net_rs": 144955,
- "realized_net_rs": 144955,
+ "total_net_rs": 0,
+ "realized_net_rs": 0,
  "open_positions": 0
 }
