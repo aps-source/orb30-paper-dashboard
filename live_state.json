@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-11-22",
- "last_tick": "2026-11-23T09:43:35",
+ "last_tick": "2026-11-23T09:44:44",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,18 +16,18 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 25701.55,
-   "last_1m": "2026-11-23 09:43:00",
+   "ltp": 25690.25,
+   "last_1m": "2026-11-23 09:44:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30",
      "session_date": "2026-11-23",
      "counted": true,
-     "status": "Opening range forming (09:15-09:45)",
-     "or_high": null,
-     "or_low": null,
-     "or_range": null,
+     "status": "Waiting for a breakout of 25567 - 25993",
+     "or_high": 25992.6,
+     "or_low": 25567.3,
+     "or_range": 425.2999999999993,
      "cap": null,
      "filter_close": null,
      "entry": null,
@@ -65,26 +65,26 @@
       },
       {
        "t": "09:40",
-       "c": 25701.55
+       "c": 25690.25
       }
      ],
-     "last_1m": "2026-11-23 09:43:00"
+     "last_1m": "2026-11-23 09:44:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 83646.32,
-   "last_1m": "2026-11-23 09:43:00",
+   "ltp": 83607.13,
+   "last_1m": "2026-11-23 09:44:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30",
      "session_date": "2026-11-23",
      "counted": true,
-     "status": "Opening range forming (09:15-09:45)",
-     "or_high": null,
-     "or_low": null,
-     "or_range": null,
+     "status": "Skipped: opening range 1453 pts is wider than the 837-pt cap",
+     "or_high": 84662.96,
+     "or_low": 83210.08,
+     "or_range": 1452.8800000000047,
      "cap": 836.5307142857146,
      "filter_close": null,
      "entry": null,
@@ -122,10 +122,10 @@
       },
       {
        "t": "09:40",
-       "c": 83646.32
+       "c": 83607.13
       }
      ],
-     "last_1m": "2026-11-23 09:43:00"
+     "last_1m": "2026-11-23 09:44:00"
     }
    }
   }
