@@ -1,7 +1,7 @@
 {
- "engine_status": "data_error",
+ "engine_status": "running",
  "paper_start": "2026-11-22",
- "last_tick": "2026-11-25T16:12:25",
+ "last_tick": "2026-11-25T16:17:57",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -17,7 +17,7 @@
  "instruments": {
   "NIFTY": {
    "ltp": 25819.25,
-   "last_1m": "2026-11-25 16:07:00",
+   "last_1m": "2026-11-25 16:17:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -362,15 +362,19 @@
       {
        "t": "16:05",
        "c": 25819.25
+      },
+      {
+       "t": "16:15",
+       "c": 25819.25
       }
      ],
-     "last_1m": "2026-11-25 16:07:00"
+     "last_1m": "2026-11-25 16:17:00"
     }
    }
   },
   "SENSEX": {
    "ltp": 83938.28,
-   "last_1m": "2026-11-25 16:07:00",
+   "last_1m": "2026-11-25 16:17:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -719,17 +723,18 @@
       {
        "t": "16:05",
        "c": 83938.28
+      },
+      {
+       "t": "16:15",
+       "c": 83938.28
       }
      ],
-     "last_1m": "2026-11-25 16:07:00"
+     "last_1m": "2026-11-25 16:17:00"
     }
    }
   }
  },
- "errors": [
-  "NIFTY: {'status': 'failure', 'remarks': 'HTTPSConnectionPool(host=\\'api.dhan.co\\', port=443): Max retries exceeded with url: /v2/charts/intraday (Caused by NameResolutionError(\"<urllib3.connection.HTTPSConne",
-  "SENSEX: {'status': 'failure', 'remarks': {'error_code': 'DH-904', 'error_type': 'Rate_Limit', 'error_message': 'Too many requests on server from single user breaching rate limits. Try throttling API calls.'},"
- ],
+ "errors": [],
  "total_net_rs": 0,
  "realized_net_rs": 0,
  "open_positions": 0
