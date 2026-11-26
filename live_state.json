@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-11-22",
- "last_tick": "2026-11-26T09:51:39",
+ "last_tick": "2026-11-26T09:52:47",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 25812.75,
-   "last_1m": "2026-11-26 09:51:00",
+   "ltp": 25829.75,
+   "last_1m": "2026-11-26 09:52:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -73,23 +73,23 @@
       },
       {
        "t": "09:50",
-       "c": 25812.75
+       "c": 25829.75
       }
      ],
-     "last_1m": "2026-11-26 09:51:00"
+     "last_1m": "2026-11-26 09:52:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 84018.03,
-   "last_1m": "2026-11-26 09:51:00",
+   "ltp": 84067.18,
+   "last_1m": "2026-11-26 09:52:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
      "name": "ORB30",
      "session_date": "2026-11-26",
      "counted": true,
-     "status": "In SHORT since 09:45 @ 83775 (SL at mid)",
+     "status": "Closed SHORT: stopped out at 84051",
      "or_high": 84326.4,
      "or_low": 83775.42,
      "or_range": 550.9799999999959,
@@ -99,25 +99,14 @@
      "stop": 84050.91,
      "target": 82673.46,
      "session_side": -1,
-     "session_pnl_net_pts": -248.61000000000058,
-     "position": {
-      "dir": "SHORT",
-      "date": "2026-11-26",
-      "entry_time": "2026-11-26 09:45",
-      "entry_price": 83775.42,
-      "stop": 84050.91,
-      "target": 82673.46,
-      "ltp": 84018.03,
-      "unrealized_pts": -242.61,
-      "unrealized_net_pts": -248.61,
-      "unrealized_rs": -4972
-     },
-     "closed_trades": 0,
+     "session_pnl_net_pts": -281.49000000000524,
+     "position": null,
+     "closed_trades": 1,
      "wins": 0,
-     "realized_net_pts": 0.0,
-     "realized_net_rs": 0,
-     "total_net_pts": -248.61,
-     "total_net_rs": -4972,
+     "realized_net_pts": -281.49,
+     "realized_net_rs": -5630,
+     "total_net_pts": -281.49,
+     "total_net_rs": -5630,
      "tail": [
       {
        "t": "09:15",
@@ -149,16 +138,16 @@
       },
       {
        "t": "09:50",
-       "c": 84018.03
+       "c": 84067.18
       }
      ],
-     "last_1m": "2026-11-26 09:51:00"
+     "last_1m": "2026-11-26 09:52:00"
     }
    }
   }
  },
  "errors": [],
- "total_net_rs": -4972,
- "realized_net_rs": 0,
- "open_positions": 1
+ "total_net_rs": -5630,
+ "realized_net_rs": -5630,
+ "open_positions": 0
 }

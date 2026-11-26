@@ -1,1 +1,22 @@
-[]
+[
+ {
+  "strategy": "SENSEX ORB",
+  "symbol": "SENSEX",
+  "variant": "ORB",
+  "date": "2026-11-26",
+  "dir": "SHORT",
+  "entry_time": "2026-11-26 09:45",
+  "exit_time": "2026-11-26 09:52",
+  "entry": 83775.42,
+  "exit": 84050.91,
+  "stop": 84050.91,
+  "target": 82673.46,
+  "or_high": 84326.4,
+  "or_low": 83775.42,
+  "or_range": 551.0,
+  "gross_pts": -275.49,
+  "net_pts": -281.49,
+  "net_rs": -5630,
+  "exit_reason": "stop"
+ }
+]
