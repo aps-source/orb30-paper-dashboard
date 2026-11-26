@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-11-22",
- "last_tick": "2026-11-26T09:47:02",
+ "last_tick": "2026-11-26T09:48:15",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 25749.0,
-   "last_1m": "2026-11-26 09:47:00",
+   "ltp": 25758.55,
+   "last_1m": "2026-11-26 09:48:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -69,16 +69,16 @@
       },
       {
        "t": "09:45",
-       "c": 25749.0
+       "c": 25758.55
       }
      ],
-     "last_1m": "2026-11-26 09:47:00"
+     "last_1m": "2026-11-26 09:48:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 83792.41,
-   "last_1m": "2026-11-26 09:47:00",
+   "ltp": 83802.61,
+   "last_1m": "2026-11-26 09:48:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -95,7 +95,7 @@
      "stop": 84050.91,
      "target": 82673.46,
      "session_side": -1,
-     "session_pnl_net_pts": -22.99000000000524,
+     "session_pnl_net_pts": -33.19000000000233,
      "position": {
       "dir": "SHORT",
       "date": "2026-11-26",
@@ -103,17 +103,17 @@
       "entry_price": 83775.42,
       "stop": 84050.91,
       "target": 82673.46,
-      "ltp": 83792.41,
-      "unrealized_pts": -16.99,
-      "unrealized_net_pts": -22.99,
-      "unrealized_rs": -460
+      "ltp": 83802.61,
+      "unrealized_pts": -27.19,
+      "unrealized_net_pts": -33.19,
+      "unrealized_rs": -664
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": -22.99,
-     "total_net_rs": -460,
+     "total_net_pts": -33.19,
+     "total_net_rs": -664,
      "tail": [
       {
        "t": "09:15",
@@ -141,16 +141,16 @@
       },
       {
        "t": "09:45",
-       "c": 83792.41
+       "c": 83802.61
       }
      ],
-     "last_1m": "2026-11-26 09:47:00"
+     "last_1m": "2026-11-26 09:48:00"
     }
    }
   }
  },
  "errors": [],
- "total_net_rs": -460,
+ "total_net_rs": -664,
  "realized_net_rs": 0,
  "open_positions": 1
 }
