@@ -1,7 +1,7 @@
 {
  "engine_status": "running",
  "paper_start": "2026-11-22",
- "last_tick": "2026-11-26T09:50:31",
+ "last_tick": "2026-11-26T09:51:39",
  "lots": {
   "NIFTY": 65,
   "SENSEX": 20
@@ -16,8 +16,8 @@
  },
  "instruments": {
   "NIFTY": {
-   "ltp": 25792.05,
-   "last_1m": "2026-11-26 09:50:00",
+   "ltp": 25812.75,
+   "last_1m": "2026-11-26 09:51:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -73,16 +73,16 @@
       },
       {
        "t": "09:50",
-       "c": 25792.05
+       "c": 25812.75
       }
      ],
-     "last_1m": "2026-11-26 09:50:00"
+     "last_1m": "2026-11-26 09:51:00"
     }
    }
   },
   "SENSEX": {
-   "ltp": 83923.55,
-   "last_1m": "2026-11-26 09:50:00",
+   "ltp": 84018.03,
+   "last_1m": "2026-11-26 09:51:00",
    "strategies": {
     "ORB": {
      "variant": "ORB",
@@ -99,7 +99,7 @@
      "stop": 84050.91,
      "target": 82673.46,
      "session_side": -1,
-     "session_pnl_net_pts": -154.13000000000466,
+     "session_pnl_net_pts": -248.61000000000058,
      "position": {
       "dir": "SHORT",
       "date": "2026-11-26",
@@ -107,17 +107,17 @@
       "entry_price": 83775.42,
       "stop": 84050.91,
       "target": 82673.46,
-      "ltp": 83923.55,
-      "unrealized_pts": -148.13,
-      "unrealized_net_pts": -154.13,
-      "unrealized_rs": -3083
+      "ltp": 84018.03,
+      "unrealized_pts": -242.61,
+      "unrealized_net_pts": -248.61,
+      "unrealized_rs": -4972
      },
      "closed_trades": 0,
      "wins": 0,
      "realized_net_pts": 0.0,
      "realized_net_rs": 0,
-     "total_net_pts": -154.13,
-     "total_net_rs": -3083,
+     "total_net_pts": -248.61,
+     "total_net_rs": -4972,
      "tail": [
       {
        "t": "09:15",
@@ -149,16 +149,16 @@
       },
       {
        "t": "09:50",
-       "c": 83923.55
+       "c": 84018.03
       }
      ],
-     "last_1m": "2026-11-26 09:50:00"
+     "last_1m": "2026-11-26 09:51:00"
     }
    }
   }
  },
  "errors": [],
- "total_net_rs": -3083,
+ "total_net_rs": -4972,
  "realized_net_rs": 0,
  "open_positions": 1
 }
